@@ -1,0 +1,21 @@
+.coupon__main{
+	width: 100%;
+  	height: calc(100vh - 220px);
+}
+
+.coupon__title{
+    display: flex;
+    justify-content: space-between;
+}
+
+.coupon__title .mypage__text{
+    line-height: 3em;
+}
+
+.coupon__title img{
+    height: 100px;
+}
+
+.coupon_table{
+	width: 1400px;
+}

@@ -1,0 +1,41 @@
+DB서버만들기
+샘플데이터 추가
+도메인
+/(메인페이지)
+/login (로그인 페이지)
+/signup (회원가입 페이지)
+/user(로그인 후 도메인)
+- /basket (장바구니)
+- /mypage (마이페이지)
+- - /coupon (쿠폰 리스트)
+- - /useredit (개인정보수정 페이지)
+
+/order (주문 페이지)
+- /list (주문 리스트)
+- /detail (주문 상세정보)
+
+/storeManagement (가게 관리 메인 페이지)
+- /add (가게 등록)
+- /delete (가게 삭제)
+- /edit (가게 수정)
+- /product (상품 관리 목록)
+
+/store (가게 리스트)
+- /storeInfo (가게 상세정보)
+- /product (상품 상세 정보)
+
+/admin (관리자 메인페이지)
+- /category (카테고리 생성)
+- /notice (공지사항 작성)
+- /storeList (가게 목록)
+- /userList (유저 목록)
+- /refund (환불 신청 목록)
+- /liveChat (실시간 채팅)
+
+/serviceCenter (고객센터 메인페이지)
+- /faq/{$no} (FQA 게시판, 숫자로 카테고리 분류)
+- /faqdetail (FAQ 상세 내용)
+- /requests (1:1문의 리스트)
+- - /requestContent (문의 상세보기)
+- /requestWrite(1:1문의 작성)
+- /notice (공지사항 게시판)

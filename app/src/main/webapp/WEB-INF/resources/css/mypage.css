@@ -1,0 +1,17 @@
+.mypage__main{
+	width: 100%;
+  	height: calc(100vh - 220px);
+}
+
+.mypage__title{
+    display: flex;
+    justify-content: space-between;
+}
+
+.mypage__title .mypage__text{
+    line-height: 3em;
+}
+
+.mypage__title img{
+    height: 100px;
+}

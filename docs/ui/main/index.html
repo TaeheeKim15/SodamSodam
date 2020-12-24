@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="header">
+        <div class="header__top">
+          <p>소담소담</p>
+        </div>
+        <div class="header__bottom">
+          <div class="header__logo">
+            <img src="./logo.svg" alt="">
+        </div>
+        <div class="search">
+            <input type="text" placeholder="검색" />
+        </div>
+        <div class="user">
+            <div id="user__info" class="user__info">
+              <span class="user__info__img">
+                <img src="https://post-phinf.pstatic.net/MjAxODA0MzBfMTY5/MDAxNTI1MDE5OTA0NjAx.-h3SSyD7m9gBspgvKuiVTZEvPWVUPtiVZCIJY9eZpNUg.EtLjPli-XG7j2u04et5TLijx0J8HfRYniUZJkQzx0oAg.JPEG/mug_obj_144871269398392989.jpg?type=w1200" alt="Profile Picture" class="img-responsive" />
+              </span>
+              <span class="user__info__name">
+                <span class="first">구현</span>
+              </span>
+            </div>
+            <div class='dropdown-wrapper' id='dropdownWrapper' style='width: 256px'>
+              <div class='dropdown-profile-details'>
+                <span class='dropdown-profile-details--name'>권구현</span>
+                <span class='dropdown-profile-details--email'>test123@gmail.com</span>
+              </div>
+              <div class='dropdown-links'>
+                <a href='/auth/loginUser'>마이페이지</a>
+                <a href='/auth/logout'>로그아웃</a>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+    <main>
+      <div class="category">
+        <ul>
+          <li><a href="#">수산물</a></li>
+          <li><a href="#">수산물</a></li>
+          <li><a href="#">수산물</a></li>
+          <li><a href="#">수산물</a></li>
+          <li><a href="#">수산물</a></li>          
+        </ul>
+      </div>
+      <div class="bg-box">
+        <video muted autoplay loop>
+          <source src="./sample.mp4" type="video/mp4">
+          <strong>Your browser does not support the video tag.</strong>
+        </video>
+        <div class="bg-text">
+          <p>Stay Home<br>& Delivered Needs</p>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <div class="container">
+        <div class="row">
+          
+          <div class="col-lg-5 col-md-6">
+            <h3>테스트</h3>
+            <ul class="list-unstyled three-column">
+              <li><a href="/login">로그인 화면</a></li>
+              <li><a href="/auth/loginUser">유저정보</a></li>
+              <li><a href="/user/list">유저목록</a></li>
+              <li><a href="/service">고객센터</a></li>
+              <li><a href="/requests">1대1문의</a></li>
+              <li><a href="/auth/logout">로그아웃</a></li>
+              <li><a href="/notice">공지사항</a></li>
+              <li><a href="#">미정</a></li>
+              <li><a href="#">미정</a></li>
+            </ul>
+          </div>
+          
+          <div class="col-lg-7">
+            <h3>팀원소개</h3>
+            <img class="img-thumbnail" src="http://placehold.it/150x100" alt="" />
+            <img class="img-thumbnail" src="http://placehold.it/150x100" alt="" />
+            <img class="img-thumbnail" src="http://placehold.it/150x100" alt="" />
+            <img class="img-thumbnail" src="http://placehold.it/150x100" alt="" />
+            <img class="img-thumbnail" src="http://placehold.it/150x100" alt="" />
+          </div>
+          
+        </div>
+      </div>
+      <div class="copyright text-center">
+        Copyright &copy; 2020 <span>소담소담</span>
+      </div>
+    </footer>
+
+    <butto class="chat__btn">
+        <p>샘플</p>
+    </div>
+</body>
+<script src="./main.js"></script>
+</html>

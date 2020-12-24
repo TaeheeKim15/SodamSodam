@@ -1,0 +1,17 @@
+.service__main{
+	width: 100%;
+  	height: calc(100vh - 220px);
+}
+
+.service__title{
+    display: flex;
+    justify-content: space-between;
+}
+
+.service__title .title__text{
+    line-height: 3em;
+}
+
+.service__title img{
+    height: 100px;
+}

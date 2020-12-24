@@ -1,0 +1,18 @@
+@import url("/oculux/assets_vendor/vendor/bootstrap/css/bootstrap.min.css");
+@import url("/oculux/assets_vendor/vendor/font-awesome/css/font-awesome.min.css");
+@import url("/oculux/assets_vendor/vendor/animate-css/vivify.min.css");
+@import url("/oculux/assets_vendor/vendor/c3/c3.min.css");
+
+@import url("/oculux/assets_vendor/vendor/jquery-datatable/dataTables.bootstrap4.min.css");
+@import url("/oculux/assets_vendor/vendor/jquery-datatable/fixedeader/dataTables.fixedcolumns.bootstrap4.min.css");
+@import url("/oculux/assets_vendor/vendor/jquery-datatable/fixedeader/dataTables.fixedheader.bootstrap4.min.css");
+@import url("/oculux/assets_vendor/vendor/sweetalert/sweetalert.css");
+
+@import url("/oculux/assets_vendor/vendor/dropify/css/dropify.min.css");
+@import url("/oculux/assets_vendor/vendor/jquery-steps/jquery.steps.css");
+
+@import url("/oculux/assets/css/site.min.css");
+
+.user-account .dropdown .dropdown-menu{
+	right: -30px;
+}

@@ -1,0 +1,208 @@
+@import url("partials/header.css");
+@import url("partials/footer.css");
+
+body{
+  margin: 0;
+  height: 100%;
+}
+
+body .title-name{
+	font-weight:bolder;
+	text-align:center;	
+}
+
+body .container_1 {
+	border-bottom:3px solid gray; 
+	padding-bottom:20px; 
+	margin-left:100px;
+	margin-right:100px;
+	margin-top:30px;
+	margin-bottom:30px;
+}
+
+body .inputbox_1 {
+	width:200%;
+}
+
+body .box_1 {
+    margin:0 auto;
+}
+
+body .tag-font{
+	font-color:white;
+	font-size:1px;
+	font-weight:bolder;
+}
+
+.required-star {
+	color:red;
+	font-weight:bolder;
+}
+/* 카테고리 */
+
+.category{
+  background: #f0932b;
+  padding: 20px;
+}
+
+.category ul{
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+  margin: 0;
+}
+
+.category ul li{
+  color: white;
+}
+
+.category ul li a {
+  text-decoration: none;
+}
+
+.category ul li a:link {
+  color: white;
+}
+
+.category ul li a:visited {
+  color: white;
+}
+
+/* 비디오 배경 */
+
+
+main .bg-box{
+  width: 100%;
+  height: calc(100vh - 240px);
+  overflow: hidden;
+  margin: 0px auto; 
+  position: relative;
+}
+
+main .bg-box video { 
+  width: 100%; 
+  height: 100%; 
+  object-fit: cover;
+  filter: blur(4px); 
+  transform: scale(1.02);
+}
+main .bg-text { 
+  position: absolute; 
+  top: 20%; 
+  width: 100%; 
+}
+main .bg-text p {
+  text-align: center; 
+  font-size: 48px; 
+  color: #ffffff; 
+}
+
+.checked {
+  color: orange;
+}
+
+
+
+
+/* 드롭다운 메뉴 */
+
+.dropdown-wrapper {
+  position: absolute;
+  top: 75%;
+  -webkit-transform: scale(0.8);
+          transform: scale(0.8);
+  -webkit-transform-origin: top;
+          transform-origin: top;
+  -webkit-transform-origin: right;
+          transform-origin: right;
+  right: 96px;
+  z-index: 4;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  border-radius: 4px;
+  margin-top: .5rem;
+  padding: 1.5rem;
+  background-color: #fff;
+  box-shadow: 0 0 0 1px rgba(50, 50, 93, 0.08), 0 2px 4px 0 rgba(50, 50, 93, 0.05), 0 4px 8px 0 rgba(136, 152, 170, 0.08);
+  -webkit-transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  opacity: 0;
+  visibility: hidden;
+}
+.dropdown-wrapper.active {
+  top: 100%;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  opacity: 1;
+  visibility: visible;
+}
+
+.dropdown-profile-details {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.dropdown-profile-details--name {
+  font-size: 1.75rem;
+  margin-bottom: 0;
+  font-weight: 600;
+}
+
+.dropdown-profile-details--email {
+  font-size: 1.2rem;
+  color: #6f6f6f;
+}
+
+.dropdown-links {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  padding-top: 1.5rem;
+}
+.dropdown-links a {
+  color: #525F7F;
+  text-decoration: none;
+  padding-bottom: 1rem;
+  -webkit-transition: all 0.1s linear;
+  transition: all 0.1s linear;
+}
+.dropdown-links a:hover {
+  color: #ebeff5;
+}
+.dropdown-links a:last-of-type {
+  padding-bottom: 0;
+}
+
+
+/* 채팅버튼 */
+
+.chat__btn{
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background-color: black;
+  bottom: 40px;
+  right: 40px;
+  cursor: pointer;
+}
+
+.chat__btn p{
+  color: white;
+  font-weight: bold;
+  font-size: 15px;
+  margin: 0;
+}

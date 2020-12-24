@@ -1,0 +1,175 @@
+@font-face {
+  font-family: "paybooc-Medium";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/paybooc-Medium.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "GoyangIlsan";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/GoyangIlsan.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  font-family: "GoyangIlsan";
+}
+
+.request__main {
+  display: flex;
+}
+
+/* site path */
+
+.site__path {
+  width: 100%;
+  height: 35px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.site__path p {
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: underline;
+  color: #222222;
+  margin-bottom: 0;
+}
+
+.site__path p a:link {
+  color: #222222;
+}
+
+.site__path p a:visited {
+  color: #222222;
+}
+
+.site__path p a:hover {
+  color: #222222;
+}
+
+.site__path p:last-child {
+  font-weight: lighter;
+  text-decoration: none;
+}
+
+.site__path i {
+  color: #b0b0b0;
+  font-size: 12px;
+}
+
+/* 왼쪽 사이드 박스 */
+
+.request__side {
+  width: 100%;
+  height: auto;
+}
+
+.request__side p {
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 0.5em;
+}
+
+.request__side ul {
+  list-style: none;
+  padding-left: 18px;
+  line-height: 30px;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+/* li active 부분 */
+
+.request__side ul .active {
+  font-weight: bold;
+}
+
+.request__side ul .active::before {
+  content: "";
+  width: 3px;
+  height: 20px;
+  position: absolute;
+  left: 22px;
+  margin-top: 4px;
+  background-color: black;
+}
+
+/* li 부분 */
+
+.request__side ul li a:link {
+  color: #222222;
+  text-decoration: none;
+}
+.request__side ul li a:visited {
+  color: #222222;
+  text-decoration: none;
+}
+.request__side ul li a:hover {
+  color: #222222;
+  text-decoration: underline;
+}
+
+/* 우측 컨텐트 박스 */
+
+.request__content .content__title {
+  width: 70%;
+}
+
+.request__content .content__title p {
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 1.125em;
+  color: #484848;
+}
+
+.request__content .content__title .subtitle__box {
+  display: flex;
+}
+
+.request__content .content__title .sub__text {
+  font-weight: lighter;
+  font-size: 16px;
+  line-height: 1.43;
+  color: #484848;
+}
+
+.request__content .content__title .sub__text strong {
+  font-weight: bold;
+}
+
+.request__content .request__form {
+  width: 70%;
+}
+
+.request__content .request__form .form__title {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.375em;
+  color: #484848;
+}
+
+.request__form .request__type {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.request__form .request__type .type__box {
+  width: 47%;
+  padding: 20px 0;
+  border: 1px solid #e4e4e4;
+  text-align: center;
+  cursor: pointer;
+  font-size: 16px;
+  color: #484848;
+}
+
+.request__form .request__type .active {
+  border-color: rgb(0, 132, 137);
+}

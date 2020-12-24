@@ -1,0 +1,149 @@
+body {
+  display: flex;
+  width: 100%;
+}
+
+a:link {
+  color: #bbbec2;
+  text-decoration: none;
+}
+
+a:visited {
+  color: #bbbec2;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #bbbec2;
+  text-decoration: none;
+}
+
+body {
+  margin: 0;
+}
+
+.nav__bar {
+  position: fixed;
+  width: 240px;
+  height: 100%;
+  background-color: #212529;
+  font-size: 15px;
+  color: #bbbec2;
+}
+
+.nav__header {
+  vertical-align: middle;
+  padding: 0px 0px 16px;
+  margin: 15px 10px 0px;
+  font-size: 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav__header a {
+  text-decoration: none;
+}
+
+.nav__header img {
+  width: 25px;
+  height: auto;
+  vertical-align: middle;
+}
+
+.nav__header span {
+  vertical-align: middle;
+  color: rgb(226, 228, 231);
+}
+
+.nav__bottom {
+  position: relative;
+  overflow: hidden;
+  width: auto;
+  height: calc(100vh - 65px);
+}
+
+.user__info {
+  display: flex;
+  color: rgb(150, 152, 156);
+  margin: 20px 10px;
+}
+
+.user__info .user__img {
+  display: inline-block;
+  vertical-align: top;
+  border-radius: 4px;
+  padding: 2px;
+}
+
+.user__info img {
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+}
+
+.user__info .user__text {
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+  line-height: 22px;
+}
+
+.menu__list {
+  margin: 0px 12px;
+}
+
+.menu__list ul {
+  padding: 0;
+  list-style: none;
+}
+
+.menu__list ul li {
+  padding: 5px 0;
+}
+
+.menu__list ul li a {
+  position: relative;
+}
+
+.menu__list ul li a i {
+  margin-right: 10px;
+  position: relative;
+  top: 1px;
+  width: 28px;
+  line-height: 28px;
+  text-align: center;
+  border-radius: 3px;
+}
+
+.menu__list ul li.active i {
+  color: rgb(255, 255, 255);
+  background: rgb(92, 182, 95);
+}
+
+.menu__list ul li.active span {
+  color: rgb(92, 182, 95);
+}
+
+.menu__list ul li:hover i {
+  color: rgb(255, 255, 255);
+  background: rgb(92, 182, 95);
+}
+
+.menu__list ul li:hover span {
+  color: rgb(92, 182, 95);
+  transition: all 0.5s;
+}
+
+.nav__top {
+  position: fixed;
+  width: calc(100% - 240px);
+  height: 62px;
+  right: 0;
+  background-color: #212529;
+  font-size: 15px;
+  color: #bbbec2;
+}
+
+.nav__container {
+  height: 59px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
