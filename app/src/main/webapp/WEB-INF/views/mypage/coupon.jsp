@@ -31,18 +31,32 @@
             <h2>쿠폰목록</h2>
         </div>
         
-        
-        	<table class="table coupon_table mx-auto text-center">
+        	<div class= "coupon_table mx-auto">
+        	<table class="table table-hover">
         		<thead class="thead-dark">
-        			<tr>
+        			<tr class ="text-center">
         				<th scope="col">쿠폰명</th>
-        				<th scope="col">수량</th>
         				<th scope="col">쿠폰설명</th>
         				<th scope="col">할인금액</th>
         				<th scope="col">발급일</th>
+        				<th scope="col">유효기간</th>
+        				<th scope="col">사용여부</th>
+        				
         			</tr>
-        	
-        	</table></div>
+				</thead>
+       			<c:forEach var="post" items="${list}">
+					<tr>
+						<td>${post.cuname}</td>
+						<td>${post.cuint}</td>
+						<td>${post.cuprice}</td>
+						<td>${post.mucdt}</td>
+						<td>${post.cuexp}</td>
+						<td>${post.mcu_status}</td>
+					</tr>
+				</c:forEach>
+        	</table>
+        	</div>
+        </div>
         
 		
 	
