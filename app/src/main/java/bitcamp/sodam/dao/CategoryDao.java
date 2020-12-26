@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import bitcamp.sodam.beans.Category;
+import bitcamp.sodam.beans.Store;
 import bitcamp.sodam.database.CategoryMapper;
 
 @Repository
@@ -32,4 +33,12 @@ public class CategoryDao {
 	public List<Category> findByNo(int sno) throws Exception{
 		return categoryMapper.findByNo(sno);
 	}
+	
+	public void addCategoryStore(String category, String sno) throws Exception {
+		categoryMapper.addCategoryStore(category, sno);
+	}
+	
+	public String getInsertId() throws Exception{
+		  return categoryMapper.insertId();
+		}
 }

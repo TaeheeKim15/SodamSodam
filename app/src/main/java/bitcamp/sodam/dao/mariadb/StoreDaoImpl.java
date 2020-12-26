@@ -3,6 +3,8 @@ package bitcamp.sodam.dao.mariadb;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import bitcamp.sodam.beans.Category;
 import bitcamp.sodam.beans.Store;
 import bitcamp.sodam.dao.StoreDao;
 import bitcamp.sodam.database.StoreMapper;
@@ -32,7 +34,17 @@ public class StoreDaoImpl implements StoreDao {
 	}
 	
 	@Override
-	public List<Store> findByNo(int sno) throws Exception {
-	  return storeMapper.findByNo(sno);
+	public List<Category> findByNo() throws Exception {
+	  return storeMapper.findByNo();
+	}
+	
+	@Override
+	public int updateStore(Store store) throws Exception {
+		return storeMapper.updateStore(store);
+	}
+	
+	@Override
+	public Store findStoreSphoto(int sno) throws Exception {
+		return storeMapper.findStoreSphoto(sno);
 	}
 }

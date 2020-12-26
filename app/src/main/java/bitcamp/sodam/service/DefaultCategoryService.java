@@ -5,13 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import bitcamp.sodam.beans.Basket;
 import bitcamp.sodam.beans.Category;
-import bitcamp.sodam.beans.FAQ;
-import bitcamp.sodam.beans.User;
-import bitcamp.sodam.dao.BasketDao;
+import bitcamp.sodam.beans.Store;
 import bitcamp.sodam.dao.CategoryDao;
-import bitcamp.sodam.dao.FAQDao;
 
 @Service
 public class DefaultCategoryService implements CategoryService {
@@ -45,5 +41,15 @@ public class DefaultCategoryService implements CategoryService {
 	public List<Category> list(int sno) throws Exception {
 		return categoryDao.findByNo(sno);
 	}
-	
+
+	@Override
+	public void addCategoryStore(String category, String sno) throws Exception {
+		categoryDao.addCategoryStore(category, sno);
+		
+	}
+
+	@Override
+	public String getInsertId() throws Exception {
+		return categoryDao.getInsertId();
+	}
 }

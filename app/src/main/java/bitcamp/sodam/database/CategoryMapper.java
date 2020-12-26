@@ -4,10 +4,12 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import bitcamp.sodam.beans.Category;
+import bitcamp.sodam.beans.Store;
 
 public interface CategoryMapper {
     @Select("SELECT ctno, ctname FROM tmk_category_list")
@@ -25,4 +27,9 @@ public interface CategoryMapper {
     @Select("SELECT c.sno, c.ctno, cl.ctname FROM tmk_category c JOIN tmk_category_list cl on c.ctno = cl.ctno WHERE sno = #{sno}")
     List<Category> findByNo(int sno);
     
+    @Insert("insert into tmk_category(sno, ctno) values(#{sno}, #{category})")
+    void addCategoryStore(@Param("category") String category, @Param("sno") String sno);
+    
+    @Select("SELECT LAST_INSERT_ID()")
+    String insertId();
 }

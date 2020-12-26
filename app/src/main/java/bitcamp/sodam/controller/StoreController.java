@@ -2,9 +2,11 @@ package bitcamp.sodam.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +19,7 @@ import bitcamp.sodam.beans.Store;
 import bitcamp.sodam.beans.User;
 import bitcamp.sodam.service.CategoryService;
 import bitcamp.sodam.service.StoreService;
+import bitcamp.sodam.service.UploadStoreService;
 
 @Controller
 @RequestMapping("/store")
@@ -27,6 +30,9 @@ public class StoreController {
 	
 	@Autowired
 	CategoryService categoryService;
+	
+	@Autowired
+	UploadStoreService uploadStoreService;
 
     @GetMapping("list")
     public String StoreList(HttpServletRequest request, HttpServletResponse response, HttpSession session, Model model) {
@@ -36,7 +42,6 @@ public class StoreController {
 
         response.setCharacterEncoding("UTF-8"); // 응답의 encoding을 utf-8로 변경
        
-        
         
         List<Store> store_list = new ArrayList();
         List<Store> list;
@@ -57,29 +62,42 @@ public class StoreController {
     }
     
     @GetMapping("form")
-    public String insertStore() throws Exception {
+    public String insertStore(Model model) throws Exception {
         System.out.println("가게등록폼");
-
+        List<Category> list = categoryService.list();
+        model.addAttribute("list",list);
         return "store/form";
     }
 
     @PostMapping("add")
     public String addStore(Store store, HttpSession session) throws Exception {
         System.out.println("가게등록");
+        
+        
         User user = new User();
         user = (User) session.getAttribute("loginUser");
         
         store.setUno(user.getUno());
         store.setOwner(user);
         
-        storeService.insertStore(store);
+        uploadStoreService.addStoreInfo(store);
+        
+        String insertId = categoryService.getInsertId();
+        
+        List<String> category_list = store.getCategoryName();
+        
+        for (String category : category_list) {
+        	categoryService.addCategoryStore(category, insertId);	
+        }
+        
+        //storeService.insertStore(store);
         
         return "redirect:/store/list";
     }
     
     @GetMapping("delete")
     public String deleteStore(int sno, HttpSession session) throws Exception {
-        
+        System.out.println("가게삭제");
       if (storeService.deleteStore(sno) == 0) {
         throw new Exception("해당하는 가게가 존재하지 않습니다.");
       }

@@ -3,6 +3,8 @@ package bitcamp.sodam.service;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import bitcamp.sodam.beans.Category;
 import bitcamp.sodam.beans.Store;
 import bitcamp.sodam.dao.StoreDao;
 
@@ -29,8 +31,13 @@ public class DefaultStoreService implements StoreService{
     }
     
     @Override
-    public List<Store> list(int sno) throws Exception {
-      List<Store> store = storeDao.findByNo(sno);
-      return store;
+    public List<Category> clist() throws Exception {
+      List<Category> categoryNo = storeDao.findByNo();
+      return categoryNo;
     }
+    
+    @Override
+    	public Store get(int sno) throws Exception {
+    		return storeDao.findStoreSphoto(sno);
+    	}
   }

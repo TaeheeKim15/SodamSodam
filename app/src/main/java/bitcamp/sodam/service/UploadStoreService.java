@@ -2,6 +2,10 @@ package bitcamp.sodam.service;
 
 import java.io.File;
 import java.security.MessageDigest;
+import java.sql.Connection;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -9,23 +13,25 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import bitcamp.sodam.beans.Store;
 import bitcamp.sodam.beans.User;
+import bitcamp.sodam.dao.StoreDao;
 import bitcamp.sodam.dao.UserDao;
 
 @Service
 @PropertySource("/WEB-INF/properties/config.properties")
-public class UploadTestService {
+public class UploadStoreService {
 
-	@Value("${path.img.test}")
+	@Value("${path.img.store}")
 	private String path;
 
 	@Autowired
-	private UserDao userDao;
+	private StoreDao storeDao;
 
 	// 파일객체와 user 객체를 넘겨주면 파일을 저장하고 저장된 파일 path를 리턴한다.
-	private String saveUploadFile(MultipartFile upload_file, User user) throws Exception {
+	private String saveUploadFile(MultipartFile upload_file, Store store) throws Exception {
 
-		String file_name = sha256(user.getEmail()) + ".jpg";
+		String file_name = sha256(store.getSname()) + ".jpg";
 		String full_path = path + "/" + file_name;
 
 		try {
@@ -37,29 +43,31 @@ public class UploadTestService {
 		return file_name;
 	}
 
-	// 파일 업로드 및 유저 등록 담당
-	public void addUserInfo(User user) throws Exception {
+	public void addStoreInfo(Store store) throws Exception {
 
-		MultipartFile upload_file = user.getUpload_image();
+		MultipartFile upload_file = store.getUpload_image();
 
 		if (upload_file.getSize() > 0) {
-			String file_name = saveUploadFile(upload_file, user);
-			user.setUphoto(file_name);
-			userDao.addUser(user);
+			String file_name = saveUploadFile(upload_file, store);
+			store.setSphoto(file_name);
+			storeDao.insertStore(store);
 		}
+		
+		
+        
+        
 	}
 
-	// 유저 업데이트
-	public void editUserInfo(User user) throws Exception {
+	public void editStoreInfo(Store store) throws Exception {
 
-		MultipartFile upload_file = user.getUpload_image();
+		MultipartFile upload_file = store.getUpload_image();
 
 		if (upload_file.getSize() > 0) {
-			String file_name = saveUploadFile(upload_file, user);
-			user.setUphoto(file_name);
-			userDao.editUser(user);
+			String file_name = saveUploadFile(upload_file, store);
+			store.setSphoto(file_name);
+			storeDao.updateStore(store);
 		} else {
-			userDao.editUser(user);
+			storeDao.updateStore(store);
 		}
 	}
 

@@ -35,7 +35,7 @@
 					<div class="col-sm mt-2">
 						<div class="card"
 							style="width: 15rem; height: 320px; border: 1px solid light-gray; padding: 20px;">
-							<img class="card-img-top" src="/img/SODAMchunggwa.jpg"
+							<img class="card-img-top" src="/filestorepath/${item.sphoto}"
 								alt="Card image cap" height="150px">
 							<div class="card-body mb-2"
 								style="border-top: 1px solid orange; margin-top: 20px; ">
