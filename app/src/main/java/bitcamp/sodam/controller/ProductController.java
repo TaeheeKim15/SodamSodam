@@ -34,7 +34,6 @@ public class ProductController {
 		return "product/product_list";
 	}
 
-
 	@GetMapping("/product_list1")
 	public String ProductList(HttpServletRequest request, HttpServletResponse response, Model model) {
 
