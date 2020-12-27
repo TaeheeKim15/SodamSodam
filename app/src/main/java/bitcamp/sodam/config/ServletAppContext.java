@@ -23,6 +23,7 @@ import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
 import bitcamp.sodam.database.BasketMapper;
 import bitcamp.sodam.database.CategoryMapper;
 import bitcamp.sodam.database.FAQMapper;
+import bitcamp.sodam.database.InquiryMapper;
 import bitcamp.sodam.database.NoticeMapper;
 import bitcamp.sodam.database.ProductMapper;
 import bitcamp.sodam.database.StoreMapper;
@@ -187,6 +188,13 @@ public class ServletAppContext implements WebMvcConfigurer {
 	@Bean
 	public MapperFactoryBean<ProductMapper> product_mapper(SqlSessionFactory factory) throws Exception{
 		MapperFactoryBean<ProductMapper> factoryBean = new MapperFactoryBean<>(ProductMapper.class);
+		factoryBean.setSqlSessionFactory(factory);
+		return factoryBean;
+	}
+	
+	@Bean
+	public MapperFactoryBean<InquiryMapper> inquiry_mapper(SqlSessionFactory factory) throws Exception{
+		MapperFactoryBean<InquiryMapper> factoryBean = new MapperFactoryBean<>(InquiryMapper.class);
 		factoryBean.setSqlSessionFactory(factory);
 		return factoryBean;
 	}

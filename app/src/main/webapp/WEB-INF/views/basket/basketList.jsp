@@ -81,7 +81,6 @@ font-family: 'InfinitySans-BoldA1';
 		</tbody>
 	</table>
 		
-	
 		<div style="min-height: calc(70vh - 550px)" class="box3">
   <table class="container mb-4, text-center">
   <thead>
@@ -108,7 +107,7 @@ font-family: 'InfinitySans-BoldA1';
 </div>
 
   <div class="d-flex justify-content-end">
-<a class="btn btn-primary container box20 box12" role="button">구매 </a>
+<a class="btn btn-primary container box20 box12" role="button" onclick="pay()">구매 </a>
 </div>
 
 </div>
@@ -120,7 +119,62 @@ font-family: 'InfinitySans-BoldA1';
 <script src="https://kit.fontawesome.com/d1fe297f63.js"
     crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+
+
 <script type="text/javascript">
+
+const stock = "${list.size()}"
+const name = "${list[0].pname}"
+
+var full_name = name + " 외 상품" + stock + "개"
+
+var result_price = "${tsum2}"
+console.log(result_price);
+
+var pay = function(){
+	
+	var stock = "${list.size()}"
+	var name = "${list[0].pname}"
+	var full_name = name + " 외 상품" + stock + "개"
+	
+	var result_price = "${tsum2}"
+	
+	var bno = "${list[0].bno}"
+	var user_name = "권구현"
+	
+	IMP.init('imp59921616');
+
+	IMP.request_pay({
+	    pg : 'inicis', // version 1.1.0부터 지원.
+	    pay_method : 'card',
+	    merchant_uid : 'merchant_' + new Date().getTime(),
+	    name : full_name, // 표시될 
+	    amount : result_price, //판매 가격
+	    buyer_email : 'test@test.com', //사용자 이메일
+	    buyer_name : user_name, // 사용자 이름
+	    buyer_tel : '010-1234-5678', // 연락처
+	    buyer_addr : '서울특별시 강남구 삼성동', // 배송 주소
+	    buyer_postcode : '123-456' // 우편번호
+	}, function(rsp) {
+	    if ( rsp.success ) {
+	        var msg = '결제가 완료되었습니다.';
+	        msg += '고유ID : ' + rsp.imp_uid;
+	        msg += '상점 거래ID : ' + rsp.merchant_uid;
+	        msg += '결제 금액 : ' + rsp.paid_amount;
+	        msg += '카드 승인번호 : ' + rsp.apply_num;
+	        
+	        basketDelete(bno);
+	        
+	    } else {
+	        var msg = '결제에 실패하였습니다.';
+	        msg += '에러내용 : ' + rsp.error_msg;
+	    }
+	    alert(msg);
+	});
+}
 
 function basketDelete(bno){
 	$.get("/delete?bno="+bno)

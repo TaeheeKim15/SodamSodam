@@ -81,30 +81,41 @@
 					<div class="col-lg-12">
 						<div class="card">
 							<div class="body">
-							
 								<c:choose>
 									<c:when test="${empty post}">
 										<div class="form-group">
-											<label>제목</label>
-											<input id="notice-title" type="text" class="form-control" required="">
+											<label>제목</label> <input id="notice-title" type="text"
+												class="form-control" required="">
 										</div>
-										<div class="summernote">
-										</div>
-										<div class="d-flex align-items-end justify-content-end pt-3 pb-3">
-											<button type="button" class="btn btn-info mr-2" onclick="location.href='/admin/notice'"><i class="fa fa-trash-o"></i> <span>취소</span></button>
-											<button type="button" class="btn btn-success" onclick="save()"><i class="fa fa-save"></i> <span>저장</span></button>
+										<div class="summernote"></div>
+										<div
+											class="d-flex align-items-end justify-content-end pt-3 pb-3">
+											<button type="button" class="btn btn-info mr-2"
+												onclick="location.href='/admin/notice'">
+												<i class="fa fa-trash-o"></i> <span>취소</span>
+											</button>
+											<button type="button" class="btn btn-success"
+												onclick="save()">
+												<i class="fa fa-save"></i> <span>저장</span>
+											</button>
 										</div>
 									</c:when>
 									<c:otherwise>
 										<div class="form-group">
-											<label>제목</label>
-											<input id="notice-title" type="text" class="form-control" value="${post.ntitle}" required="">
+											<label>제목</label> <input id="notice-title" type="text"
+												class="form-control" value="${post.ntitle}" required="">
 										</div>
-										<div class="summernote">
-										</div>
-										<div class="d-flex align-items-end justify-content-end pt-3 pb-3">
-											<button type="button" class="btn btn-info mr-2" onclick="location.href='/admin/notice'"><i class="fa fa-trash-o"></i> <span>취소</span></button>
-											<button type="button" class="btn btn-success" onclick="edit(${post.nno})"><i class="fa fa-save"></i> <span>수정</span></button>
+										<div class="summernote">${post.ncontent}</div>
+										<div
+											class="d-flex align-items-end justify-content-end pt-3 pb-3">
+											<button type="button" class="btn btn-info mr-2"
+												onclick="location.href='/admin/notice'">
+												<i class="fa fa-trash-o"></i> <span>취소</span>
+											</button>
+											<button type="button" class="btn btn-success"
+												onclick="edit(${post.nno})">
+												<i class="fa fa-save"></i> <span>수정</span>
+											</button>
 										</div>
 									</c:otherwise>
 								</c:choose>
@@ -145,7 +156,12 @@
 		src="/oculux/assets_vendor/vendor/summernote/dist/summernote.js"></script>
 
 	<script type="text/javascript">
-		$( document ).ready(function() {
+		
+		$('.summernote').summernote({
+		  height: 150,   //set editable area's height
+		  codemirror: { // codemirror options
+		    theme: '${post.ncontent}'
+		  }
 		});
 	
 		var save = function() {
@@ -161,9 +177,9 @@
 			
 					window.location.href = '/admin/notice';
 			
-			};
-		
-			var edit = function(nno) {
+		};
+			
+		var edit = function(nno) {
 				var title = $('#notice-title').val();
 				var markup = $('.summernote').summernote('code');
 				
@@ -177,7 +193,7 @@
 				
 						window.location.href = '/admin/notice';
 				
-				};
+		};
 		
 	</script>
 

@@ -34,4 +34,14 @@ public class DefaultNoticeService implements NoticeService {
 		Notice notice = noticeDao.findByNo(nno);
 		return notice;
 	}
+
+	@Override
+	public void update(Notice notice) throws Exception {
+		noticeDao.update(notice);
+	}
+
+	@Override
+	public void delete(String nno) throws Exception {
+		noticeDao.delete(nno);
+	}
 }

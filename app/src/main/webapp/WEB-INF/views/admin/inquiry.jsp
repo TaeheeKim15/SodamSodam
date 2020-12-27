@@ -53,17 +53,13 @@
 				<div class="block-header">
 					<div class="row clearfix">
 						<div class="col-md-6 col-sm-12">
-							<h1>공지사항 관리</h1>
+							<h1>문의사항 관리</h1>
 							<nav aria-label="breadcrumb">
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item"><a href="#">소담소담</a></li>
-									<li class="breadcrumb-item active" aria-current="page">공지사항</li>
+									<li class="breadcrumb-item active" aria-current="page">문의사항</li>
 								</ol>
 							</nav>
-						</div>
-						<div class="col-md-6 col-sm-12 text-right hidden-xs">
-							<a href="javascript:void(0);" class="btn btn-sm btn-primary"
-								title="" data-toggle="modal" data-target="#userAddModal">공지사항 등록</a>
 						</div>
 					</div>
 				</div>
@@ -74,22 +70,23 @@
 							<table class="table table-hover js-basic-example dataTable table-custom spacing5">
                                     <thead>
                                         <tr>
-                                            <th class="col-5">제목</th>
-                                            <th class="col-4">등록일</th>
+                                            <th class="col-3">제목</th>
+                                            <th class="col-3">문의유형</th>
+                                            <th class="col-3">등록일</th>
                                             <th class="col-3"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                     	<c:forEach var="item" items="${list}">
-                                    	<tr>
-                                            <td><a href="/admin/notice_write?nno=${item.nno }">${item.ntitle}</a></td>
-                                            <td>${item.ndate}</td>
-                                            <td>
-                                                <button type="button" class="btn btn-danger mb-2 js-sweetalert" title="Delete" value="${item.nno}" data-type="noticeDelete"><span class="sr-only">Delete</span> <i class="fa fa-trash-o"></i></button>
-                                            </td>
-                                        </tr>
+	                                    	<tr>
+	                                            <td><a href="/admin/inquiry_write?qno=${item.qno }">${item.title}</a></td>
+	                                            <td>${item.qtype}</td>
+	                                            <td>${item.col}</td>
+	                                            <td>
+	                                                <button type="button" class="btn btn-danger mb-2 js-sweetalert" title="Delete" value="${item.qno}" data-type="noticeDelete"><span class="sr-only">Delete</span> <i class="fa fa-trash-o"></i></button>
+	                                            </td>
+	                                        </tr>
                                     	</c:forEach>
-                                        
                                     </tbody>
                                 </table>
 						</div>

@@ -4,6 +4,7 @@ import javax.servlet.Filter;
 import javax.servlet.MultipartConfigElement;
 import javax.servlet.ServletRegistration.Dynamic;
 
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
@@ -69,6 +70,7 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
 // 위에꺼는 세세한 설정 직접 입력해서 만드는 방법
 // 아래꺼는 필수 설정만 입력하고 나머지는 자동으로 처리해서 만드는 방법
 
+@EnableAsync
 public class SpringConfigClass extends AbstractAnnotationConfigDispatcherServletInitializer{
     // DispatcherServlet에 매핑할 요청 주소를 셋팅
     @Override

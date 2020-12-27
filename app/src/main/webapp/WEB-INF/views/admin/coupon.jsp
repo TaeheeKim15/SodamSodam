@@ -53,17 +53,17 @@
 				<div class="block-header">
 					<div class="row clearfix">
 						<div class="col-md-6 col-sm-12">
-							<h1>공지사항 관리</h1>
+							<h1>쿠폰 관리</h1>
 							<nav aria-label="breadcrumb">
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item"><a href="#">소담소담</a></li>
-									<li class="breadcrumb-item active" aria-current="page">공지사항</li>
+									<li class="breadcrumb-item active" aria-current="page">쿠폰</li>
 								</ol>
 							</nav>
 						</div>
 						<div class="col-md-6 col-sm-12 text-right hidden-xs">
 							<a href="javascript:void(0);" class="btn btn-sm btn-primary"
-								title="" data-toggle="modal" data-target="#userAddModal">공지사항 등록</a>
+								title="" data-toggle="modal" data-target="#userAddModal">쿠폰 등록</a>
 						</div>
 					</div>
 				</div>

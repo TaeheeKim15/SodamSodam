@@ -1,24 +1,25 @@
 package bitcamp.sodam.controller;
 
 import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
 import bitcamp.sodam.beans.Basket;
 import bitcamp.sodam.beans.User;
 import bitcamp.sodam.service.BasketService;
-import bitcamp.sodam.service.OrderService;
 
 @Controller
 public class BasketController {
 
   @Autowired
   BasketService basketService;
-  OrderService orderService;
 
   @GetMapping("/basketList")
   public String BasketList(HttpServletRequest request, HttpServletResponse response, HttpSession session, Model model) {
@@ -54,6 +55,7 @@ public class BasketController {
       String commaTSum = String.format("%,d", tsum);
 
       model.addAttribute("tsum", commaTSum);
+      model.addAttribute("tsum2", tsum);
 
     } catch (Exception e) {
       model.addAttribute("list", null);
