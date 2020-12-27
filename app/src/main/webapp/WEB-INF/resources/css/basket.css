@@ -1,0 +1,49 @@
+@charset "UTF-8";
+
+h1 {
+	font-size: 1.2em;
+	font-weight: bold;
+}
+
+.box1 {
+    color: orange;
+    margin: 20px;
+    padding-bottom: 18px;
+}
+
+
+.box2 {
+    padding: 10px;
+    margin: 8px;
+    font-size: 20px;
+}
+
+.box3 {
+    padding: 40px;
+    border-top: 4px solid orange;
+    margin-top: 100px;
+}
+
+.box6 {
+  border-bottom: none;
+}
+
+.box7 {
+	    background-color: orange;
+	    color: white;
+}
+
+.box8 {
+padding-top: 8px;
+}
+
+.box12 {
+    height: 42px;
+    width: 310px;
+    font-size: 20px;
+}
+
+
+
+
+
