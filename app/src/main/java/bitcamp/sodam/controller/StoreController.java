@@ -103,4 +103,12 @@ public class StoreController {
       }
         return "redirect:.";
     }
+    
+	@GetMapping("detail")
+	public String StoreDetail(HttpServletResponse response) {
+		
+		response.setContentType("text/html;charset=UTF-8");
+        
+		return "store/detail";
+	}
 }
