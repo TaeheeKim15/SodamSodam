@@ -27,6 +27,14 @@ public class NoticeDao {
 	public Notice findByNo(int nno) throws Exception{
 	  return noticeMapper.findByNo(nno);
 	}
+	
+	public void update(Notice notice) throws Exception{
+		noticeMapper.update(notice);
+	}
+	
+	public void delete(String nno) throws Exception {
+		noticeMapper.delete(nno);
+	}
 }
 
 

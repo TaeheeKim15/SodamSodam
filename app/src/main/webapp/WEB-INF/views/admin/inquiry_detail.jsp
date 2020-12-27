@@ -80,15 +80,20 @@
 				<div class="row clearfix">
 					<div class="col-lg-12">
 						<div class="card">
+							<div class="card-header">${post.title}</div>
+							<div class="card-body">${post.content}</div>
+						</div>
+					</div>
+
+					<div class="col-lg-12">
+						<div class="card">
 							<div class="body">
-								<div class="form-group">
-									<label>제목</label>
-									<input id="notice-title" type="text" class="form-control" required="">
-								</div>
 								<div class="summernote"></div>
-								<div class="d-flex align-items-end justify-content-end pt-3 pb-3">
-									<button type="button" class="btn btn-info mr-2" onclick="location.href='/admin/notice'"><i class="fa fa-trash-o"></i> <span>취소</span></button>
-									<button type="button" class="btn btn-success" onclick="save()"><i class="fa fa-save"></i> <span>저장</span></button>
+								<div
+									class="d-flex align-items-end justify-content-end pt-3 pb-3">
+									<button type="button" class="btn btn-success" onclick="answer(${post.qno})">
+										<i class="fa fa-save"></i> <span>답변</span>
+									</button>
 								</div>
 							</div>
 						</div>
@@ -127,21 +132,18 @@
 		src="/oculux/assets_vendor/vendor/summernote/dist/summernote.js"></script>
 
 	<script type="text/javascript">
-		var save = function() {
-			var title = $('#notice-title').val();
+	
+		var answer = function(qno) {
 			var markup = $('.summernote').summernote('code');
-			
+
 			console.log(markup);
-			$.post("/admin/notice_add",
-					{
-						ntitle:title,
-						ncontent:markup
-					})
-			
-					window.location.href = '/admin/notice';
-			
-			};
-		
+			$.post("/admin/inquiry_add", {
+				qno : qno,
+				answer : markup
+			}).done(function(data){
+				window.location.href = '/admin/inquiry';
+			})
+		};
 	</script>
 
 </body>

@@ -44,6 +44,11 @@ $(function () {
 			var value = $(this).attr('value');
             showUserDeletelMessage(value);
         }
+		else if (type === 'noticeDelete') {
+			var value = $(this).attr('value');
+			showNoticeDeletelMessage(value);
+        }
+        
     });
 });
 
@@ -239,6 +244,35 @@ function showUserDeletelMessage(value) {
 			{
 			    no:value
 			});
+	
+			
+            swal("삭제 되었습니다!", "", "success");
+        }
+    });
+}
+
+
+function showNoticeDeletelMessage(value) {
+    swal({
+        title: "정말 삭제할까요?",
+        text: "한번 삭제하면 복구할 수 없습니다!",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#dc3545",
+        confirmButtonText: "네",
+        cancelButtonText: "아니요",
+        closeOnConfirm: false,
+        closeOnCancel: true
+    }, function (isConfirm) {
+        if (isConfirm) {
+	
+			$.post("/admin/notice_delete", 
+			{
+			    nno:value
+			})
+			.done(function(){
+				window.location = '/admin/notice'
+			})
 	
 			
             swal("삭제 되었습니다!", "", "success");
