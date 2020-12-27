@@ -105,10 +105,15 @@ public class StoreController {
     }
     
 	@GetMapping("detail")
-	public String StoreDetail(HttpServletResponse response) {
+	public String StoreDetail(HttpServletResponse response, Model model) throws Exception {
 		
 		response.setContentType("text/html;charset=UTF-8");
         
+		List<Store> list = storeService.list();
+		List<Category> clist = categoryService.list();
+		
+		model.addAttribute("list", list);
+		model.addAttribute("clist", clist);
 		return "store/detail";
 	}
 }
