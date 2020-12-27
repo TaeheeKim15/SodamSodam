@@ -29,8 +29,8 @@ public interface StoreMapper {
       + "values(#{uno}, #{sname}, #{sint}, #{stel}, #{saddr}, #{s_det_addr}, #{dyesno}, #{sphoto}, #{edt}, #{sdt}, #{scategory})")
   int insertStore(Store store);
   
-  @Update("UPDATE tmk_store_info SET sname=#{sname}, sint=#{sint}, stel=#{stel}, saddr=#{saddr}, s_det_addr=#{s_det_addr}, dyesno=#{dyesno},"
-  		+ " sphoto=#{sphoto}, edt=#{edt}, sdt=#{sdt}, scategory=#{scategory} WHERE sno = #{sno}")
+  @Update("UPDATE tmk_store_info SET sname=#{sname}, sint=#{sint}, stel=#{stel}, saddr=#{saddr}, s_det_addr=#{s_det_addr}, "
+  		+ " sphoto=#{sphoto}, edt=#{edt}, sdt=#{sdt} WHERE sno = #{sno}")
   int updateStore(Store store);
   
   @Delete("delete from tmk_store_info where sno=#{sno}")
