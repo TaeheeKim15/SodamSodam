@@ -1,6 +1,7 @@
 .coupon__main{
 	width: 100%;
   	height: calc(100vh - 220px);
+  	color: gray;
 }
 
 .coupon__title{
@@ -8,14 +9,11 @@
     justify-content: space-between;
 }
 
-.coupon__title .mypage__text{
-    line-height: 3em;
-}
-
-.coupon__title img{
-    height: 100px;
-}
-
 .coupon_table{
 	width: 1400px;
+}
+
+.coupon_th{
+	background-color:orange;
+	color: white;
 }
