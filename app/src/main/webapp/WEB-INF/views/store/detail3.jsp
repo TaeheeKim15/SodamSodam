@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>가게목록</title>
+<title>${store.sname }</title>
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
 	integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
@@ -32,7 +32,7 @@
 		<div class="container service__category" style="margin-bottom: 20px;">
 			<div class="row">
 				<c:forEach var="item" items="${list}">
-					<div class="col-sm mt-2" style="cursor: pointer;" onclick="location.href='detail?sno=${item.sno}';">
+					<div class="col-sm mt-2" style="cursor: pointer;" onclick="location.href='detail?no=${item.sno}';">
 						<div class="card"
 							style="width: 15rem; height: 320px; border: 1px solid light-gray; padding: 20px;">
 							<img class="card-img-top" src="/filestorepath/${item.sphoto}"
@@ -92,12 +92,11 @@
 										</c:when>
 									</c:choose>
 
-                
+
 								</c:forEach>
 							</div>
 						</div>
 					</div>
-					<a href='delete?no=${item.sno}'>[삭제]</a>
 				</c:forEach>
 			</div>
 		</div>

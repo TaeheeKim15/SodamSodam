@@ -38,6 +38,6 @@ public class DefaultStoreService implements StoreService{
     
     @Override
     	public Store get(int sno) throws Exception {
-    		return storeDao.findStoreSphoto(sno);
+    		return storeDao.findByNoStore(sno);
     	}
   }

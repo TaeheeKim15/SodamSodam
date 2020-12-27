@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -20,6 +21,7 @@ import bitcamp.sodam.beans.User;
 import bitcamp.sodam.service.CategoryService;
 import bitcamp.sodam.service.StoreService;
 import bitcamp.sodam.service.UploadStoreService;
+import bitcamp.sodam.service.UserService;
 
 @Controller
 @RequestMapping("/store")
@@ -33,15 +35,17 @@ public class StoreController {
 	
 	@Autowired
 	UploadStoreService uploadStoreService;
+	
+	@Autowired
+	UserService userService;
 
     @GetMapping("list")
-    public String StoreList(HttpServletRequest request, HttpServletResponse response, HttpSession session, Model model) {
+    public String StoreList(HttpServletRequest request, HttpServletResponse response, HttpSession session, Model model) throws Exception {
         System.out.println("가게목록");
 
         response.setContentType("text/html;charset=UTF-8");
 
         response.setCharacterEncoding("UTF-8"); // 응답의 encoding을 utf-8로 변경
-       
         
         List<Store> store_list = new ArrayList();
         List<Store> list;
@@ -101,19 +105,40 @@ public class StoreController {
       if (storeService.deleteStore(sno) == 0) {
         throw new Exception("해당하는 가게가 존재하지 않습니다.");
       }
-        return "redirect:.";
+        return "store/delete";
     }
     
 	@GetMapping("detail")
-	public String StoreDetail(HttpServletResponse response, Model model) throws Exception {
+	public void StoreDetail(int sno, Model model) throws Exception {
+		
+		Store store = storeService.get(sno);
+		if (store == null) {
+			throw new Exception("해당 번호의 가게가 존재하지 않습니다.");
+		}
+		model.addAttribute("store", store);
+	}
+	  @GetMapping("{no}")
+	  public String detail(@PathVariable int no, Model model) throws Exception {
+	    Store store = storeService.get(no);
+	    if (store == null) {
+	      throw new Exception("해당 회원이 없습니다!");
+	    }
+	    model.addAttribute("store", store);
+	    return "store/detail";
+	  }
+	  
+	@PostMapping("update")
+	public String StoreDetail(HttpServletResponse response, Model model, Store store) throws Exception {
 		
 		response.setContentType("text/html;charset=UTF-8");
+		response.setCharacterEncoding("UTF-8");
         
 		List<Store> list = storeService.list();
 		List<Category> clist = categoryService.list();
+		uploadStoreService.editStoreInfo(store);
 		
 		model.addAttribute("list", list);
 		model.addAttribute("clist", clist);
-		return "store/detail";
+		return "store/update";
 	}
 }
