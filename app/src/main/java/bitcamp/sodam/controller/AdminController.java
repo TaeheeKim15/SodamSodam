@@ -20,10 +20,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import bitcamp.sodam.beans.Category;
+import bitcamp.sodam.beans.Coupon;
 import bitcamp.sodam.beans.Inquiry;
 import bitcamp.sodam.beans.Notice;
 import bitcamp.sodam.beans.User;
 import bitcamp.sodam.service.CategoryService;
+import bitcamp.sodam.service.CouponService;
 import bitcamp.sodam.service.InquiryService;
 import bitcamp.sodam.service.NoticeService;
 import bitcamp.sodam.service.UploadTestService;
@@ -44,6 +46,9 @@ public class AdminController {
 
 	@Autowired
 	InquiryService inquiryService;
+	
+	@Autowired
+	CouponService couponService;
 
 	@Autowired
 	private UploadTestService uploadTestService;
@@ -213,6 +218,7 @@ public class AdminController {
 	}
 
 	@PostMapping("/notice_add")
+	@Async
 	public String AdminNoticeAdd(HttpServletResponse response, Model model, Notice notice) {
 		System.out.println("어드민 공지사항 등록");
 
@@ -231,6 +237,7 @@ public class AdminController {
 	}
 
 	@PostMapping("/notice_delete")
+	@Async
 	public void AdminNoticeDelete(HttpServletResponse response, Model model, String nno) {
 		System.out.println("어드민 공지사항 등록");
 
@@ -268,7 +275,7 @@ public class AdminController {
 
 	@GetMapping("/inquiry_write")
 	public String AdminInquiryWrite(HttpServletRequest request, HttpServletResponse response, Model model) {
-		System.out.println("어드민 문의사항 답변");
+		System.out.println("어드민 문의사항 답변 작성 페이지");
 
 		response.setContentType("text/html;charset=UTF-8");
 
@@ -289,8 +296,9 @@ public class AdminController {
 	}
 	
 	@PostMapping("/inquiry_add")
+	@Async
 	public String AdminInquiryAdd(HttpServletRequest request, HttpServletResponse response, Model model, Inquiry inquiry) {
-		System.out.println("어드민 공지사항 등록");
+		System.out.println("어드민 문의사항 답변");
 
 		response.setContentType("text/html;charset=UTF-8");
 
@@ -307,5 +315,41 @@ public class AdminController {
 		}
 
 		return "admin/inquiry";
+	}
+	
+	@GetMapping("/coupon")
+	public String AdminCoupon(HttpServletResponse response, Model model) {
+		System.out.println("어드민 쿠폰");
+
+		response.setContentType("text/html;charset=UTF-8");
+
+		response.setCharacterEncoding("UTF-8"); // 응답의 encoding을 utf-8로 변경
+
+		List<Coupon> list;
+		try {
+			list = couponService.list();
+			model.addAttribute("list", list);
+		} catch (Exception e) {
+			model.addAttribute("list", null);
+			e.printStackTrace();
+		}
+
+		return "admin/coupon";
+	}
+	@PostMapping("/coupon_delete")
+	@Async
+	public void AdminCouponDelete(HttpServletResponse response, Model model, String mcuno) {
+		System.out.println("어드민 공지사항 등록");
+
+		response.setContentType("text/html;charset=UTF-8");
+
+		response.setCharacterEncoding("UTF-8"); // 응답의 encoding을 utf-8로 변경
+
+		try {
+			couponService.delete(Integer.parseInt(mcuno));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

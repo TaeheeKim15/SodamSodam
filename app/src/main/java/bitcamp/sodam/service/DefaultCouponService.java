@@ -21,4 +21,15 @@ public class DefaultCouponService implements CouponService {
 		return coupon;
 	}
 
+	@Override
+	public List<Coupon> list() throws Exception {
+		List<Coupon> coupon = couponDao.findAllCouponList();
+		return coupon;
+	}
+
+	@Override
+	public void delete(int mcuno) throws Exception {
+		couponDao.delete(mcuno);
+	}
+
 }

@@ -10,5 +10,6 @@ import bitcamp.sodam.beans.Coupon;
 @Repository
 public interface CouponDao {
 	List<Coupon> findCouponList(int uno) throws Exception;
-	
+	List<Coupon> findAllCouponList() throws Exception;
+	void delete(int mcuno) throws Exception;
 }

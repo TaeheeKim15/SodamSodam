@@ -14,6 +14,10 @@ public class Coupon {
 	private int mcu_status;
 	private String status;
 	
+	private String name;
+	private String email;
+	private int nno;
+	
 	
 	public String getStatus() {
 		return status;
@@ -75,6 +79,24 @@ public class Coupon {
 	}
 	public void setMcu_status(int mcu_status) {
 		this.mcu_status = mcu_status;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public int getNno() {
+		return nno;
+	}
+	public void setNno(int nno) {
+		this.nno = nno;
 	}
 	
 	
