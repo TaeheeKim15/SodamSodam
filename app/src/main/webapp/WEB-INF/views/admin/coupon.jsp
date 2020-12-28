@@ -63,7 +63,7 @@
 						</div>
 						<div class="col-md-6 col-sm-12 text-right hidden-xs">
 							<a href="javascript:void(0);" class="btn btn-sm btn-primary"
-								title="" data-toggle="modal" data-target="#userAddModal">쿠폰 등록</a>
+								title="" data-toggle="modal" data-target="#userAddModal">쿠폰 지급</a>
 						</div>
 					</div>
 				</div>
@@ -74,18 +74,22 @@
 							<table class="table table-hover js-basic-example dataTable table-custom spacing5">
                                     <thead>
                                         <tr>
-                                            <th class="col-5">제목</th>
-                                            <th class="col-4">등록일</th>
-                                            <th class="col-3"></th>
+                                            <th>쿠폰명</th>
+                                            <th>소유자</th>
+                                            <th>쿠폰설명</th>
+                                            <th>할인금액</th>
+                                            <th></th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                     	<c:forEach var="item" items="${list}">
                                     	<tr>
-                                            <td><a href="/admin/notice_write?nno=${item.nno }">${item.ntitle}</a></td>
-                                            <td>${item.ndate}</td>
+                                            <td>${item.cuname}</td>
+                                            <td>${item.name}(${item.email})</td>
+                                            <td>${item.cuint}</td>
+                                            <td>${item.cuprice}</td>
                                             <td>
-                                                <button type="button" class="btn btn-danger mb-2 js-sweetalert" title="Delete" value="${item.nno}" data-type="noticeDelete"><span class="sr-only">Delete</span> <i class="fa fa-trash-o"></i></button>
+                                                <button type="button" class="btn btn-danger mb-2 js-sweetalert" title="Delete" value="${item.mcuno}" data-type="couponDelete"><span class="sr-only">Delete</span> <i class="fa fa-trash-o"></i></button>
                                             </td>
                                         </tr>
                                     	</c:forEach>
