@@ -72,4 +72,14 @@ public class MypageController {
     }
     
     
+    
+    @GetMapping("/qlist")
+    public String QList() {
+    	System.out.println("문의내역");
+    	return "mypage/q_list";
+    }
+    
+    
 }
+
+

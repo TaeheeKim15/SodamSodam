@@ -55,7 +55,7 @@
 			</div>
 				<div class="container mb-4 coupon__title">
             <h2>쿠폰목록</h2>
-        </div>
+        		</div>
         
         	<div class= "coupon_table mb-5 mx-auto">
         	<table class="table table-hover">
