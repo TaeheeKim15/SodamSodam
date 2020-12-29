@@ -40,4 +40,9 @@ public class DefaultProductService implements ProductService {
     return productDao.delete(no);
   }
 
+  @Override
+  public List<Product> list() throws Exception {
+    return productDao.findAll();
+  }
+
 }
