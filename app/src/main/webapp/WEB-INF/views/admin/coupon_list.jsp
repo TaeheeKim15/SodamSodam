@@ -86,6 +86,8 @@
 									data-toggle="tab" href="#coupons">쿠폰</a></li>
 								<li class="nav-item"><a id="couponAddClick" class="nav-link show"
 									data-toggle="tab" href="#couponAdd">쿠폰추가</a></li>
+								<li hidden class="nav-item"><a id="couponEditClick" class="nav-link" data-toggle="tab"
+									href="#couponEdit">쿠폰수정</a></li>
 								<li hidden class="nav-item"><a id="userClick" class="nav-link" data-toggle="tab"
 									href="#users">사용자</a></li>
 							</ul>
@@ -111,7 +113,7 @@
 														<td>${item.cuexp }</td>
 														<td>
 															<button type="button" class="btn btn-sm btn-default"
-																title="Edit">
+																title="Edit" onclick="couponEditClick(${item.cuno})">
 																<i class="fa fa-edit"></i>
 															</button>
 															<button type="button"
@@ -211,6 +213,38 @@
 	                                    </form>
 	                                </div>
 								</div>
+								<div class="tab-pane" id="couponEdit">
+									<div class="body mt-2">
+	                                    <form action="/admin/coupon_add" method="post" class="row clearfix">
+	                                    	<div class="col-lg-6 col-md-6 col-sm-12">
+	                                            <div class="form-group">
+	                                                <input id="coupon-no" name=cuno type="hidden" class="form-control" placeholder="쿠폰번호" value="">
+	                                            </div>
+	                                        </div>
+	                                        <div class="col-lg-6 col-md-6 col-sm-12">
+	                                            <div class="form-group">
+	                                                <input id="coupon-name" name="cuname" type="text" class="form-control" placeholder="쿠폰명">
+	                                            </div>
+	                                        </div>
+	                                        <div class="col-lg-6 col-md-6 col-sm-12">
+	                                            <div class="form-group">
+	                                                <input id="coupon-int" name="cuint" type="text" class="form-control" placeholder="쿠폰설명">
+	                                            </div>
+	                                        </div>
+	                                        <div class="col-lg-3 col-md-4 col-sm-12">
+	                                            <div class="form-group">
+	                                                <input id="coupon-price" name="cuprice" type="text" class="form-control" placeholder="할인금액">
+	                                            </div>
+	                                        </div>
+	                                        <div class="col-sm-12">
+	                                            <div class="form-group">
+	                                                <button type="submit" class="btn btn-primary">추가</button>
+                                            		<button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="formReset()">리셋</button>
+	                                            </div>
+	                                        </div>
+	                                    </form>
+	                                </div>
+								</div>
 								
 
 							</div>
@@ -254,6 +288,10 @@
 			
 			const couponClick = () => {
 				$("#couponClick").trigger("click");
+			} 
+			
+			const couponEditClick = (no) => {
+				$("#couponEditClick").trigger("click");
 			} 
 			
 			const add = (uno) => {

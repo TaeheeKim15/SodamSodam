@@ -46,4 +46,9 @@ public class DefaultCouponService implements CouponService {
 		couponDao.addItem(coupon);
 	}
 
+	@Override
+	public void update(Coupon coupon) throws Exception {
+		couponDao.update(coupon);
+	}
+
 }

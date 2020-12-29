@@ -414,5 +414,24 @@ public class AdminController {
 		return "redirect:/admin/coupon_list";
 	}
 	
+	@PostMapping("/coupon_edit")
+	@Async
+	public String AdminCouponEdit(HttpServletRequest request, HttpServletResponse response, Model model, Coupon coupon) {
+		System.out.println("어드민 쿠폰 수정");
+
+		response.setContentType("text/html;charset=UTF-8");
+
+		response.setCharacterEncoding("UTF-8"); // 응답의 encoding을 utf-8로 변경
+
+		try {
+			couponService.update(coupon);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return "admin/notice";
+	}
+	
 	
 }

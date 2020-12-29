@@ -6,7 +6,9 @@ import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
+import bitcamp.sodam.beans.Category;
 import bitcamp.sodam.beans.Coupon;
 
 public interface CouponMapper {
@@ -34,5 +36,8 @@ public interface CouponMapper {
 	
 	@Insert("insert into tmk_discount(cuname, cuprice, cuint) VALUES(#{cuname}, #{cuprice}, #{cuint})")
     void addCoupon(Coupon coupon);
+	
+	@Update("UPDATE tmk_discount SET cuname = #{cuname}, cuprice = #{cuprice}, cuint = #{cuint} WHERE cuno = #{cuno}")
+    void update(Coupon coupon);
 
 }

@@ -33,7 +33,7 @@
 												style="max-height: 50px; margin-top: 11px; font-size: 16px;">${item.pname}</h5>
 											<p class="card-text"
 												style="padding-top: 6px; font-weight: 700; font-size: 16px; line-height: 20px;">${item.price}</p>
-											<button type="button" class="btn btn-outline-primary">장바구니</button>
+											<button type="button" class="btn btn-outline-primary" onclick="addBasket(${item.pno})">장바구니</button>
 										</div>
 									</div>
 								</div>
@@ -42,8 +42,23 @@
 			</div>
 		</div>
 	</div>
-
-
+	
 	<jsp:include page="../include/footer.jsp"></jsp:include>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<script type="text/javascript">
+	
+		const addBasket = (no) => {
+			swal({
+				  title: "감사합니다!",
+				  text: "장바구니에 상품을 담았습니다.",
+				  icon: "success",
+				  button: "닫기",
+				}).then((value) => {
+					  console.log("Hello")
+				});
+		}
+		
+	</script>
+	
 </body>
 </html>

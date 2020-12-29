@@ -11,4 +11,5 @@ public interface CouponService {
 	void delete(int mcuno) throws Exception; 
 	void add(int cuno, int uno) throws Exception; 
 	void addItem(Coupon coupon) throws Exception;
+	void update(Coupon coupon) throws Exception;
 }
