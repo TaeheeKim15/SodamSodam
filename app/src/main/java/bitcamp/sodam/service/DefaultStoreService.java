@@ -40,4 +40,9 @@ public class DefaultStoreService implements StoreService{
     	public Store get(int sno) throws Exception {
     		return storeDao.findByNoStore(sno);
     	}
+    
+    @Override
+    public int deleteCategory(int no) throws Exception {
+            return storeDao.deleteCategory(no);
+    }
   }

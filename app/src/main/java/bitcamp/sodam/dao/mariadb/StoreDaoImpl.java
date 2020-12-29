@@ -48,4 +48,9 @@ public class StoreDaoImpl implements StoreDao {
 	public Store findByNoStore(int sno) throws Exception {
 		return storeMapper.findByNoStore(sno);
 	}
+	
+	@Override
+	public int deleteCategory(int no) throws Exception {
+	    return storeMapper.deleteCategory(no);
+	}
 }

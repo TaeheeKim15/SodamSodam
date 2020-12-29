@@ -100,8 +100,9 @@ public class StoreController {
     }
     
     @GetMapping("delete")
-    public String deleteStore(int sno, HttpSession session) throws Exception {
+    public String deleteStore(int sno, int no, HttpSession session) throws Exception {
         System.out.println("가게삭제");
+        storeService.deleteCategory(no);
       if (storeService.deleteStore(sno) == 0) {
         throw new Exception("해당하는 가게가 존재하지 않습니다.");
       }
@@ -113,7 +114,7 @@ public class StoreController {
 		
 		Store store = storeService.get(sno);
 		if (store == null) {
-			throw new Exception("해당 번호의 가게가 존재하지 않습니다.");
+			throw new Exception("해당 가게가 존재하지 않습니다.");
 		}
 		model.addAttribute("store", store);
 	}
@@ -121,7 +122,7 @@ public class StoreController {
 	  public String detail(@PathVariable int no, Model model) throws Exception {
 	    Store store = storeService.get(no);
 	    if (store == null) {
-	      throw new Exception("해당 회원이 없습니다!");
+	      throw new Exception("해당 가게가 존재하지 않습니다.");
 	    }
 	    model.addAttribute("store", store);
 	    return "store/detail";
@@ -139,6 +140,8 @@ public class StoreController {
 		
 		model.addAttribute("list", list);
 		model.addAttribute("clist", clist);
+		 
+		int count = storeService.updateStore(store);
 		return "store/update";
 	}
 }
