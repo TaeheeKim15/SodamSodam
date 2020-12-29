@@ -15,7 +15,7 @@ public interface CouponMapper {
 			+ "from tmk_my_coupon mc "
 			+ "inner join tmk_discount d on mc.cuno = d.cuno "
 			+ "inner join tmk_user u on mc.uno = u.uno "
-			+ "where u.uno = #{uno} "
+			+ "where u.uno = #{uno} and mcu_status = 0  and cuexp >= DATE(now())"
 			+ "order by mcu_status, mcudt"
 			)
     List<Coupon> findCouponList(int uno);
