@@ -37,4 +37,5 @@ public interface StoreMapper {
   int deleteCategory(int no);
   @Delete("delete from tmk_store_info where sno=#{sno}")
   int deleteStore(int sno);
+  
 }

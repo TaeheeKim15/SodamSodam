@@ -1,10 +1,8 @@
 package bitcamp.sodam.dao.mariadb;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
 import bitcamp.sodam.beans.Category;
 import bitcamp.sodam.beans.Store;
 import bitcamp.sodam.dao.StoreDao;
@@ -53,4 +51,8 @@ public class StoreDaoImpl implements StoreDao {
 	public int deleteCategory(int no) throws Exception {
 	    return storeMapper.deleteCategory(no);
 	}
+	
+	public Product findByStoreCategory(Product product) throws Exception {
+	  return storeMapper.
+	};
 }
