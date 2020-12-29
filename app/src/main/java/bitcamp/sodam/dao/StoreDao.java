@@ -12,6 +12,7 @@ public interface StoreDao {
   List<Store> findStoreList() throws Exception;
   int insertStore(Store store) throws Exception;
   int deleteStore(int sno) throws Exception;
+  int deleteCategory(int no) throws Exception;
   List<Category> findByNo() throws Exception;
   int updateStore(Store store) throws Exception;
   Store findByNoStore(int sno) throws Exception;

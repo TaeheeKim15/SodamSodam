@@ -46,4 +46,6 @@ public interface ProductMapper {
 	@Delete("delete from tmk_product where pno=#{pno}")
 	int delete(int pno);
 
+  @Delete("delete from tmk_product where sno=#{sno}")
+  int deleteStoreProduct(int sno);
 }

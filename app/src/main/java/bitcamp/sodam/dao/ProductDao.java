@@ -12,6 +12,7 @@ public interface ProductDao {
   int insert(Product product) throws Exception;
   int update(Product product) throws Exception;
   int delete(int no) throws Exception;
+  void deleteStroeProduct(int sno) throws Exception;
 }
 
 

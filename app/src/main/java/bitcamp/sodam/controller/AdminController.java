@@ -336,6 +336,7 @@ public class AdminController {
 
 		return "admin/coupon";
 	}
+	
 	@PostMapping("/coupon_delete")
 	@Async
 	public void AdminCouponDelete(HttpServletResponse response, Model model, String mcuno) {
@@ -352,4 +353,66 @@ public class AdminController {
 			e.printStackTrace();
 		}
 	}
+	
+	@GetMapping("/coupon_list")
+	public String AdminCouponList(HttpServletResponse response, Model model) {
+		System.out.println("어드민 사용자 쿠폰 목록");
+
+		response.setContentType("text/html;charset=UTF-8");
+
+		response.setCharacterEncoding("UTF-8"); // 응답의 encoding을 utf-8로 변경
+
+		List<Coupon> list;
+		List<User> userList;
+		try {
+			list = couponService.itemList();
+			userList = userService.list();
+			model.addAttribute("list", list);
+			model.addAttribute("userList", userList);
+		} catch (Exception e) {
+			model.addAttribute("list", null);
+			model.addAttribute("userList", null);
+			e.printStackTrace();
+		}
+
+		return "admin/coupon_list";
+	}
+	
+	@PostMapping("/mycoupon_add")
+	@Async
+	public void AdminMyCouponAdd(HttpServletRequest request, HttpServletResponse response, Model model) {
+		System.out.println("어드민 유저 쿠폰 추가");
+
+		response.setContentType("text/html;charset=UTF-8");
+
+		response.setCharacterEncoding("UTF-8"); // 응답의 encoding을 utf-8로 변경
+
+		try {
+			couponService.add(Integer.parseInt(request.getParameter("cuno")),Integer.parseInt(request.getParameter("uno")));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	@PostMapping("/coupon_add")
+	@Async
+	public String AdminCouponAdd(HttpServletRequest request, HttpServletResponse response, Model model, Coupon coupon) {
+		System.out.println("어드민 쿠폰 추가");
+
+		response.setContentType("text/html;charset=UTF-8");
+
+		response.setCharacterEncoding("UTF-8"); // 응답의 encoding을 utf-8로 변경
+
+		try {
+			couponService.addItem(coupon);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return "redirect:/admin/coupon_list";
+	}
+	
+	
 }

@@ -594,7 +594,7 @@
                     <li>
                         <a href="#Contact" class="has-arrow"><i class="icon-book-open"></i><span>쿠폰</span></a>
                         <ul>
-                            <li><a href="#">쿠폰 관리</a></li>
+                            <li><a href="/admin/coupon_list">쿠폰 관리</a></li>
                             <li><a href="/admin/coupon">사용자 쿠폰 관리</a></li>
                         </ul>
                     </li>
