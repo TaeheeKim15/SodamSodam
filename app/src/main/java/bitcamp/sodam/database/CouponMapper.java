@@ -3,6 +3,8 @@ package bitcamp.sodam.database;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 import bitcamp.sodam.beans.Coupon;
@@ -21,7 +23,16 @@ public interface CouponMapper {
 	@Select("select c.mcuno, c.uno, c.cuno, c.mcudt, c.mcu_status, u.name, u.email, d.cuname, d.cuint, d.cuprice from tmk_my_coupon c join tmk_user u on c.uno = u.uno join tmk_discount d on c.cuno = d.cuno")
     List<Coupon> findAllCouponList();
 	
+	@Select("SELECT cuno, cuname, cuprice, cuexp, cuint FROM tmk_discount WHERE NOT cuno = 5")
+    List<Coupon> findRealCouponList();
+	
 	@Delete("DELETE FROM tmk_my_coupon WHERE mcuno = #{mcuno}")
     void delete(int mcuno);
+	
+	@Insert("insert into tmk_my_coupon(cuno, uno, mcu_status) values(#{cuno}, #{uno}, 0)")
+    void addMyCoupon(@Param("cuno") int cuno, @Param("uno") int uno);
+	
+	@Insert("insert into tmk_discount(cuname, cuprice, cuint) VALUES(#{cuname}, #{cuprice}, #{cuint})")
+    void addCoupon(Coupon coupon);
 
 }

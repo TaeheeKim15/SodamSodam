@@ -17,31 +17,33 @@
 	<div class="container mt-5"
 		style="min-height: calc(100vh - 132px); max-height: auto">
 		<div class="container-fluid">
-			<h3>김복순 하루야채</h3>
-			<div class="row">
-
-				<c:forEach var="item" items="${list}">
-					<div class="col-4">
-						<div class="card mb-3">
-							<img class="card-img-top"
-								src="https://steptohealth.co.kr/wp-content/uploads/2018/05/art-1-24-768x519.jpg"
-								alt="Card image cap" height="229">
-							<div class="card-body">
-								<h5 class="card-title"
-									style="max-height: 50px; margin-top: 11px; font-size: 16px;">[${item.sname}]강원도 고랭지 시금치</h5>
-								<p class="card-text"
-									style="padding-top: 6px; font-weight: 700; font-size: 16px; line-height: 20px;">4,700원</p>
-								<button type="button" class="btn btn-outline-primary">장바구니</button>
+			
+			<h3>상품목록</h3>
+      <div class="row">
+				<c:forEach var="item" items="${list}" varStatus="status">
+							<div class="col-4">
+								<div class="card mb-3">
+									<div class="card-img-top"
+										style="border: 1px solid light-gray;">
+										
+										<img class="card-img-top" src="/fileproductpath/${item.photo}"
+											alt="Card image cap" height="229">
+										<div class="card-body">
+											<h5 class="card-title"
+												style="max-height: 50px; margin-top: 11px; font-size: 16px;">${item.pname}</h5>
+											<p class="card-text"
+												style="padding-top: 6px; font-weight: 700; font-size: 16px; line-height: 20px;">${item.price}</p>
+											<button type="button" class="btn btn-outline-primary">장바구니</button>
+										</div>
+									</div>
+								</div>
 							</div>
-						</div>
-					</div>
 				</c:forEach>
 			</div>
 		</div>
-
 	</div>
 
-	</div>
+
 	<jsp:include page="../include/footer.jsp"></jsp:include>
 </body>
 </html>

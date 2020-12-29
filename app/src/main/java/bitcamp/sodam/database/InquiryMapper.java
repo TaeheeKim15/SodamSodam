@@ -12,10 +12,10 @@ import bitcamp.sodam.beans.Inquiry;
 import bitcamp.sodam.beans.Notice;
 
 public interface InquiryMapper {
-    @Select("SELECT qno, uno, title, content, col, qtype, qstatus, answer from tmk_mtm")
+    @Select("SELECT qno, uno, title, content, qdate, qtype, qstatus, answer from tmk_mtm")
     List<Inquiry> findAll();
     
-    @Select("SELECT qno, uno, title, content, col, qtype, qstatus, answer from tmk_mtm where qno = #{qno}")
+    @Select("SELECT qno, uno, title, content, qdate, qtype, qstatus, answer from tmk_mtm where qno = #{qno}")
     Inquiry findByNo(int qno);
     
     @Update("UPDATE tmk_mtm SET answer = #{answer}, qstatus = #{qstatus} WHERE qno = #{qno}")
