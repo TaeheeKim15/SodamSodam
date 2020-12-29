@@ -19,6 +19,7 @@ import bitcamp.sodam.beans.Category;
 import bitcamp.sodam.beans.Store;
 import bitcamp.sodam.beans.User;
 import bitcamp.sodam.service.CategoryService;
+import bitcamp.sodam.service.ProductService;
 import bitcamp.sodam.service.StoreService;
 import bitcamp.sodam.service.UploadStoreService;
 import bitcamp.sodam.service.UserService;
@@ -29,6 +30,9 @@ public class StoreController {
 
 	@Autowired
 	StoreService storeService;
+	
+	@Autowired
+	ProductService productService;
 	
 	@Autowired
 	CategoryService categoryService;
@@ -100,13 +104,16 @@ public class StoreController {
     }
     
     @GetMapping("delete")
-    public String deleteStore(int sno, int no, HttpSession session) throws Exception {
+    public String deleteStore(HttpServletRequest request, HttpSession session) throws Exception {
         System.out.println("가게삭제");
-        storeService.deleteCategory(no);
-      if (storeService.deleteStore(sno) == 0) {
-        throw new Exception("해당하는 가게가 존재하지 않습니다.");
-      }
-        return "store/delete";
+        
+        int sno = Integer.parseInt(request.getParameter("sno"));
+        
+        productService.deleteStoreProduct(sno);
+        storeService.deleteCategory(sno);
+        storeService.deleteStore(sno);
+        
+        return "redirect:/store/list";
     }
     
 	@GetMapping("detail")
@@ -141,7 +148,7 @@ public class StoreController {
 		model.addAttribute("list", list);
 		model.addAttribute("clist", clist);
 		 
-		int count = storeService.updateStore(store);
+		/* int count = storeService.updateStore(store); */
 		return "store/update";
 	}
 }
