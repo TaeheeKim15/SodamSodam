@@ -12,44 +12,78 @@
 	integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
 	crossorigin="anonymous">
 <link rel="stylesheet" href="css/main.css">
-<link rel="stylesheet" href="css/q_list.css">
+<link rel="stylesheet" href="css/mypage.css">
 <meta charset="UTF-8">
+
+	<style type="text/css">
+		@font-face {
+			font-family: 'SDSamliphopangche_Outline';
+			src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts-20-12@1.0/SDSamliphopangche_Outline.woff') format('woff');
+			font-weight: normal;
+			font-style: normal;
+		}
+
+	@font-face {
+		font-family: 'InfinitySans-BoldA1';
+		src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/InfinitySans-BoldA1.woff') format('woff');
+		font-weight: normal;
+		font-style: normal;
+	}
+	
+	@font-face {
+    font-family: 'IBMPlexSansKR-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+	.qlist_box1{
+		font-family:"InfinitySans-BoldA1";
+	}
+	
+	.qlist_box2{
+		font-family:"SDSamliphopangche_Outline";
+	}
+	
+	.qlist_box3{
+		 font-family: 'IBMPlexSansKR-Regular';
+	}
+	
+	</style>
+	
 <title>문의내역</title>
 </head>
 <body>
 	<jsp:include page="../include/header.jsp"></jsp:include>
-	<div class="mt-5 qlist_main">
-		<div class="container mb-5 coupon__title">
+	<div class="mt-5 qlist_main mx-auto">
+		<div class="container mb-5 coupon__title qlist_box2">
 			<h5 style="color: gray;">마이페이지 > 문의내역</h5>
 		</div>
-		<div class="container mb-4 coupon__title">
-			<h2>문의내역</h2>
+		<div class="container mb-4 coupon__title qlist_box2">
+			<h1>문의내역</h1>
 		</div>
 
-		<ul class="nav nav-pills mb-3 qlist_nav mx-auto" id="pills-tab" role="tablist">
-			<li class="nav-item qlist_nav" role="presentation">
-			<a class="nav-link active " id="pills-home-tab" data-bs-toggle="pill"
-				href="#pills-home" role="tab" aria-controls="pills-home"
-				aria-selected="true">전체</a></li>
-			<li class="nav-item" role="presentation">
-				<a class="nav-link"
-				id="pills-profile-tab" data-bs-toggle="pill" href="#pills-profile"
-				role="tab" aria-controls="pills-profile" aria-selected="false">답변대기</a>
-			</li>
-			<li class="nav-item" role="presentation">
-				<a class="nav-link"
-				id="pills-contact-tab" data-bs-toggle="pill" href="#pills-contact"
-				role="tab" aria-controls="pills-contact" aria-selected="false">답변완료</a>
-			</li>
-		</ul>
-		<div class="tab-content" id="pills-tabContent">
-			<div class="tab-pane fade show active" id="pills-home"
-				role="tabpanel" aria-labelledby="pills-home-tab">...</div>
-			<div class="tab-pane fade" id="pills-profile" role="tabpanel"
-				aria-labelledby="pills-profile-tab">...</div>
-			<div class="tab-pane fade" id="pills-contact" role="tabpanel"
-				aria-labelledby="pills-contact-tab">...</div>
-		</div>
+		
+		<c:forEach var="item" items="${list}">
+			<div class="card mb-5 qlist_box3">
+				<div class="card-header text-right ">${item.col}</div>
+				<div class="card-body">
+					<c:choose>
+						<c:when test="${item.qstatus == 0}">
+					<span class="badge bg-success">답변대기</span> 
+						</c:when>
+						<c:otherwise>
+					<h6><span class="badge bg-warning">답변완료</span></h6>
+					</c:otherwise>
+					</c:choose>
+				<p class="card-text "> 문의유형: [ ${item.type} ]</p>
+					<h4 class="card-title qlist_box1">${item.title}</h4>
+					<p class="card-text">${item.content}</p>
+					
+				</div>
+			</div>
+		</c:forEach>
 
 	</div>
 

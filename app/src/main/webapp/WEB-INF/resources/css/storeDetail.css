@@ -6,6 +6,10 @@ body{
   height: 100%;
 }
 
+body .title-name {
+	 font-weight:bold;
+}
+
 body .card-body{
 	font-size:large;
 	font-weight:bold;

@@ -23,6 +23,7 @@ public class Store {
   private List<Category> categoryNo;
   private MultipartFile upload_image;
   private List<String> categoryName;
+  private List<Product> storeProductList;
   
 public int getSno() {
 	return sno;
@@ -132,8 +133,12 @@ public List<String> getCategoryName() {
 public void setCategoryName(List<String> categoryName) {
 	this.categoryName = categoryName;
 }
+public List<Product> getStoreProductList() {
+  return storeProductList;
+}
+public void setStoreProductList(List<Product> storeProductList) {
+  this.storeProductList = storeProductList;
+}
   
-  
-
-	
+  	
 }

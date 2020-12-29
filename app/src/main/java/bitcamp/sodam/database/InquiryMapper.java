@@ -20,4 +20,7 @@ public interface InquiryMapper {
     
     @Update("UPDATE tmk_mtm SET answer = #{answer}, qstatus = #{qstatus} WHERE qno = #{qno}")
     void update(Inquiry inquiry);
+    
+    @Select("select u.uno, title, content, col, qtype, qstatus from tmk_mtm m join tmk_user u on u.uno= m.uno where u.uno = #{uno} order by col desc")
+    List<Inquiry> findQList(int uno);
 }
