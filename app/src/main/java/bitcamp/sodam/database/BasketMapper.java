@@ -35,6 +35,8 @@ public interface BasketMapper {
   @Select("select * from tmk_basket where uno = #{user.uno} AND pno = #{product.pno}")
   Basket checkBasketProduct(@Param("product")Product product, @Param("user")User user);
   
+  @Insert("insert into tmk_basket (uno, pno, bcnt, bcdt) values (#{uno}, #{pno}, #{bcnt}, '2020-01-01')")
+  int basketinsert(@Param("uno") int uno, @Param("pno") int pno, @Param("bcnt") int bcnt);
   
 
 }

@@ -52,7 +52,4 @@ public class StoreDaoImpl implements StoreDao {
 	    return storeMapper.deleteCategory(no);
 	}
 	
-	public Product findByStoreCategory(Product product) throws Exception {
-	  return storeMapper.
-	};
 }

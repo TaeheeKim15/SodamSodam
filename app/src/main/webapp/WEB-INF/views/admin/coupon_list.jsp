@@ -215,12 +215,8 @@
 								</div>
 								<div class="tab-pane" id="couponEdit">
 									<div class="body mt-2">
-	                                    <form action="/admin/coupon_add" method="post" class="row clearfix">
-	                                    	<div class="col-lg-6 col-md-6 col-sm-12">
-	                                            <div class="form-group">
-	                                                <input id="coupon-no" name=cuno type="hidden" class="form-control" placeholder="쿠폰번호" value="">
-	                                            </div>
-	                                        </div>
+	                                    <form action="/admin/coupon_edit" method="post" class="row clearfix">
+	                                    	<input id="coupon-no" name=cuno type="hidden" class="form-control" placeholder="쿠폰번호" value="">
 	                                        <div class="col-lg-6 col-md-6 col-sm-12">
 	                                            <div class="form-group">
 	                                                <input id="coupon-name" name="cuname" type="text" class="form-control" placeholder="쿠폰명">
@@ -238,7 +234,7 @@
 	                                        </div>
 	                                        <div class="col-sm-12">
 	                                            <div class="form-group">
-	                                                <button type="submit" class="btn btn-primary">추가</button>
+	                                                <button type="submit" class="btn btn-primary">수정</button>
                                             		<button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="formReset()">리셋</button>
 	                                            </div>
 	                                        </div>
@@ -292,6 +288,12 @@
 			
 			const couponEditClick = (no) => {
 				$("#couponEditClick").trigger("click");
+				$.post("/admin/mycoupon_edit", {
+					cuno : couponNo,
+					uno : uno
+				}).done(function(data){
+					window.location.href = '/admin/coupon_list';
+				})
 			} 
 			
 			const add = (uno) => {

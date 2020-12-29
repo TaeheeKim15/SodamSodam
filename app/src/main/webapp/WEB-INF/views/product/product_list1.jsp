@@ -33,7 +33,15 @@
 												style="max-height: 50px; margin-top: 11px; font-size: 16px;">${item.pname}</h5>
 											<p class="card-text"
 												style="padding-top: 6px; font-weight: 700; font-size: 16px; line-height: 20px;">${item.price}</p>
-											<button type="button" class="btn btn-outline-primary" onclick="addBasket(${item.pno})">장바구니</button>
+											<div class="d-flex justify-content-between">
+												<button type="button" class="btn btn-outline-primary" onclick="addBasket(${item.pno})">장바구니</button>
+												<div class="">
+													<i class="fas fa-plus"></i>
+													<input class="text-center" type="text" value=1 readonly style="width:30px; border:none">
+													<i class="fas fa-minus"></i>
+												</div>
+												
+											</div>
 										</div>
 									</div>
 								</div>
@@ -44,10 +52,19 @@
 	</div>
 	
 	<jsp:include page="../include/footer.jsp"></jsp:include>
+	<script src="https://kit.fontawesome.com/d1fe297f63.js"
+	crossorigin="anonymous"></script>
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<script type="text/javascript">
 	
 		const addBasket = (no) => {
+			$.post("/basket/insert", {
+				qno : qno,
+				answer : markup
+			}).done(function(data){
+				window.location.href = '/admin/inquiry';
+			})
+			
 			swal({
 				  title: "감사합니다!",
 				  text: "장바구니에 상품을 담았습니다.",
