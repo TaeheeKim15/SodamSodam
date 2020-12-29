@@ -7,7 +7,7 @@ public class Inquiry {
 	private int uno;
 	private String title;
 	private String content;
-	private Date col;
+	private Date qdate;
 	private int qtype;
 	private int qstatus;
 	private String answer;
@@ -36,11 +36,11 @@ public class Inquiry {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public Date getCol() {
-		return col;
+	public Date getQdate() {
+		return qdate;
 	}
-	public void setCol(Date col) {
-		this.col = col;
+	public void setQdate(Date qdate) {
+		this.qdate = qdate;
 	}
 	public int getQtype() {
 		return qtype;
@@ -60,4 +60,5 @@ public class Inquiry {
 	public void setAnswer(String answer) {
 		this.answer = answer;
 	}
+	
 }
