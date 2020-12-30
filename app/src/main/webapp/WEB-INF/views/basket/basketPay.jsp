@@ -223,9 +223,8 @@ var pay = function(){
     });
 }
 
-
-
-
 </script>
+
+
 
 </html>
