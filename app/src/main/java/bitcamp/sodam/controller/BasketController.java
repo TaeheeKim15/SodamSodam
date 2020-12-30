@@ -1,5 +1,6 @@
 package bitcamp.sodam.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -9,14 +10,19 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import bitcamp.sodam.beans.Basket;
+import bitcamp.sodam.beans.Coupon;
 import bitcamp.sodam.beans.User;
 import bitcamp.sodam.service.BasketService;
+import bitcamp.sodam.service.CouponService;
 
 @Controller
 public class BasketController {
 
   @Autowired
   BasketService basketService;
+
+  @Autowired
+  CouponService couponService;
 
   @GetMapping("/basketList")
   public String BasketList(HttpServletRequest request, HttpServletResponse response, HttpSession session, Model model) {
@@ -72,7 +78,26 @@ public class BasketController {
     response.setCharacterEncoding("UTF-8"); // 응답의 encoding을 utf-8로 변경
 
     List<Basket> list;
+
+    List<Coupon> cList;
+    List<Coupon> coupon_list = new ArrayList<Coupon>();
+
     try {
+
+      cList = couponService.list(uno);
+
+      for(Coupon tenp_coupon : cList) {
+        if(tenp_coupon.getMcu_status() == 0) {
+          tenp_coupon.setStatus("사용가능");
+          coupon_list.add(tenp_coupon);
+        } else if (tenp_coupon.getMcu_status() == 1) {
+          tenp_coupon.setStatus("사용완료");
+          coupon_list.add(tenp_coupon);
+        }
+      }
+
+      model.addAttribute("cList", coupon_list);
+
       list = basketService.list(uno);
       for (Basket basket : list) {
         basket.setPriceCommas(String.format("%,d", basket.getPrice()));
@@ -98,6 +123,8 @@ public class BasketController {
       model.addAttribute("tsum2", tsum);
 
     } catch (Exception e) {
+      model.addAttribute("cList", null);
+
       model.addAttribute("list", null);
       e.printStackTrace();
     }
