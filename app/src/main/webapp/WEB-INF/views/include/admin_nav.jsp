@@ -589,20 +589,20 @@
                     <li class="header">사이트 관리</li>
                     <li class="active"><a href="/admin/category"><i class="icon-speedometer"></i><span>카테고리</span></a></li>
                     <li><a href="/admin/notice"><i class="icon-diamond"></i><span>공지사항</span></a></li>
-                    <li><a href="/admin/store"><i class="icon-diamond"></i><span>가게</span></a></li>
-                    <li><a href="/admin/faq"><i class="icon-diamond"></i><span>FAQ</span></a></li>
+                    <li><a href="#"><i class="icon-diamond"></i><span>가게</span></a></li>
+                    <li><a href="#"><i class="icon-diamond"></i><span>FAQ</span></a></li>
                     <li>
                         <a href="#Contact" class="has-arrow"><i class="icon-book-open"></i><span>쿠폰</span></a>
                         <ul>
-                            <li><a href="/admin/coupon">쿠폰 관리</a></li>
-                            <li><a href="/admin/coupon_user">사용자 쿠폰 관리</a></li>
+                            <li><a href="/admin/coupon_list">쿠폰 관리</a></li>
+                            <li><a href="/admin/coupon">사용자 쿠폰 관리</a></li>
                         </ul>
                     </li>
                     <li class="header">고객 관리</li>
-                    <li><a href="/admin/user"><i class="/admin/user"></i><span>사용자</span></a></li>
-                    <li><a href="app-chat.html"><i class="icon-bubbles"></i><span>환불신청</span></a></li>
-                    <li><a href="app-chat.html"><i class="icon-bubbles"></i><span>문의사항</span></a></li>
-                    <li><a href="app-chat.html"><i class="icon-bubbles"></i><span>주문</span></a></li>
+                    <li><a href="/admin/user"><i class="icon-bubbles"></i><span>사용자</span></a></li>
+                    <li><a href="#"><i class="icon-bubbles"></i><span>환불신청</span></a></li>
+                    <li><a href="/admin/inquiry"><i class="icon-bubbles"></i><span>문의사항</span></a></li>
+                    <li><a href="#"><i class="icon-bubbles"></i><span>주문</span></a></li>
                 </ul>
             </nav>     
         </div>

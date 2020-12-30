@@ -26,5 +26,41 @@ public class CouponDaoImpl implements CouponDao {
 	public List<Coupon> findCouponList(int uno) throws Exception {
 		return couponMapper.findCouponList(uno);
 	}
+
+
+	@Override
+	public List<Coupon> findAllCouponList() throws Exception {
+		return couponMapper.findAllCouponList();
+	}
+
+
+	@Override
+	public void delete(int mcuno) throws Exception {
+		couponMapper.delete(mcuno);
+	}
+
+
+	@Override
+	public List<Coupon> findRealAllCouponList() throws Exception {
+		return couponMapper.findRealCouponList();
+	}
+
+
+	@Override
+	public void add(int cuno, int uno) throws Exception {
+		couponMapper.addMyCoupon(cuno, uno);
+	}
+
+
+	@Override
+	public void addItem(Coupon coupon) throws Exception {
+		couponMapper.addCoupon(coupon);
+	}
+
+
+	@Override
+	public void update(Coupon coupon) throws Exception {
+		couponMapper.update(coupon);
+	}
 	
 }

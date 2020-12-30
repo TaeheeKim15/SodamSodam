@@ -13,7 +13,15 @@ public class Product {
   private String pint;
   private Date pcdt;
   private String sname;
+  private Store market;
   private List<Store> stores;
+
+  public Store getMarket() {
+    return market;
+  }
+  public void setMarket(Store market) {
+    this.market = market;
+  }
   public int getPno() {
     return pno;
   }

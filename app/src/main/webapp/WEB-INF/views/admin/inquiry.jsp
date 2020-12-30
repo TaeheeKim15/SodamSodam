@@ -73,18 +73,44 @@
                                             <th class="col-3">제목</th>
                                             <th class="col-3">문의유형</th>
                                             <th class="col-3">등록일</th>
-                                            <th class="col-3"></th>
+                                            <th class="col-3">처리상태</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                     	<c:forEach var="item" items="${list}">
+                                    		<c:choose>
+												<c:when test="${item.qtype == '0'}">
+													<c:set var="qtype" value="배송" />
+												</c:when>
+												<c:when test="${item.qtype == '1'}">
+													<c:set var="qtype" value="포인트" />
+												</c:when>
+												<c:when test="${item.qtype == '2'}">
+													<c:set var="qtype" value="결제/환불" />
+												</c:when>
+												<c:when test="${item.qtype == '3'}">
+													<c:set var="qtype" value="쿠폰" />
+												</c:when>
+												<c:when test="${item.qtype == '4'}">
+													<c:set var="qtype" value="상품문의" />
+												</c:when>
+												<c:when test="${item.qtype == '5'}">
+													<c:set var="qtype" value="기타" />
+												</c:when>
+											</c:choose>
+											<c:choose>
+												<c:when test="${item.qstatus == '0'}">
+													<c:set var="qstatus" value="처리중" />
+												</c:when>
+												<c:when test="${item.qstatus == '1'}">
+													<c:set var="qstatus" value="처리완료" />
+												</c:when>
+											</c:choose>
 	                                    	<tr>
 	                                            <td><a href="/admin/inquiry_write?qno=${item.qno }">${item.title}</a></td>
-	                                            <td>${item.qtype}</td>
-	                                            <td>${item.col}</td>
-	                                            <td>
-	                                                <button type="button" class="btn btn-danger mb-2 js-sweetalert" title="Delete" value="${item.qno}" data-type="noticeDelete"><span class="sr-only">Delete</span> <i class="fa fa-trash-o"></i></button>
-	                                            </td>
+	                                            <td>${qtype}</td>
+	                                            <td>${item.qdate}</td>
+	                                            <td>${qstatus}</td>
 	                                        </tr>
                                     	</c:forEach>
                                     </tbody>

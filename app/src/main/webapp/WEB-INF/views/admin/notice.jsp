@@ -62,8 +62,7 @@
 							</nav>
 						</div>
 						<div class="col-md-6 col-sm-12 text-right hidden-xs">
-							<a href="javascript:void(0);" class="btn btn-sm btn-primary"
-								title="" data-toggle="modal" data-target="#userAddModal">공지사항 등록</a>
+							<a href="/admin/notice_write" class="btn btn-sm btn-primary">공지사항 등록</a>
 						</div>
 					</div>
 				</div>

@@ -33,6 +33,9 @@ public interface StoreMapper {
   		+ " sphoto='#{sphoto}', edt='#{edt}', sdt='#{sdt}' WHERE s.sno = #{sno}")
   int updateStore(Store store);
   
+  @Delete("delete from tmk_category where sno=#{sno}")
+  int deleteCategory(int no);
   @Delete("delete from tmk_store_info where sno=#{sno}")
   int deleteStore(int sno);
+  
 }

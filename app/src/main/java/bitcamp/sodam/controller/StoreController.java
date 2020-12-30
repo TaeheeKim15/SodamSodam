@@ -19,6 +19,7 @@ import bitcamp.sodam.beans.Category;
 import bitcamp.sodam.beans.Store;
 import bitcamp.sodam.beans.User;
 import bitcamp.sodam.service.CategoryService;
+import bitcamp.sodam.service.ProductService;
 import bitcamp.sodam.service.StoreService;
 import bitcamp.sodam.service.UploadStoreService;
 import bitcamp.sodam.service.UserService;
@@ -29,6 +30,9 @@ public class StoreController {
 
 	@Autowired
 	StoreService storeService;
+	
+	@Autowired
+	ProductService productService;
 	
 	@Autowired
 	CategoryService categoryService;
@@ -100,12 +104,16 @@ public class StoreController {
     }
     
     @GetMapping("delete")
-    public String deleteStore(int sno, HttpSession session) throws Exception {
+    public String deleteStore(HttpServletRequest request, HttpSession session) throws Exception {
         System.out.println("가게삭제");
-      if (storeService.deleteStore(sno) == 0) {
-        throw new Exception("해당하는 가게가 존재하지 않습니다.");
-      }
-        return "store/delete";
+        
+        int sno = Integer.parseInt(request.getParameter("sno"));
+        
+        productService.deleteStoreProduct(sno);
+        storeService.deleteCategory(sno);
+        storeService.deleteStore(sno);
+        
+        return "redirect:/store/list";
     }
     
 	@GetMapping("detail")
@@ -113,7 +121,7 @@ public class StoreController {
 		
 		Store store = storeService.get(sno);
 		if (store == null) {
-			throw new Exception("해당 번호의 가게가 존재하지 않습니다.");
+			throw new Exception("해당 가게가 존재하지 않습니다.");
 		}
 		model.addAttribute("store", store);
 	}
@@ -121,7 +129,7 @@ public class StoreController {
 	  public String detail(@PathVariable int no, Model model) throws Exception {
 	    Store store = storeService.get(no);
 	    if (store == null) {
-	      throw new Exception("해당 회원이 없습니다!");
+	      throw new Exception("해당 가게가 존재하지 않습니다.");
 	    }
 	    model.addAttribute("store", store);
 	    return "store/detail";
@@ -139,6 +147,8 @@ public class StoreController {
 		
 		model.addAttribute("list", list);
 		model.addAttribute("clist", clist);
+		 
+		/* int count = storeService.updateStore(store); */
 		return "store/update";
 	}
 }

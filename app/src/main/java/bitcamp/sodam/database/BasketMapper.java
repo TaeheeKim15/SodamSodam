@@ -3,9 +3,12 @@ package bitcamp.sodam.database;
 import java.util.List;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 import bitcamp.sodam.beans.Basket;
+import bitcamp.sodam.beans.Product;
+import bitcamp.sodam.beans.User;
 
 public interface BasketMapper {
   @Select("select u.uno, u.name, b.bno, p.pno, bcnt, p.pname pname, p.price price, p.stock stock, s.sno, s.sname, p.photo photo "
@@ -28,6 +31,13 @@ public interface BasketMapper {
 
   @Insert("insert into tmk_basket (uno,pno,bcnt, bcdt) values (#{uno}, #{pno}, #{bcnt}, #{bcdt})")
   int insert(Basket basket);
+  
+  @Select("select * from tmk_basket where uno = #{user.uno} AND pno = #{product.pno}")
+  Basket checkBasketProduct(@Param("product")Product product, @Param("user")User user);
+  
+  @Insert("insert into tmk_basket (uno, pno, bcnt, bcdt) values (#{uno}, #{pno}, #{bcnt}, '2020-01-01')")
+  int basketinsert(@Param("uno") int uno, @Param("pno") int pno, @Param("bcnt") int bcnt);
+  
 
   @Select("select u.uno, u.name, b.bno, p.pno, bcnt, p.pname pname, p.price price, p.stock stock, s.sno, s.sname, p.photo photo "
       + "from tmk_basket b "

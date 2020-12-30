@@ -1,0 +1,23 @@
+.qlist__main{
+	width: 100%;
+  	height: calc(100vh - 220px);
+  	color: gray;
+}
+
+.qlist__title{
+    display: flex;
+    justify-content: space-between;
+}
+
+.qlist_table{
+	width: 1400px;
+}
+
+.qlist_color{
+	background-color:orange;
+	color: white;
+}
+
+.qlist_nav{
+	width: 1200px;
+}

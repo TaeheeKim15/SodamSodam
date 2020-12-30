@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!doctype html>
 <html lang="en">
@@ -8,23 +8,33 @@
 <title>Oculux | Form Drag & Drop</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-<meta name="description" content="Oculux Bootstrap 4x admin is super flexible, powerful, clean &amp; modern responsive admin dashboard with unlimited possibilities.">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<meta name="description"
+	content="Oculux Bootstrap 4x admin is super flexible, powerful, clean &amp; modern responsive admin dashboard with unlimited possibilities.">
 <meta name="author" content="GetBootstrap, design by: puffintheme.com">
 
 <link rel="icon" href="favicon.ico" type="image/x-icon">
 <!-- VENDOR CSS -->
-<link rel="stylesheet" href="/oculux/assets_vendor/vendor/bootstrap/css/bootstrap.min.css">
-<link rel="stylesheet" href="/oculux/assets_vendor/vendor/font-awesome/css/font-awesome.min.css">
-<link rel="stylesheet" href="/oculux/assets_vendor/vendor/animate-css/vivify.min.css">
+<link rel="stylesheet"
+	href="/oculux/assets_vendor/vendor/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="/oculux/assets_vendor/vendor/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet"
+	href="/oculux/assets_vendor/vendor/animate-css/vivify.min.css">
 
-<link rel="stylesheet" href="/oculux/assets_vendor/vendor/dropify/css/dropify.min.css">
+<link rel="stylesheet"
+	href="/oculux/assets_vendor/vendor/dropify/css/dropify.min.css">
 
-<link rel="stylesheet" href="/oculux/assets_vendor/vendor/jquery-datatable/dataTables.bootstrap4.min.css">
-<link rel="stylesheet" href="/oculux/assets_vendor/vendor/jquery-datatable/fixedeader/dataTables.fixedcolumns.bootstrap4.min.css">
-<link rel="stylesheet" href="/oculux/assets_vendor/vendor/jquery-datatable/fixedeader/dataTables.fixedheader.bootstrap4.min.css">
+<link rel="stylesheet"
+	href="/oculux/assets_vendor/vendor/jquery-datatable/dataTables.bootstrap4.min.css">
+<link rel="stylesheet"
+	href="/oculux/assets_vendor/vendor/jquery-datatable/fixedeader/dataTables.fixedcolumns.bootstrap4.min.css">
+<link rel="stylesheet"
+	href="/oculux/assets_vendor/vendor/jquery-datatable/fixedeader/dataTables.fixedheader.bootstrap4.min.css">
 
-<link rel="stylesheet" href="/oculux/assets_vendor/vendor/sweetalert/sweetalert.css"/>
+<link rel="stylesheet"
+	href="/oculux/assets_vendor/vendor/sweetalert/sweetalert.css" />
 
 <!-- MAIN CSS -->
 <link rel="stylesheet" href="/oculux/assets/css/site.min.css">
@@ -45,9 +55,9 @@
 	<!-- Overlay For Sidebars -->
 	<div class="overlay"></div>
 	<div id="wrapper">
-	
+
 		<jsp:include page="../include/admin_nav.jsp"></jsp:include>
-		
+
 		<div id="main-content">
 			<div class="container-fluid">
 				<div class="block-header">
@@ -61,37 +71,45 @@
 								</ol>
 							</nav>
 						</div>
-						<div class="col-md-6 col-sm-12 text-right hidden-xs">
-							<a href="javascript:void(0);" class="btn btn-sm btn-primary"
-								title="" data-toggle="modal" data-target="#userAddModal">쿠폰 등록</a>
-						</div>
 					</div>
 				</div>
 
 				<div class="row clearfix">
 					<div class="col-lg-12">
 						<div class="card">
-							<table class="table table-hover js-basic-example dataTable table-custom spacing5">
-                                    <thead>
-                                        <tr>
-                                            <th class="col-5">제목</th>
-                                            <th class="col-4">등록일</th>
-                                            <th class="col-3"></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    	<c:forEach var="item" items="${list}">
-                                    	<tr>
-                                            <td><a href="/admin/notice_write?nno=${item.nno }">${item.ntitle}</a></td>
-                                            <td>${item.ndate}</td>
-                                            <td>
-                                                <button type="button" class="btn btn-danger mb-2 js-sweetalert" title="Delete" value="${item.nno}" data-type="noticeDelete"><span class="sr-only">Delete</span> <i class="fa fa-trash-o"></i></button>
-                                            </td>
-                                        </tr>
-                                    	</c:forEach>
-                                        
-                                    </tbody>
-                                </table>
+							<table
+								class="table table-hover js-basic-example dataTable table-custom spacing5">
+								<thead>
+									<tr>
+										<th>쿠폰명</th>
+										<th>소유자</th>
+										<th>쿠폰설명</th>
+										<th>할인금액</th>
+										<th>생성일</th>
+										<th></th>
+									</tr>
+								</thead>
+								<tbody>
+									<c:forEach var="item" items="${list}">
+										<tr>
+											<td>${item.cuname}</td>
+											<td>${item.name}(${item.email})</td>
+											<td>${item.cuint}</td>
+											<td>${item.cuprice}</td>
+											<td>${item.mcudt}</td>
+											<td>
+												<button type="button"
+													class="btn btn-danger mb-2 js-sweetalert" title="Delete"
+													value="${item.mcuno}" data-type="couponDelete">
+													<span class="sr-only">Delete</span> <i
+														class="fa fa-trash-o"></i>
+												</button>
+											</td>
+										</tr>
+									</c:forEach>
+
+								</tbody>
+							</table>
 						</div>
 					</div>
 				</div>
@@ -100,27 +118,31 @@
 		</div>
 	</div>
 
-<!-- Javascript -->
-<script src="/oculux/assets/bundles/libscripts.bundle.js"></script>    
-<script src="/oculux/assets/bundles/vendorscripts.bundle.js"></script>
+	<!-- Javascript -->
+	<script src="/oculux/assets/bundles/libscripts.bundle.js"></script>
+	<script src="/oculux/assets/bundles/vendorscripts.bundle.js"></script>
 
-<script src="/oculux/assets_vendor/vendor/sweetalert/sweetalert.min.js"></script>
-<script src="/oculux/assets_vendor/vendor/dropify/js/dropify.js"></script>
-<script src="/oculux/assets/bundles/mainscripts.bundle.js"></script>
-<script src="/oculux/assets/js/pages/forms/dropify.js"></script>
-<script src="/oculux/assets/js/pages/tables/table-filter.js"></script>
-<script src="/oculux/assets/js/pages/ui/dialogs.js"></script>
+	<script src="/oculux/assets_vendor/vendor/sweetalert/sweetalert.min.js"></script>
+	<script src="/oculux/assets_vendor/vendor/dropify/js/dropify.js"></script>
+	<script src="/oculux/assets/bundles/mainscripts.bundle.js"></script>
+	<script src="/oculux/assets/js/pages/forms/dropify.js"></script>
+	<script src="/oculux/assets/js/pages/tables/table-filter.js"></script>
+	<script src="/oculux/assets/js/pages/ui/dialogs.js"></script>
 
-<script src="/oculux/assets/bundles/datatablescripts.bundle.js"></script>
-<script src="/oculux/assets_vendor/vendor/jquery-datatable/buttons/dataTables.buttons.min.js"></script>
-<script src="/oculux/assets_vendor/vendor/jquery-datatable/buttons/buttons.bootstrap4.min.js"></script>
-<script src="/oculux/assets_vendor/vendor/jquery-datatable/buttons/buttons.colVis.min.js"></script>
-<script src="/oculux/assets_vendor/vendor/jquery-datatable/buttons/buttons.html5.min.js"></script>
-<script src="/oculux/assets_vendor/vendor/jquery-datatable/buttons/buttons.print.min.js"></script>
-<script src="/oculux/assets/js/pages/tables/jquery-datatable.js"></script>
-<script type="text/javascript">
-		
-</script>
+	<script src="/oculux/assets/bundles/datatablescripts.bundle.js"></script>
+	<script
+		src="/oculux/assets_vendor/vendor/jquery-datatable/buttons/dataTables.buttons.min.js"></script>
+	<script
+		src="/oculux/assets_vendor/vendor/jquery-datatable/buttons/buttons.bootstrap4.min.js"></script>
+	<script
+		src="/oculux/assets_vendor/vendor/jquery-datatable/buttons/buttons.colVis.min.js"></script>
+	<script
+		src="/oculux/assets_vendor/vendor/jquery-datatable/buttons/buttons.html5.min.js"></script>
+	<script
+		src="/oculux/assets_vendor/vendor/jquery-datatable/buttons/buttons.print.min.js"></script>
+	<script src="/oculux/assets/js/pages/tables/jquery-datatable.js"></script>
+
+
 </body>
 </html>
 

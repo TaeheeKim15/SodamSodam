@@ -131,7 +131,7 @@ public class BasketController {
     return "redirect:basketList";
   }
 
-  @GetMapping("insert")
+  @GetMapping("/basket/insert")
   public String insert(Basket basket, HttpSession session, Model model) throws Exception{
     User loginUser = (User) session.getAttribute("loginUser");
     basket.setUno(loginUser.getUno());

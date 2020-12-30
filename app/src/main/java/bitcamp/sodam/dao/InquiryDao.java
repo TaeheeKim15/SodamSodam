@@ -26,4 +26,8 @@ public class InquiryDao {
 	public void update(Inquiry inquiry) throws Exception{
 		  inquiryMapper.update(inquiry);
 		}
+	
+	public List<Inquiry> findQList(int uno) throws Exception{ 
+	    return inquiryMapper.findQList(uno);
+	}
 }
