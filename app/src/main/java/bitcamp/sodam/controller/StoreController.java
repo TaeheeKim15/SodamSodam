@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import bitcamp.sodam.beans.Category;
+import bitcamp.sodam.beans.Product;
 import bitcamp.sodam.beans.Store;
 import bitcamp.sodam.beans.User;
 import bitcamp.sodam.service.CategoryService;
@@ -71,6 +72,7 @@ public class StoreController {
 
 		return "store/storeList";
 	}
+<<<<<<< HEAD
 	
 	@GetMapping("review")
 	public String StoreReview(HttpServletRequest request, HttpServletResponse response, HttpSession session, Model model)
@@ -98,6 +100,8 @@ public class StoreController {
 
 		return "store/storeList";
 	}
+=======
+>>>>>>> b0f1258aedcbec9b917c3f7ab44ce107cea98c95
 
 	@GetMapping("form")
 	public String insertStore(Model model) throws Exception {
@@ -113,6 +117,7 @@ public class StoreController {
 
 		User user = new User();
 		user = (User) session.getAttribute("loginUser");
+<<<<<<< HEAD
 		int unoCount = storeService.storeLimit(user.getUno());
 		
 		if (unoCount == 0) {
@@ -161,6 +166,26 @@ public class StoreController {
 		model.addAttribute("userInfo", userInfo);
 		return "store/delete";
 	}
+=======
+
+		store.setUno(user.getUno());
+		store.setOwner(user);
+
+		uploadStoreService.addStoreInfo(store);
+
+		String insertId = categoryService.getInsertId();
+
+		List<String> category_list = store.getCategoryName();
+
+		for (String category : category_list) {
+			categoryService.addCategoryStore(category, insertId);
+		}
+
+		// storeService.insertStore(store);
+
+		return "redirect:/store/list";
+	}
+>>>>>>> b0f1258aedcbec9b917c3f7ab44ce107cea98c95
 
 	@GetMapping("delete")
 	public String deleteStore(HttpServletRequest request, HttpSession session) throws Exception {
@@ -176,6 +201,7 @@ public class StoreController {
 	}
 
 	@GetMapping("detail")
+<<<<<<< HEAD
 	public void StoreDetail(int sno, Model model) throws Exception {
 		Store store = storeService.get(sno);
 
@@ -195,6 +221,31 @@ public class StoreController {
 //		return "store/detail";
 //	}
 
+=======
+	public String StoreDetail(HttpServletRequest request, HttpServletResponse response, Model model) throws Exception {
+
+		int sno = Integer.parseInt(request.getParameter("sno"));
+		
+		List<Product> product = productService.listStoreProduct(sno);
+		Store store = storeService.get(sno);
+		
+		model.addAttribute("product", product);
+		model.addAttribute("store", store);
+		
+		return "store/detail";
+	}
+
+	@GetMapping("{no}")
+	public String detail(@PathVariable int no, Model model) throws Exception {
+		Store store = storeService.get(no);
+		if (store == null) {
+			throw new Exception("해당 가게가 존재하지 않습니다.");
+		}
+		model.addAttribute("store", store);
+		return "store/detail";
+	}
+
+>>>>>>> b0f1258aedcbec9b917c3f7ab44ce107cea98c95
 	@PostMapping("update")
 	public String StoreDetail(HttpServletResponse response, Model model, Store store) throws Exception {
 

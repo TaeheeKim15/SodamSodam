@@ -3,6 +3,10 @@ package bitcamp.sodam.beans;
 import java.util.Date;
 
 public class Inquiry {
+<<<<<<< HEAD
+=======
+
+>>>>>>> b0f1258aedcbec9b917c3f7ab44ce107cea98c95
   private int qno;
   private int uno;
   private String title;

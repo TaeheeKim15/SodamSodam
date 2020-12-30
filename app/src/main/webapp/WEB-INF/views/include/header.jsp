@@ -2,11 +2,11 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <nav class="navbar nav-header navbar-expand-xl">
-	<a href="#" class="navbar-title"><i class="fa fa-cube"></i>소담<b>소담</b></a>
+	<a href="/" class="navbar-title"><i class="fa fa-cube"></i>소담<b>소담</b></a>
 </nav>
 
 <nav class="navbar navbar-expand-xl">
-	<a href="#" class="navbar-brand"><i class="fa fa-cube"></i>소담<b>소담</b></a>
+	<a href="/" class="navbar-brand"><i class="fa fa-cube"></i>소담<b>소담</b></a>
 	<button type="button" class="navbar-toggler" data-toggle="collapse"
 		data-target="#navbarCollapse">
 		<span class="navbar-toggler-icon"></span>

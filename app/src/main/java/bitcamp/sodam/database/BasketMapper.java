@@ -29,7 +29,11 @@ public interface BasketMapper {
   @Update("update tmk_basket set bcnt = #{bcnt} where uno=#{uno}")
   int update(Basket basket);
 
+<<<<<<< HEAD
   @Insert("insert into tmk_basket (uno,pno,bcnt, bcdt) values (#{uno}, #{pno}, #{bcnt}, #{bcdt})")
+=======
+  @Insert("insert into tmk_basket (uno,pno,bcnt) values (#{uno}, #{pno}, #{bcnt})")
+>>>>>>> b0f1258aedcbec9b917c3f7ab44ce107cea98c95
   int insert(Basket basket);
 
   @Select("select * from tmk_basket where uno = #{user.uno} AND pno = #{product.pno}")

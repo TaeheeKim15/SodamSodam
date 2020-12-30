@@ -17,6 +17,7 @@
 </head>
 <body>
 	<jsp:include page="../include/header.jsp"></jsp:include>
+<<<<<<< HEAD
 	<div class="container_1">
 		<h1 id="title-name">${store.sname }</h1>
 	</div>
@@ -51,13 +52,18 @@
 		
 	</form>
 	<h1>상품 리스트</h1>
+=======
+>>>>>>> b0f1258aedcbec9b917c3f7ab44ce107cea98c95
 	<div class="container mt-5"
-		style="min-height: calc(100vh - 132px); max-height: auto">
+		style="height: 260px; overflow: hidden; position: relative;">
+		<h2 id="title-name">${store.sname }</h2>
+		<img src="${store.sphoto}" width="100%">
+	</div>
+	<div class="container mt-5" style="min-height: calc(100vh - 450px);">
 		<div class="container-fluid">
-
 			<h3>상품목록</h3>
 			<div class="row">
-				<c:forEach var="item" items="${list}" varStatus="status">
+				<c:forEach var="item" items="${product}" varStatus="status">
 					<div class="col-4">
 						<div class="card mb-3">
 							<div class="card-img-top" style="border: 1px solid light-gray;">
@@ -87,4 +93,27 @@
 	crossorigin="anonymous"></script>
 <script src="js/main.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js"
+	integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+	crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/d1fe297f63.js"
+	crossorigin="anonymous"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script type="text/javascript">
+	
+		const addBasket = (no) => {
+			$.post("/basket/insert", {
+				pno : no,
+				bcnt : 1
+			}).done((data) => {
+				swal({
+					  title: "감사합니다!",
+					  text: "장바구니에 상품을 담았습니다.",
+					  icon: "success",
+					  button: "닫기",
+					})
+			})
+		}
+		
+	</script>
 </html>

@@ -49,7 +49,7 @@
                 <div class="card" style="width: 15rem;">
                     <img class="card-img-top" src="img/photo1.svg" alt="Card image cap">
                     <div class="card-body">
-                      <h5 class="card-title">주문내역</h5>
+                      <h5 class="card-title"><a href="/orderList">주문내역</a></h5>
                     </div>
                   </div>
               </div>

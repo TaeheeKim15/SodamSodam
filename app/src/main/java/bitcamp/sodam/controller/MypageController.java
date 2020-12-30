@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import bitcamp.sodam.beans.Coupon;
 import bitcamp.sodam.beans.Inquiry;
+<<<<<<< HEAD
 import bitcamp.sodam.beans.Product;
 import bitcamp.sodam.beans.User;
 import bitcamp.sodam.service.CouponService;
@@ -21,6 +22,13 @@ import bitcamp.sodam.service.InquiryService;
 import bitcamp.sodam.service.ProductService;
 
 
+=======
+import bitcamp.sodam.beans.Order;
+import bitcamp.sodam.beans.User;
+import bitcamp.sodam.service.CouponService;
+import bitcamp.sodam.service.InquiryService;
+import bitcamp.sodam.service.OrderService;
+>>>>>>> b0f1258aedcbec9b917c3f7ab44ce107cea98c95
 
 @Controller
 public class MypageController {
@@ -32,7 +40,12 @@ public class MypageController {
 	InquiryService inquiryService;
 	
 	@Autowired
+<<<<<<< HEAD
 	ProductService productService;
+=======
+	OrderService orderService;
+	
+>>>>>>> b0f1258aedcbec9b917c3f7ab44ce107cea98c95
 	
 	@GetMapping("/mypage")
     public String Home(){
@@ -83,7 +96,7 @@ public class MypageController {
     
     @GetMapping("/qlist")
     public String QList(HttpServletRequest request, HttpServletResponse response, HttpSession session, Model model) {
-    	System.out.println("문의내역");
+    	System.out.println("마이페이지 > 문의내역");
     	
     	User user = (User) session.getAttribute("loginUser");
         int uno = user.getUno();
@@ -120,6 +133,7 @@ public class MypageController {
     	return "mypage/q_list";
     }
     
+<<<<<<< HEAD
 	@GetMapping("/store_manager") 
     public String storeManager(HttpSession session, Model model) throws Exception {
         System.out.println("가게관리");
@@ -132,6 +146,33 @@ public class MypageController {
         	model.addAttribute("list", list);
         	
         return "mypage/store_manager";
+=======
+    
+    
+    @GetMapping("/orderList")
+    public String OrderList(HttpServletRequest request, HttpServletResponse response, HttpSession session, Model model) {
+    	
+    	System.out.println("마이페이지 > 주문내역");
+    	
+    	User user = (User) session.getAttribute("loginUser");
+        int uno = user.getUno();
+        
+        response.setContentType("text/html;charset=UTF-8");
+        response.setCharacterEncoding("UTF-8"); // 응답의 encoding을 utf-8로 변경
+
+        List<Order> list;
+        
+        try {
+			list = orderService.list(uno);
+			model.addAttribute("list", list);
+		} catch (Exception e) {
+			model.addAttribute("list", null);
+			e.printStackTrace();
+		}
+    	
+      return "mypage/order_list";
+
+>>>>>>> b0f1258aedcbec9b917c3f7ab44ce107cea98c95
     }
 }
 

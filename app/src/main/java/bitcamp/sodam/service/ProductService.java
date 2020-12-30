@@ -11,5 +11,9 @@ public interface ProductService {
   int update(Product product) throws Exception;
   int delete(int no) throws Exception;
   void deleteStoreProduct(int sno) throws Exception;
+<<<<<<< HEAD
   List<Product> findStoreProduct(int sno) throws Exception;
+=======
+  List<Product> listStoreProduct(int sno) throws Exception;
+>>>>>>> b0f1258aedcbec9b917c3f7ab44ce107cea98c95
 }
