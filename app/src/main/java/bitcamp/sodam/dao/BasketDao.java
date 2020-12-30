@@ -11,6 +11,7 @@ public interface BasketDao {
   int delete(int bno) throws Exception;
   int update(Basket basket) throws Exception;
   int insert(Basket basket) throws Exception;
+  List<Basket> basketPay(int uno) throws Exception;
 }
 
 

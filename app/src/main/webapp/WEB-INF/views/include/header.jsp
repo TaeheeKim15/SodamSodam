@@ -47,6 +47,9 @@
 							<a href="/center" class="dropdown-item">
 								<i class="fa fa-sliders"></i> 고객센터
 							</a>
+							<a href="/basketList" class="dropdown-item">
+                <i class="fas fa-shopping-cart"></i> 장바구니
+              </a>
 							<div class="divider dropdown-divider"></div>
 							<a href="/logout" class="dropdown-item">
 								<i class="material-icons">&#xE8AC;</i> 로그아웃

@@ -10,4 +10,5 @@ public interface BasketService {
   int delete(int bno) throws Exception;
   int update(Basket basket) throws Exception;
   int add(Basket basket) throws Exception;
+  List<Basket> basketPay(int uno) throws Exception;
 }

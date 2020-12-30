@@ -29,10 +29,24 @@ public interface BasketMapper {
   @Update("update tmk_basket set bcnt = #{bcnt} where uno=#{uno}")
   int update(Basket basket);
 
+<<<<<<< HEAD
   @Insert("insert into tmk_basket (uno,pno,bcnt) values (#{uno}, #{pno}, #{bcnt})")
+=======
+  @Insert("insert into tmk_basket (uno,pno,bcnt, bcdt) values (#{uno}, #{pno}, #{bcnt}, #{bcdt})")
+>>>>>>> 9a79a1aaf7df8df91520c402c5384eac045fd48c
   int insert(Basket basket);
   
   @Select("select * from tmk_basket where uno = #{user.uno} AND pno = #{product.pno}")
   Basket checkBasketProduct(@Param("product")Product product, @Param("user")User user);
+
+  @Select("select u.uno, u.name, b.bno, p.pno, bcnt, p.pname pname, p.price price, p.stock stock, s.sno, s.sname, p.photo photo "
+      + "from tmk_basket b "
+      + "join tmk_user u on u.uno = b.uno "
+      + "join tmk_product p on p.pno = b.pno "
+      + "join tmk_store_info s on s.sno = p.sno "
+      + "where u.uno=#{uno} "
+      + "order by bno asc")
+  List<Basket> basketPay(int no);
+
 
 }
