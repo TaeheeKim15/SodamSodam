@@ -24,6 +24,9 @@ public class Store {
   private MultipartFile upload_image;
   private List<String> categoryName;
   private List<Product> storeProductList;
+  private String pname;
+  private String pwd;
+  private String review;
   
 public int getSno() {
 	return sno;
@@ -139,6 +142,17 @@ public List<Product> getStoreProductList() {
 public void setStoreProductList(List<Product> storeProductList) {
   this.storeProductList = storeProductList;
 }
-  
+public String getPname() {
+	return pname;
+}
+public void setPname(String pname) {
+	this.pname = pname;
+}
+public String getPwd() {
+	return pwd;
+}
+public void setPwd(String pwd) {
+	this.pwd = pwd;
+}
   	
 }

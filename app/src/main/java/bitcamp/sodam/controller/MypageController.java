@@ -15,13 +15,26 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import bitcamp.sodam.beans.Coupon;
 import bitcamp.sodam.beans.Inquiry;
+<<<<<<< HEAD
+import bitcamp.sodam.beans.Product;
+import bitcamp.sodam.beans.User;
+import bitcamp.sodam.service.CouponService;
+import bitcamp.sodam.service.InquiryService;
+import bitcamp.sodam.service.ProductService;
+
+
+=======
 import bitcamp.sodam.beans.Order;
 import bitcamp.sodam.beans.Store;
 import bitcamp.sodam.beans.User;
 import bitcamp.sodam.service.CouponService;
 import bitcamp.sodam.service.InquiryService;
 import bitcamp.sodam.service.OrderService;
+<<<<<<< HEAD
 import bitcamp.sodam.service.UserService;
+=======
+>>>>>>> b0f1258aedcbec9b917c3f7ab44ce107cea98c95
+>>>>>>> d35d96f4ebfd5245e9803b920949fdac50fff06e
 
 @Controller
 public class MypageController {
@@ -33,11 +46,18 @@ public class MypageController {
 	InquiryService inquiryService;
 	
 	@Autowired
+<<<<<<< HEAD
+	ProductService productService;
+=======
 	OrderService orderService;
 	
+<<<<<<< HEAD
 	@Autowired
 	UserService userService;
 	
+=======
+>>>>>>> b0f1258aedcbec9b917c3f7ab44ce107cea98c95
+>>>>>>> d35d96f4ebfd5245e9803b920949fdac50fff06e
 	
 	@GetMapping("/mypage")
     public String Home(){
@@ -143,6 +163,20 @@ public class MypageController {
     	return "mypage/q_list";
     }
     
+<<<<<<< HEAD
+	@GetMapping("/store_manager") 
+    public String storeManager(HttpSession session, Model model) throws Exception {
+        System.out.println("가게관리");
+        
+    	User user = (User) session.getAttribute("loginUser");
+        int uno = user.getUno();
+        
+        	List<Product> list = productService.list();
+        	
+        	model.addAttribute("list", list);
+        	
+        return "mypage/store_manager";
+=======
     
     
     @GetMapping("/orderList")
@@ -168,6 +202,7 @@ public class MypageController {
     	
       return "mypage/order_list";
 
+>>>>>>> b0f1258aedcbec9b917c3f7ab44ce107cea98c95
     }
 }
 

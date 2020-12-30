@@ -48,9 +48,26 @@ public class DefaultProductService implements ProductService {
 		productDao.deleteStroeProduct(sno);
 	}
 
+<<<<<<< HEAD
   @Override
   public List<Product> list() throws Exception {
     return productDao.findAll();
   }
+  
+  @Override
+public List<Product> findStoreProduct(int sno) throws Exception {
+	return productDao.findStoreProduct(sno);
+}
+=======
+	@Override
+	public List<Product> list() throws Exception {
+		return productDao.findAll();
+	}
+
+	@Override
+	public List<Product> listStoreProduct(int sno) throws Exception {
+		return productDao.findAllStoreProduct(sno);
+	}
+>>>>>>> b0f1258aedcbec9b917c3f7ab44ce107cea98c95
 
 }

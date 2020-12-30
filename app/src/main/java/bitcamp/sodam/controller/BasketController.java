@@ -1,13 +1,23 @@
 package bitcamp.sodam.controller;
 
 import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+import org.springframework.web.bind.annotation.PostMapping;
+
+>>>>>>> b0f1258aedcbec9b917c3f7ab44ce107cea98c95
+>>>>>>> d35d96f4ebfd5245e9803b920949fdac50fff06e
 import bitcamp.sodam.beans.Basket;
 import bitcamp.sodam.beans.User;
 import bitcamp.sodam.service.BasketService;
@@ -131,12 +141,12 @@ public class BasketController {
     return "redirect:basketList";
   }
 
-  @GetMapping("/basket/insert")
-  public String insert(Basket basket, HttpSession session, Model model) throws Exception{
-    User loginUser = (User) session.getAttribute("loginUser");
+  @PostMapping("/basket/insert")
+  public void insert(HttpServletRequest request, HttpServletResponse response, Basket basket, HttpSession session, Model model) throws Exception{
+	User loginUser = (User) session.getAttribute("loginUser");
     basket.setUno(loginUser.getUno());
+    
     basketService.add(basket);
-    return "redirect:basketList";
   }
 }
 

@@ -17,14 +17,6 @@ public class Product {
 	private List<Store> stores;
 	private int dyesno;
 
-	public Store getMarket() {
-		return market;
-	}
-
-	public void setMarket(Store market) {
-		this.market = market;
-	}
-
 	public int getPno() {
 		return pno;
 	}
@@ -95,6 +87,14 @@ public class Product {
 
 	public void setSname(String sname) {
 		this.sname = sname;
+	}
+
+	public Store getMarket() {
+		return market;
+	}
+
+	public void setMarket(Store market) {
+		this.market = market;
 	}
 
 	public List<Store> getStores() {
