@@ -85,4 +85,11 @@ public class LoginController {
 		System.out.println("로그아웃 되었습니다.");
         return "redirect:/";
 	}
+	
+	@GetMapping("/signUp")
+	public String SignUp(HttpServletRequest request, HttpServletResponse response) {
+		response.setContentType("text/html; charset=UTF-8");
+		
+		return "auth/sign_up";
+	}
 }

@@ -20,8 +20,7 @@ public class ProductDaoImpl implements ProductDao {
 
 	@Override
 	public Product findByNo(int no) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return productMapper.findByNo(no);
 	}
 
 	@Override
@@ -51,6 +50,11 @@ public class ProductDaoImpl implements ProductDao {
 	public void deleteStroeProduct(int sno) throws Exception {
 		productMapper.deleteStoreProduct(sno);
 
+	}
+
+	@Override
+	public List<Product> findAllStoreProduct(int sno) throws Exception {
+		return productMapper.findAllStoreProduct(sno);
 	}
 
 }

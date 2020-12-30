@@ -13,6 +13,7 @@ public interface ProductDao {
   int update(Product product) throws Exception;
   int delete(int no) throws Exception;
   void deleteStroeProduct(int sno) throws Exception;
+  List<Product> findAllStoreProduct(int sno) throws Exception;
 }
 
 

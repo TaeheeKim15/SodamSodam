@@ -26,6 +26,7 @@ import bitcamp.sodam.database.CouponMapper;
 import bitcamp.sodam.database.FAQMapper;
 import bitcamp.sodam.database.InquiryMapper;
 import bitcamp.sodam.database.NoticeMapper;
+import bitcamp.sodam.database.OrderMapper;
 import bitcamp.sodam.database.ProductMapper;
 import bitcamp.sodam.database.StoreMapper;
 import bitcamp.sodam.database.UserMapper;
@@ -207,6 +208,15 @@ public class ServletAppContext implements WebMvcConfigurer {
 		return factoryBean;
 	}
 
+	
+	@Bean
+	public MapperFactoryBean<OrderMapper> order_mapper(SqlSessionFactory factory) throws Exception{
+		MapperFactoryBean<OrderMapper> factoryBean = new MapperFactoryBean<>(OrderMapper.class);
+		factoryBean.setSqlSessionFactory(factory);
+		return factoryBean;
+	}
+	
+	
 	@Bean
 	// multipart/form-data로 전송한 데이터를 추출하는 기능을 제공해주는 Bean
 	public StandardServletMultipartResolver multipartResolver() {
