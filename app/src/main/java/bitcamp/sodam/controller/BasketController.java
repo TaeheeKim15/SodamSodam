@@ -2,17 +2,14 @@ package bitcamp.sodam.controller;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-
 import bitcamp.sodam.beans.Basket;
 import bitcamp.sodam.beans.Coupon;
 import bitcamp.sodam.beans.User;
@@ -64,6 +61,7 @@ public class BasketController {
       model.addAttribute("tsum", commaTSum);
       model.addAttribute("tsum2", tsum);
 
+
     } catch (Exception e) {
       model.addAttribute("list", null);
       e.printStackTrace();
@@ -72,7 +70,7 @@ public class BasketController {
   }
 
   @GetMapping("/basketPay")
-  public String basketPay(HttpServletRequest request, HttpServletResponse response, HttpSession session, Model model) throws Exception {
+  public String basketPay(HttpServletResponse response, HttpSession session, Model model) throws Exception {
     System.out.println("페이로 넘어가라");
 
     User user = (User) session.getAttribute("loginUser");
@@ -102,7 +100,7 @@ public class BasketController {
 
       model.addAttribute("cList", coupon_list);
 
-      list = basketService.list(uno);
+      list = basketService.basketPay(uno);
       for (Basket basket : list) {
         basket.setPriceCommas(String.format("%,d", basket.getPrice()));
       }
@@ -122,6 +120,7 @@ public class BasketController {
 
       int tsum = sum + 2500;
       String commaTSum = String.format("%,d", tsum);
+
 
       model.addAttribute("tsum", commaTSum);
       model.addAttribute("tsum2", tsum);
@@ -164,9 +163,11 @@ public class BasketController {
 
   @PostMapping("/basket/insert")
   public void insert(HttpServletRequest request, HttpServletResponse response, Basket basket, HttpSession session, Model model) throws Exception{
-	User loginUser = (User) session.getAttribute("loginUser");
+    User loginUser = (User) session.getAttribute("loginUser");
     basket.setUno(loginUser.getUno());
-    
+
     basketService.add(basket);
   }
+
+
 }

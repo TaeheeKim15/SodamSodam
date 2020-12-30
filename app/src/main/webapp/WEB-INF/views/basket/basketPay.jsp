@@ -141,7 +141,7 @@ tr {
 
 						<tr class="box13">
 							<td class="box16"><i class="fas fa-minus box16"></i> 쿠폰</td>
-							<td><p class="box17">xxx 원</p></td>
+							<td><p class="box17">${cuprice} 원</p></td>
 						</tr>
 
 						<tr class="box13 box14">
@@ -225,12 +225,6 @@ var pay = function(){
 
 
 
-function basketDelete(bno){
-  $.get("/delete?bno="+bno)
-   .done(function(data){
-     window.location.href='basketList'
-   })
-}
 
 </script>
 
