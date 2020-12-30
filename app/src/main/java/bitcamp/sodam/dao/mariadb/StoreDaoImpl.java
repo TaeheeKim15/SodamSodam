@@ -1,10 +1,14 @@
 package bitcamp.sodam.dao.mariadb;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
 import bitcamp.sodam.beans.Category;
+import bitcamp.sodam.beans.Product;
 import bitcamp.sodam.beans.Store;
+import bitcamp.sodam.beans.User;
 import bitcamp.sodam.dao.StoreDao;
 import bitcamp.sodam.database.StoreMapper;
 
@@ -43,13 +47,30 @@ public class StoreDaoImpl implements StoreDao {
 	}
 	
 	@Override
+	public int deleteCategory(int no) throws Exception {
+	    return storeMapper.deleteCategory(no);
+	}
+	
+	@Override
 	public Store findByNoStore(int sno) throws Exception {
 		return storeMapper.findByNoStore(sno);
 	}
 	
 	@Override
-	public int deleteCategory(int no) throws Exception {
-	    return storeMapper.deleteCategory(no);
+	public List<Product> fintByStoreProduct() throws Exception {
+		return storeMapper.findByStoreProduct();
+	}
+	@Override
+	public int checkUnoCount(int uno) throws Exception {
+		return storeMapper.checkUnoCount(uno);
+	}
+	@Override
+	public User findUnoPwd(int uno, String pwd) throws Exception {
+		return storeMapper.findPwd(uno, pwd);
 	}
 	
+	@Override
+	public List<User> findAll() throws Exception {
+		return storeMapper.findAll();
+	}
 }

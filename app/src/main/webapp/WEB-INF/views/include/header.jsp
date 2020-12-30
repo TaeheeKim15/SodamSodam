@@ -34,25 +34,27 @@
 			<c:otherwise>
 				<div class="navbar-nav ml-auto">
 					<div class="nav-item dropdown">
-						<a href="#" data-toggle="dropdown" class="nav-item nav-link dropdown-toggle user-action">
-							<img src="${sessionScope.loginUser.uphoto }" class="avatar" alt="Avatar"> ${sessionScope.loginUser.name } <b class="caret"></b>
+						<a href="#" data-toggle="dropdown"
+							class="nav-item nav-link dropdown-toggle user-action"> <img
+							src="${sessionScope.loginUser.uphoto }" class="avatar"
+							alt="Avatar"> ${sessionScope.loginUser.name } <b
+							class="caret"></b>
 						</a>
 						<div class="dropdown-menu">
-							<a href="/mypage" class="dropdown-item">
-								<i class="fa fa-user-o"></i>마이페이지
+							<a href="/mypage" class="dropdown-item"> <i
+								class="fa fa-user-o"></i>마이페이지
+							</a> <a href="/store_manager" class="dropdown-item"> 
+							<i class="fas fa-store"></i>가게관리
+							</a> <a href="/login" class="dropdown-item"> <i
+								class="fa fa-calendar-o"></i> 로그인
+							</a> <a href="/center" class="dropdown-item"> <i
+								class="fa fa-sliders"></i> 고객센터
+							</a> <a href="/basketList" class="dropdown-item"> <i
+								class="fas fa-shopping-cart"></i> 장바구니
 							</a>
-							<a href="/login" class="dropdown-item">
-								<i class="fa fa-calendar-o"></i> 로그인
-							</a>
-							<a href="/center" class="dropdown-item">
-								<i class="fa fa-sliders"></i> 고객센터
-							</a>
-							<a href="/basketList" class="dropdown-item">
-                <i class="fas fa-shopping-cart"></i> 장바구니
-              </a>
 							<div class="divider dropdown-divider"></div>
-							<a href="/logout" class="dropdown-item">
-								<i class="material-icons">&#xE8AC;</i> 로그아웃
+							<a href="/logout" class="dropdown-item"> <i
+								class="material-icons">&#xE8AC;</i> 로그아웃
 							</a>
 						</div>
 					</div>
