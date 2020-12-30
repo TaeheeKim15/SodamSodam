@@ -19,13 +19,17 @@
             </ul>
           </div>
           
-          <div class="col-lg-7">
+          <div class="col-lg-4">
             <h3>팀원소개</h3>
-            <img class="img-thumbnail" src="http://placehold.it/150x100" alt="" />
-            <img class="img-thumbnail" src="http://placehold.it/150x100" alt="" />
-            <img class="img-thumbnail" src="http://placehold.it/150x100" alt="" />
-            <img class="img-thumbnail" src="http://placehold.it/150x100" alt="" />
-            <img class="img-thumbnail" src="http://placehold.it/150x100" alt="" />
+            <img class="img-thumbnail" style="height:110px" src="https://lh3.googleusercontent.com/proxy/cNYLGnjriXcOjIRsHaJzauTDkH_RQGxMzQnVjk1QxDcO9lOeLnRTOf143Fr_pb5o0QHrZC-2uyCcWBbiBORVzS-mazJnWdby_r55WaDI08zWgkCoKzn1CvT_XLy4vhxExWufft4rqHbNWyV-eI08TTSchKXNmTnxqAolYTjEDXzT6GtHSXeSDtqNG3lyots" alt="" />
+            <img class="img-thumbnail" style="height:110px" src="https://www.greenpostkorea.co.kr/news/photo/201807/93706_89149_812.jpg" alt="" />
+            <img class="img-thumbnail" style="height:110px" src="https://cdnimage.ebn.co.kr/news/201701/news_1485390228_873781_main1.gif" alt="" />
+            <img class="img-thumbnail" style="height:110px" src="https://spnimage.edaily.co.kr/images/photo/files/NP/S/2020/10/PS20100800026.jpg" alt="" />
+            <img class="img-thumbnail" style="height:110px" src="https://img.hankyung.com/photo/201807/20180705114334_5b3d85d68bcec_1.jpg" alt="" />
+          </div>
+          <div class="col-lg-3">
+            <h3>지도강사</h3>
+            <img class="img-thumbnail" style="height:110px" src="https://yt3.ggpht.com/ytc/AAUvwng73w7WI9T181SMhXLSYw13whwWH7tTlKwVssMKjg=s900-c-k-c0x00ffffff-no-rj" alt="" />
           </div>
           
         </div>

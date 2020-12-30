@@ -17,9 +17,7 @@
 	<div class="container mt-5" style="min-height: calc(100vh - 132px);">
 		<div class="row">
 			<div class="col-sm-6">
-				<img
-					src="${product.photo }"
-					class="img-fluid" alt="...">
+				<img src="${product.photo }" class="img-fluid" alt="...">
 			</div>
 			<div class="col-sm-6">
 				<div class="row">
@@ -67,45 +65,58 @@
 		</div>
 		<div class="row justify-content-end">
 			<div>
-				<button type="button" class="btn btn-outline-warning btn-lg" onclick="addBasket(${product.pno})">장바구니</button>
+				<button type="button" class="btn btn-outline-warning btn-lg"
+					onclick="addBasket(${product.pno})">장바구니</button>
 			</div>
 
 		</div>
-		<div class="row mt-5">
-			<div class="col-sm-3">
-				<img
-					src="https://www.chungjungone.com/knowhow/images/blog/recipe/r294_201804/1.jpg"
-					class="img-thumbnail" alt="...">
-			</div>
-			<div class="col-sm-3">
-				<img
-					src="https://www.chungjungone.com/knowhow/images/blog/recipe/r294_201804/1.jpg"
-					class="img-thumbnail" alt="...">
-			</div>
-			<div class="col-sm-3">
-				<img
-					src="https://www.chungjungone.com/knowhow/images/blog/recipe/r294_201804/1.jpg"
-					class="img-thumbnail" alt="...">
-			</div>
-			<div class="col-sm-3">
-				<img
-					src="https://www.chungjungone.com/knowhow/images/blog/recipe/r294_201804/1.jpg"
-					class="img-thumbnail" alt="...">
-			</div>
+		<h3>상품목록</h3>
+		<div class="row">
+			<c:forEach var="item" items="${product_list}">
+				<div class="col-4">
+					<div class="card mb-3">
+						<div class="card-img-top" style="border: 1px solid light-gray;">
+
+							<img class="card-img-top" src="/fileproductpath/${item.photo}"
+								alt="Card image cap" height="229">
+							<div class="card-body">
+								<h5 class="card-title"
+									style="max-height: 50px; margin-top: 11px; font-size: 16px;">
+									<a href="/product/detail?pno=${item.pno}">${item.pname}</a>
+								</h5>
+								<p class="card-text"
+									style="padding-top: 6px; font-weight: 700; font-size: 16px; line-height: 20px;">${item.price}</p>
+								<button type="button" class="btn btn-outline-primary"
+									onclick="addBasket(${item.pno})">장바구니</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</c:forEach>
 		</div>
 	</div>
+
 	<jsp:include page="../include/footer.jsp"></jsp:include>
 	<script src="https://code.jquery.com/jquery-3.5.1.js"
 		integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
 		crossorigin="anonymous"></script>
+	<script src="https://kit.fontawesome.com/d1fe297f63.js" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+	<script>
+	
 	<script type="text/javascript">
 	
+	
 	const addBasket = (no) => {
-		int bcnt = $("#bcnt").val();
+		bcnt = $("#bcnt").val();
 		if (bcnt < 1){
 			alert("수량은 1이상이어야합니다")
-		}
+			break;
+		};
 		$.post("/basket/insert", {
 			pno : no,
 			bcnt : bcnt
@@ -118,6 +129,7 @@
 				})
 		})
 	}
+	
 	</script>
 </body>
 </html>
