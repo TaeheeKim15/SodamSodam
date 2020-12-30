@@ -39,4 +39,11 @@ public class DefaultBasketService implements BasketService {
     return basketdao.insert(basket);
   }
 
+
+  @Override
+  public List<Basket> basketPay(int uno) throws Exception {
+    List<Basket> basket = basketdao.basketPay(uno);
+    return basket;
+  }
+
 }
