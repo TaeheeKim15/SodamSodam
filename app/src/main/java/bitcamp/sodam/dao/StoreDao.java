@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 import bitcamp.sodam.beans.Category;
 import bitcamp.sodam.beans.Product;
 import bitcamp.sodam.beans.Store;
+import bitcamp.sodam.beans.User;
 
 @Repository
 public interface StoreDao {
@@ -18,4 +19,7 @@ public interface StoreDao {
   int updateStore(Store store) throws Exception;
   Store findByNoStore(int sno) throws Exception;
   List<Product> fintByStoreProduct() throws Exception;
-}
+  int checkUnoCount(int uno) throws Exception;
+  User findUnoPwd(int uno, String pwd) throws Exception;
+  List<User> findAll() throws Exception;
+} 

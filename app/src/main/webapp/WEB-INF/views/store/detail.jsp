@@ -50,6 +50,37 @@
 		<div><input type='text' value="${plist.pname }"></div>
 		
 	</form>
+	<h1>상품 리스트</h1>
+	<div class="container mt-5"
+		style="min-height: calc(100vh - 132px); max-height: auto">
+		<div class="container-fluid">
+
+			<h3>상품목록</h3>
+			<div class="row">
+				<c:forEach var="item" items="${list}" varStatus="status">
+					<div class="col-4">
+						<div class="card mb-3">
+							<div class="card-img-top" style="border: 1px solid light-gray;">
+
+								<img class="card-img-top" src="/fileproductpath/${item.photo}"
+									alt="Card image cap" height="229">
+								<div class="card-body">
+									<h5 class="card-title"
+										style="max-height: 50px; margin-top: 11px; font-size: 16px;">
+										<a href="/product/detail?pno=${item.pno}">${item.pname}</a>
+									</h5>
+									<p class="card-text"
+										style="padding-top: 6px; font-weight: 700; font-size: 16px; line-height: 20px;">${item.price}</p>
+									<button type="button" class="btn btn-outline-primary"
+										onclick="addBasket(${item.pno})">장바구니</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</c:forEach>
+			</div>
+		</div>
+	</div>
 	<jsp:include page="../include/footer.jsp"></jsp:include>
 </body>
 <script src="https://kit.fontawesome.com/d1fe297f63.js"

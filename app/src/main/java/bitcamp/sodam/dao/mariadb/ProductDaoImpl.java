@@ -20,8 +20,7 @@ public class ProductDaoImpl implements ProductDao {
 
 	@Override
 	public Product findByNo(int no) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return productMapper.findByNo(no);
 	}
 
 	@Override

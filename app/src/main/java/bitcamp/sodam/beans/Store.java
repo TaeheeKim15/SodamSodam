@@ -25,6 +25,8 @@ public class Store {
   private List<String> categoryName;
   private List<Product> storeProductList;
   private String pname;
+  private String pwd;
+  private String review;
   
 public int getSno() {
 	return sno;
@@ -146,6 +148,11 @@ public String getPname() {
 public void setPname(String pname) {
 	this.pname = pname;
 }
-  
+public String getPwd() {
+	return pwd;
+}
+public void setPwd(String pwd) {
+	this.pwd = pwd;
+}
   	
 }

@@ -38,16 +38,16 @@
                   </div>
               </div>
               <div class="col-sm">
-                <div class="card" style="width: 15rem;">
+                <div class="card" style="width: 20rem;">
                     <img class="card-img-top" src="img/photo1.svg" alt="Card image cap">
                     <div class="card-body">
-                      <h4 class="card-title"><a href="/user_detail">상품 관리</a></h4>
-                      <h5 class="card-title"><a href="/user_detail">가게에 등록되어있는 상품을 관리합니다.</a></h5>
+                      <h4 class="card-title"><a href="/product_list1">상품 관리</a></h4>
+                      <h5 class="card-title">가게에 등록되어있는 상품을 관리합니다.</h5>
                     </div>
                   </div>
               </div>
               <div class="col-sm">
-                <div class="card" style="width: 15rem;">
+                <div class="card" style="width: 20rem;">
                     <img class="card-img-top" src="img/photo1.svg" alt="Card image cap">
                     <div class="card-body">
                       <h4 class="card-title"><a href="/user_detail">가게 삭제</a></h4>

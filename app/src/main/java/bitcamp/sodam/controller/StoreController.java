@@ -1,7 +1,10 @@
 package bitcamp.sodam.controller;
 
+import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,12 +14,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import bitcamp.sodam.beans.Category;
-import bitcamp.sodam.beans.Product;
 import bitcamp.sodam.beans.Store;
 import bitcamp.sodam.beans.User;
 import bitcamp.sodam.service.CategoryService;
@@ -70,6 +71,33 @@ public class StoreController {
 
 		return "store/storeList";
 	}
+	
+	@GetMapping("review")
+	public String StoreReview(HttpServletRequest request, HttpServletResponse response, HttpSession session, Model model)
+			throws Exception {
+		System.out.println("가게목록");
+
+		response.setContentType("text/html;charset=UTF-8");
+
+		response.setCharacterEncoding("UTF-8"); // 응답의 encoding을 utf-8로 변경
+
+		List<Store> store_list = new ArrayList();
+		List<Store> list;
+		try {
+			list = storeService.list();
+			for (Store store : list) {
+				List<Category> category = categoryService.list(store.getSno());
+				store.setCategory(category);
+				store_list.add(store);
+			}
+			model.addAttribute("list", store_list);
+		} catch (Exception e) {
+			model.addAttribute("list", null);
+			e.printStackTrace();
+		}
+
+		return "store/storeList";
+	}
 
 	@GetMapping("form")
 	public String insertStore(Model model) throws Exception {
@@ -85,23 +113,53 @@ public class StoreController {
 
 		User user = new User();
 		user = (User) session.getAttribute("loginUser");
-
-		store.setUno(user.getUno());
-		store.setOwner(user);
-
-		uploadStoreService.addStoreInfo(store);
-
-		String insertId = categoryService.getInsertId();
-
-		List<String> category_list = store.getCategoryName();
-
-		for (String category : category_list) {
-			categoryService.addCategoryStore(category, insertId);
+		int unoCount = storeService.storeLimit(user.getUno());
+		
+		if (unoCount == 0) {
+			store.setUno(user.getUno());
+			store.setOwner(user);
+			
+			uploadStoreService.addStoreInfo(store);
+			
+			String insertId = categoryService.getInsertId();
+			
+			List<String> category_list = store.getCategoryName();
+			
+			for (String category : category_list) {
+				categoryService.addCategoryStore(category, insertId);
+			}
+		} else {
+			throw new Exception("등록된 가게가 이미 존재합니다.");
 		}
-
 		// storeService.insertStore(store);
-
 		return "redirect:/store/list";
+	}
+	
+	@GetMapping("delete_form")
+	public String deleteForm(HttpServletRequest request, HttpServletResponse response, HttpSession session, Model model) throws Exception {
+		System.out.println("가게삭제폼");
+		
+	    User user = (User) session.getAttribute("loginUser");
+	    int uno = user.getUno();
+	    String pwd = request.getParameter("pwd");
+		PrintWriter out;
+		
+		response.setContentType("text/html; charset=UTF-8");
+		
+		try {
+			out = response.getWriter();
+			
+			if (user.getUno() != uno) {
+				out.println("<script>alert('존재하지 않는 사용자입니다.');</script>");
+			} if (user.getPwd() != pwd) {
+				out.println("<script>alert('비밀번호가 일치하지 않습니다.');</script>");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		User userInfo = storeService.getUnoPwd(uno, pwd);
+		model.addAttribute("userInfo", userInfo);
+		return "store/delete";
 	}
 
 	@GetMapping("delete")

@@ -1,6 +1,7 @@
 package bitcamp.sodam.service;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 import bitcamp.sodam.beans.Category;
 import bitcamp.sodam.beans.Product;
 import bitcamp.sodam.beans.Store;
+import bitcamp.sodam.beans.User;
 import bitcamp.sodam.dao.StoreDao;
 
 @Service
@@ -54,4 +56,19 @@ public class DefaultStoreService implements StoreService{
 	public List<Product> plist() throws Exception {
 			return storeDao.fintByStoreProduct();
 	}
+	
+	@Override
+		public int storeLimit(int uno) throws Exception {
+			return storeDao.checkUnoCount(uno);
+		}
+	
+	@Override
+		public User getUnoPwd(int uno, String pwd) throws Exception {
+			return storeDao.findUnoPwd(uno, pwd);
+		}
+	
+	@Override
+		public List<User> ulist() throws Exception {
+			return storeDao.findAll();
+		}
   }
