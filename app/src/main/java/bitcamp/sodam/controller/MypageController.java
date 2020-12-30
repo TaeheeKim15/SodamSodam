@@ -112,7 +112,11 @@ public class MypageController {
     	return "mypage/q_list";
     }
     
-    
+	@GetMapping("/store_manager")
+    public String storeManager(){
+        System.out.println("가게관리");
+        return "mypage/store_manager";
+    }
 }
 
 

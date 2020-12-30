@@ -47,6 +47,8 @@
 		영업시간: <input type='time' name='sdt' value="${store.sdt }"> ~ <input
 			type='time' name='edt' value="${store.edt }"><br> 등록일:
 		${store.scdt }<br> <a href='list'>목록</a>
+		<div><input type='text' value="${plist.pname }"></div>
+		
 	</form>
 	<jsp:include page="../include/footer.jsp"></jsp:include>
 </body>

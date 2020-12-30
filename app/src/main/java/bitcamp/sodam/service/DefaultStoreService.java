@@ -6,6 +6,7 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import bitcamp.sodam.beans.Category;
+import bitcamp.sodam.beans.Product;
 import bitcamp.sodam.beans.Store;
 import bitcamp.sodam.dao.StoreDao;
 
@@ -48,4 +49,9 @@ public class DefaultStoreService implements StoreService{
     public int deleteCategory(int no) throws Exception {
             return storeDao.deleteCategory(no);
     }
+
+	@Override
+	public List<Product> plist() throws Exception {
+			return storeDao.fintByStoreProduct();
+	}
   }

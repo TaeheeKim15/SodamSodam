@@ -52,5 +52,10 @@ public class DefaultProductService implements ProductService {
   public List<Product> list() throws Exception {
     return productDao.findAll();
   }
+  
+  @Override
+public List<Product> findStoreProduct(int sno) throws Exception {
+	return productDao.findStoreProduct(sno);
+}
 
 }

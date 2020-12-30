@@ -22,7 +22,7 @@ public class BasketDaoImpl implements BasketDao {
   public List<Basket> findBasketList(int uno) throws Exception {
     return basketMapper.findBasketList(uno);
   }
-  //
+
   @Override
   public int deleteAll(int uno) throws Exception {
     return basketMapper.deleteAll(uno);
@@ -42,5 +42,9 @@ public class BasketDaoImpl implements BasketDao {
   @Override
   public int insert(Basket basket) throws Exception {
     return basketMapper.insert(basket);
+  }
+  @Override
+  public List<Basket> basketPay(int uno) throws Exception {
+    return basketMapper.basketPay(uno);
   }
 }

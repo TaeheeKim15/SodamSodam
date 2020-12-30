@@ -9,6 +9,7 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import bitcamp.sodam.beans.Category;
+import bitcamp.sodam.beans.Product;
 import bitcamp.sodam.beans.Store;
 
 public interface StoreMapper {
@@ -38,4 +39,9 @@ public interface StoreMapper {
   @Delete("delete from tmk_store_info where sno=#{sno}")
   int deleteStore(int sno);
   
+  @Select("SELECT s.sno, p.pname FROM tmk_store_info s "
+  		+ "JOIN tmk_product p "
+  		+ "ON s.sno = p.sno "
+  		+ "WHERE s.sno =#{sno}")
+  List<Product> findByStoreProduct();
 }

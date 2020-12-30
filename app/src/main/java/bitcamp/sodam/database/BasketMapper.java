@@ -29,7 +29,7 @@ public interface BasketMapper {
   @Update("update tmk_basket set bcnt = #{bcnt} where uno=#{uno}")
   int update(Basket basket);
 
-  @Insert("insert into tmk_basket (bno,uno,pno,bcnt, bcdt) values (#{bno}, #{uno}, #{pno}, #{bcnt}, #{bcdt})")
+  @Insert("insert into tmk_basket (uno,pno,bcnt, bcdt) values (#{uno}, #{pno}, #{bcnt}, #{bcdt})")
   int insert(Basket basket);
   
   @Select("select * from tmk_basket where uno = #{user.uno} AND pno = #{product.pno}")
@@ -38,5 +38,15 @@ public interface BasketMapper {
   @Insert("insert into tmk_basket (uno, pno, bcnt, bcdt) values (#{uno}, #{pno}, #{bcnt}, '2020-01-01')")
   int basketinsert(@Param("uno") int uno, @Param("pno") int pno, @Param("bcnt") int bcnt);
   
+
+  @Select("select u.uno, u.name, b.bno, p.pno, bcnt, p.pname pname, p.price price, p.stock stock, s.sno, s.sname, p.photo photo "
+      + "from tmk_basket b "
+      + "join tmk_user u on u.uno = b.uno "
+      + "join tmk_product p on p.pno = b.pno "
+      + "join tmk_store_info s on s.sno = p.sno "
+      + "where u.uno=#{uno} "
+      + "order by bno asc")
+  List<Basket> basketPay(int no);
+
 
 }

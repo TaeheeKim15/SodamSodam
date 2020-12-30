@@ -1,11 +1,12 @@
 package bitcamp.sodam.dao;
 
 import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
 import bitcamp.sodam.beans.Category;
+import bitcamp.sodam.beans.Product;
 import bitcamp.sodam.beans.Store;
-import bitcamp.sodam.beans.User;
 
 @Repository
 public interface StoreDao {
@@ -16,4 +17,5 @@ public interface StoreDao {
   List<Category> findByNo() throws Exception;
   int updateStore(Store store) throws Exception;
   Store findByNoStore(int sno) throws Exception;
+  List<Product> fintByStoreProduct() throws Exception;
 }
