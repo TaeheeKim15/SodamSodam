@@ -2,20 +2,23 @@ package bitcamp.sodam.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
 import bitcamp.sodam.beans.Coupon;
 import bitcamp.sodam.beans.Inquiry;
+import bitcamp.sodam.beans.Order;
 import bitcamp.sodam.beans.User;
 import bitcamp.sodam.service.CouponService;
 import bitcamp.sodam.service.InquiryService;
-
-
+import bitcamp.sodam.service.OrderService;
 
 @Controller
 public class MypageController {
@@ -25,6 +28,10 @@ public class MypageController {
 	
 	@Autowired
 	InquiryService inquiryService;
+	
+	@Autowired
+	OrderService orderService;
+	
 	
 	@GetMapping("/mypage")
     public String Home(){
@@ -75,7 +82,7 @@ public class MypageController {
     
     @GetMapping("/qlist")
     public String QList(HttpServletRequest request, HttpServletResponse response, HttpSession session, Model model) {
-    	System.out.println("문의내역");
+    	System.out.println("마이페이지 > 문의내역");
     	
     	User user = (User) session.getAttribute("loginUser");
         int uno = user.getUno();
@@ -113,6 +120,31 @@ public class MypageController {
     }
     
     
+    
+    @GetMapping("/orderList")
+    public String OrderList(HttpServletRequest request, HttpServletResponse response, HttpSession session, Model model) {
+    	
+    	System.out.println("마이페이지 > 주문내역");
+    	
+    	User user = (User) session.getAttribute("loginUser");
+        int uno = user.getUno();
+        
+        response.setContentType("text/html;charset=UTF-8");
+        response.setCharacterEncoding("UTF-8"); // 응답의 encoding을 utf-8로 변경
+
+        List<Order> list;
+        
+        try {
+			list = orderService.list(uno);
+			model.addAttribute("list", list);
+		} catch (Exception e) {
+			model.addAttribute("list", null);
+			e.printStackTrace();
+		}
+    	
+      return "mypage/order_list";
+
+    }
 }
 
 
