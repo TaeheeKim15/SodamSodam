@@ -30,24 +30,37 @@
 		</div>
 	</div>
 	<hr>
-	   <h1>상품 리스트</h1>
-	<form id="store-update-form" action='/store/update' method='post'
-		enctype="multipart/form-data" accept-charset="UTF-8">
-		<div class="form-group"></div>
-		상호명: <input type='text' name='sname' value='${store.sname }'><br>
-		가게소개:
-		<textarea name='sint' rows='10' cols='60'>${store.sint }</textarea>
-		<br> 전화번호: <input type='tel' name='stel' value='${store.stel }'><br>
-		주소: <input type='text' name='saddr' value='${store.saddr }'><br>
-		상세주소: <input type='text' name='s_det_addr'
-			value='${store.s_det_addr }'><br>
-		<!--  배송여부: <input type='radio' name='dyesno' value='1'>예
-          + <input type='radio' name='dyesno' value='0'>아니오<br>
-           -->
-		영업시간: <input type='time' name='sdt' value="${store.sdt }"> ~ <input
-			type='time' name='edt' value="${store.edt }"><br> 등록일:
-		${store.scdt }<br> <a href='list'>목록</a>
-	</form>
+	<h1>상품 리스트</h1>
+	<div class="container mt-5"
+		style="min-height: calc(100vh - 132px); max-height: auto">
+		<div class="container-fluid">
+
+			<h3>상품목록</h3>
+			<div class="row">
+				<c:forEach var="item" items="${list}" varStatus="status">
+					<div class="col-4">
+						<div class="card mb-3">
+							<div class="card-img-top" style="border: 1px solid light-gray;">
+
+								<img class="card-img-top" src="/fileproductpath/${item.photo}"
+									alt="Card image cap" height="229">
+								<div class="card-body">
+									<h5 class="card-title"
+										style="max-height: 50px; margin-top: 11px; font-size: 16px;">
+										<a href="/product/detail?pno=${item.pno}">${item.pname}</a>
+									</h5>
+									<p class="card-text"
+										style="padding-top: 6px; font-weight: 700; font-size: 16px; line-height: 20px;">${item.price}</p>
+									<button type="button" class="btn btn-outline-primary"
+										onclick="addBasket(${item.pno})">장바구니</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</c:forEach>
+			</div>
+		</div>
+	</div>
 	<jsp:include page="../include/footer.jsp"></jsp:include>
 </body>
 <script src="https://kit.fontawesome.com/d1fe297f63.js"

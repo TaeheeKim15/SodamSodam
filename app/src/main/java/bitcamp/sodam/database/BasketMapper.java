@@ -29,14 +29,10 @@ public interface BasketMapper {
   @Update("update tmk_basket set bcnt = #{bcnt} where uno=#{uno}")
   int update(Basket basket);
 
-  @Insert("insert into tmk_basket (bno,uno,pno,bcnt, bcdt) values (#{bno}, #{uno}, #{pno}, #{bcnt}, #{bcdt})")
+  @Insert("insert into tmk_basket (uno,pno,bcnt) values (#{uno}, #{pno}, #{bcnt})")
   int insert(Basket basket);
   
   @Select("select * from tmk_basket where uno = #{user.uno} AND pno = #{product.pno}")
   Basket checkBasketProduct(@Param("product")Product product, @Param("user")User user);
-  
-  @Insert("insert into tmk_basket (uno, pno, bcnt, bcdt) values (#{uno}, #{pno}, #{bcnt}, '2020-01-01')")
-  int basketinsert(@Param("uno") int uno, @Param("pno") int pno, @Param("bcnt") int bcnt);
-  
 
 }

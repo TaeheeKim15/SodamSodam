@@ -92,12 +92,12 @@ public class MypageController {
           for(Inquiry tmp_inquiry : list) {
             
             switch(tmp_inquiry.getQtype()) {
-            case 0 : tmp_inquiry.setType("배송"); break;
-            case 1 : tmp_inquiry.setType("포인트"); break;
-            case 2 : tmp_inquiry.setType("결제/환불"); break;
-            case 3 : tmp_inquiry.setType("쿠폰"); break;
-            case 4 : tmp_inquiry.setType("상품"); break;
-            default: tmp_inquiry.setType("기타"); break;                 
+				/*
+				 * case 0 : tmp_inquiry.setType("배송"); break; case 1 :
+				 * tmp_inquiry.setType("포인트"); break; case 2 : tmp_inquiry.setType("결제/환불");
+				 * break; case 3 : tmp_inquiry.setType("쿠폰"); break; case 4 :
+				 * tmp_inquiry.setType("상품"); break; default: tmp_inquiry.setType("기타"); break;
+				 */             
             }
             inquiry_list.add(tmp_inquiry);
             
