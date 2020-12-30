@@ -11,14 +11,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import bitcamp.sodam.beans.Coupon;
 import bitcamp.sodam.beans.Inquiry;
 import bitcamp.sodam.beans.Order;
+import bitcamp.sodam.beans.Store;
 import bitcamp.sodam.beans.User;
 import bitcamp.sodam.service.CouponService;
 import bitcamp.sodam.service.InquiryService;
 import bitcamp.sodam.service.OrderService;
+import bitcamp.sodam.service.UserService;
 
 @Controller
 public class MypageController {
@@ -32,6 +35,9 @@ public class MypageController {
 	@Autowired
 	OrderService orderService;
 	
+	@Autowired
+	UserService userService;
+	
 	
 	@GetMapping("/mypage")
     public String Home(){
@@ -39,6 +45,24 @@ public class MypageController {
         return "mypage/main";
     }
     
+	@PostMapping("/user_detail")
+	public String UserDetail (HttpServletResponse response, Model model, Store store) throws Exception {
+		System.out.println("마이페이지 > 개인정보수정");
+		
+		response.setContentType("text/html;charset=UTF-8");
+
+		response.setCharacterEncoding("UTF-8"); // 응답의 encoding을 utf-8로 변경
+
+		try {
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return "redirect:/mypage/user_detail";
+
+	}
+	
     @GetMapping("/coupon")
     public String CouponList(HttpServletRequest request, HttpServletResponse response, HttpSession session, Model model) {
     	System.out.println("마이페이지>쿠폰");
