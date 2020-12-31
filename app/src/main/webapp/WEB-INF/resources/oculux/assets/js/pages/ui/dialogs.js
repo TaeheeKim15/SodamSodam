@@ -52,6 +52,10 @@ $(function () {
 			var value = $(this).attr('value');
 			showCouponDeletelMessage(value);
         }
+        else if (type === 'couponItemDelete') {
+			var value = $(this).attr('value');
+			showCouponItemDeletelMessage(value);
+        }
         
     });
 });
@@ -304,6 +308,34 @@ function showCouponDeletelMessage(value) {
 			})
 			.done(function(){
 				window.location = '/admin/coupon'
+			})
+	
+			
+            swal("삭제 되었습니다!", "", "success");
+        }
+    });
+}
+
+function showCouponItemDeletelMessage(value) {
+    swal({
+        title: "정말 삭제할까요?",
+        text: "한번 삭제하면 복구할 수 없습니다!",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#dc3545",
+        confirmButtonText: "네",
+        cancelButtonText: "아니요",
+        closeOnConfirm: false,
+        closeOnCancel: true
+    }, function (isConfirm) {
+        if (isConfirm) {
+	
+			$.post("/admin/coupon_item_delete", 
+			{
+			    cuno:value
+			})
+			.done(function(){
+				window.location = '/admin/coupon_list'
 			})
 	
 			

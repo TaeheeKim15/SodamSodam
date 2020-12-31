@@ -141,17 +141,20 @@ public class StoreController {
 		return "store/detail";
 	}
 
-	@PostMapping("update")
-	public String StoreDetail(HttpServletResponse response, Model model, Store store) throws Exception {
+	@GetMapping("update")
+	public String StoreUpdate(HttpServletRequest request, HttpServletResponse response, Model model) throws Exception {
 
 		response.setContentType("text/html;charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
+		
+		String sno = request.getParameter("sno");
 
-		List<Store> list = storeService.list();
+		Store store = storeService.get(Integer.parseInt(sno));
+		List<Category> my_clist = categoryService.list(Integer.parseInt(sno));
 		List<Category> clist = categoryService.list();
-		uploadStoreService.editStoreInfo(store);
 
-		model.addAttribute("list", list);
+		model.addAttribute("store", store);
+		model.addAttribute("my_clist", my_clist);
 		model.addAttribute("clist", clist);
 
 		/* int count = storeService.updateStore(store); */

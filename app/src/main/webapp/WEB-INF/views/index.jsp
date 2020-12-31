@@ -20,8 +20,9 @@
 <body>
 
 	<jsp:include page="./include/header.jsp"></jsp:include>
-
+	
 	<div class="category__box">
+		
 		<div class="container category__container">
 			<a href="#" class="nav-item nav-link active"><i class="fas fa-fish mr-2"></i><span>수산물</span></a> <a
 				href="#" class="nav-item nav-link"><i class="fas fa-carrot mr-2"></i><span>야채</span></a> <a href="#"
@@ -35,7 +36,10 @@
 
 
 	<div class='main__contents'>
-		<div class="container main-title">
+		<video id="video" preload="auto" autoplay="true" loop="loop" muted="muted" volume="0">
+      		<source src="/video/sample.mp4">
+		</video>
+		<div class="container main-title white-text">
 			<div class="text-center">
 				<h1>Stay Home</h1>
 			</div>

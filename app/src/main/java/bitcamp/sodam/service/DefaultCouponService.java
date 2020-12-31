@@ -51,4 +51,10 @@ public class DefaultCouponService implements CouponService {
 		couponDao.update(coupon);
 	}
 
+	@Override
+	public void deleteCoupon(int cuno) throws Exception {
+		couponDao.deleteCoupon(cuno);
+		
+	}
+
 }

@@ -39,4 +39,9 @@ public class DefaultInquiryService implements InquiryService {
 	public List<Inquiry> list(int uno) throws Exception {
 	  return inquiryDao.findQList(uno);
 	}
+
+	@Override
+	public void add(Inquiry inquiry) throws Exception {
+		inquiryDao.add(inquiry);
+	}
 }

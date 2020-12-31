@@ -109,7 +109,7 @@
 	                                    	<tr>
 	                                            <td><a href="/admin/inquiry_write?qno=${item.qno }">${item.title}</a></td>
 	                                            <td>${qtype}</td>
-	                                            <td>${item.qdate}</td>
+	                                            <td>${item.col}</td>
 	                                            <td>${qstatus}</td>
 	                                        </tr>
                                     	</c:forEach>

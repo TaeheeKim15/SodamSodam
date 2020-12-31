@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="/css/storeAdd.css">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+<link href="/css/dropify.min.css" rel="stylesheet" type="text/css">
 <title>가게 정보 수정</title>
 </head>
 <body>
@@ -22,97 +22,121 @@
 	<div class="container_1">
 		<h1 class="title-name">가게 정보 수정</h1>
 	</div>
+	<div class="container mb-5">
+		<form id="store-update-form" action='/store/update' method='post'
+			enctype="multipart/form-data" accept-charset="UTF-8">
+			<div class="form-group row">
+				<label for="sname" class="col-sm-2 col-form-label">* 상호명</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="sname" name="sname"
+						placeholder="전화번호" value="${store.sname }">
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="stel" class="col-sm-2 col-form-label">* 전화번호</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="stel" name="stel"
+						placeholder="전화번호">
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="sample6_postcode" class="col-sm-2 col-form-label">* 주소</label>
+				<div class="col-sm-8">
+					<input type="text" class="form-control" id="sample6_postcode"
+						name="stel" placeholder="주소">
+				</div>
+				<button type="button" class="btn btn-primary mb-2"
+					onclick="sample6_execDaumPostcode()" value="찾기">찾기</button>
+			</div>
+			<div class="form-group row">
+				<label for="saddr" class="col-sm-2 col-form-label"></label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="saddr" name="saddr"
+						placeholder="" value="">
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="s_det_addr" class="col-sm-2 col-form-label"></label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="s_det_addr"
+						name="s_det_addr" value="${store.s_det_addr}" placeholder="">
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="s_det_addr" class="col-sm-2 col-form-label">* 업종</label>
+				<div class="col-sm-10">
+					<c:forEach items="${clist}" var="c">
+						<c:set var="roof" value="1" />
+						<c:forEach items="${my_clist}" var="myc">
+							<c:choose>
+								<c:when test="${myc.ctno == c.ctno}">
+									<div class="form-check form-check-inline">
+										<input class="form-check-input" type="checkbox"
+											name="categoryName" id="categoryName${c.ctno }"
+											value="${c.ctno }" checked> <label
+											class="form-check-label" for="categoryName${c.ctno }">${c.ctname }</label>
+									</div>
+									<c:set var="roof" value="0" />
+								</c:when>
+							</c:choose>
+						</c:forEach>
+						<c:if test="${roof eq '1'}" var="nameHong" scope="session">
+							<div class="form-check form-check-inline">
+								<input class="form-check-input" type="checkbox"
+									name="categoryName" id="categoryName${c.ctno }"
+									value="${c.ctno }"> <label class="form-check-label"
+									for="categoryName${c.ctno }">${c.ctname }</label>
+							</div>
+						</c:if>
 
-	<form id="store-update-form" action='/store/update' method='post' enctype="multipart/form-data" accept-charset="UTF-8">
-		<div class="container mt-5">
-			<div class="row">
-				<div class="col-sm-12">
-					<div class="d-flex justify-content-center">
-						<div class="col-sm-2">
-							<p class="text-left" style="padding: 7px;">
-								<font class="required-star">*</font>상호명
-							</p>
-							<p class="text-left" style="padding: 7px;">
-								<font class="required-star">*</font>전화번호
-							</p>
-							<p class="text-left"
-								style="padding-bottom: 77px; padding-left: 7px; padding-top: 5px;">
-								<font class="required-star">*</font>주소
-							</p>
-							<p class="text-left" style="padding: 7px;">
-								<font class="required-star">*</font>업종
-							</p>
-							<p class="text-left" style="padding: 7px;">
-								<font class="required-star">*</font>영업시간
-							</p>
-							<p class="text-left" style="padding: 7px;">이미지</p>
-							<p class="text-left" style="padding: 7px;">가게소개</p>
-						</div>
-						<div class="col-sm-6">
-							<p>
-								<input type="text" name="sname" value='${list.sname }' style='width: 500px'>
-							</p>
-							<p>
-								<input type="text" name="stel" value="${list.stel }"
-									style="width: 500px">
-							</p>
-							<div style="margin-bottom: 10px;">
-								<input type="text" class="text-center" id="sample6_postcode"
-									placeholder="우편번호" style="width: 200px"> <input
-									type="button" onclick="sample6_execDaumPostcode()" value="찾기"
-									style="width: 100px"><br>
-							</div>
-							<div style="margin-bottom: 10px;">
-								<input type="text" name="saddr" value="${list.saddr }" style="width: 300px">
-								<input type="text" name="s_det_addr" value="${list.s_det_addr}"
-									style="margin-left: 15px; width: 180px">
-							</div>
-							<div style="margin-bottom: 20px;">
-								<input type="text" class="text-center" id="sample6_extraAddress"
-									placeholder="참고항목" style="width: 200px">
-							</div>
-							
-							 <div style="margin-top: 10px; margin-bottom: 10px; padding: 0px;">
-							<c:forEach items="${list}" var="c">
-									<input type="checkbox" name="categoryName" value="${c.ctno }">${c.ctname }
-							</c:forEach>
-							</div>
-							 
-							<p>
-								<input type="time" name="sdt" value="${list.sdt }"
-									style="width: 250px"> ~ <input type="time" name="edt"
-									value="${list.edt }"style="width: 250px">
-							</p>  
-							<div>
-								<input type="hidden" class="form-control" name="sphoto" id="edit-default-photo" value="" required>
-							</div>
-							<p>
-								<textarea name="sint" value="${list.sint }"
-									style="width: 500px"></textarea>
-							</p>
-						</div>
-					</div>
+					</c:forEach>
 				</div>
 			</div>
-		</div>
-		<div class="container_1" style="padding: 0px;"></div>
-		<div class="container mt-5">
-			<div class="row">
-				<div class="col-sm-12">
+			<div class="form-group row">
+				<label for="saddr" class="col-sm-2 col-form-label">영업시간</label>
+				<div class="col-sm-10">
+					<input type="time" name="sdt" value="${store.sdt }"
+						style="width: 250px"> ~ <input type="time" name="edt"
+						value="${store.edt }" style="width: 250px">
 				</div>
 			</div>
-		</div>
-		<div>
-			<button type="submit" class="btn btn-outline-warning btn-lg"
-				style="margin: 10px;" form="store-form">가게 등록</button>
-			<button type="button" class="btn btn-warning btn-lg">목록으로</button>
-		</div>
-	</form>
+			<div class="form-group row">
+				<label for="stel" class="col-sm-2 col-form-label">가게사진</label>
+				<div class="col-sm-10">
+					<input type="file" class="dropify" />
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="stel" class="col-sm-2 col-form-label">가게소개</label>
+				<div class="col-sm-10">
+					<textarea name="sint" value="${store.sint }"></textarea>
+				</div>
+			</div>
+			<button type="submit" class="btn btn-primary" form="store-form">가게 등록</button>
+			<button type="submit" class="btn btn-primary">목록으로</button>
+		</form>
+	</div>
+
 	<jsp:include page="../include/footer.jsp"></jsp:include>
 </body>
+<script src="https://kit.fontawesome.com/d1fe297f63.js"
+	crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
 <script
 	src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
+<script
+	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="/js/dropify.js"></script>
+
 <script>
+	$('.dropify').dropify();
+
 	function sample6_execDaumPostcode() {
 		new daum.Postcode(
 				{

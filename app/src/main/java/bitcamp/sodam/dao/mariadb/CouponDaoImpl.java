@@ -62,5 +62,11 @@ public class CouponDaoImpl implements CouponDao {
 	public void update(Coupon coupon) throws Exception {
 		couponMapper.update(coupon);
 	}
+
+
+	@Override
+	public void deleteCoupon(int cuno) throws Exception {
+		couponMapper.deleteCoupon(cuno);
+	}
 	
 }

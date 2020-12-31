@@ -35,7 +35,7 @@
 				<div class="navbar-nav ml-auto">
 					<div class="nav-item dropdown">
 						<a href="#" data-toggle="dropdown" class="nav-item nav-link dropdown-toggle user-action">
-							<img src="${sessionScope.loginUser.uphoto }" class="avatar" alt="Avatar"> ${sessionScope.loginUser.name } <b class="caret"></b>
+							<img src="/filepath/${sessionScope.loginUser.uphoto }" class="avatar" alt="Avatar"> ${sessionScope.loginUser.name } <b class="caret"></b>
 						</a>
 						<div class="dropdown-menu">
 							<a href="/mypage" class="dropdown-item">

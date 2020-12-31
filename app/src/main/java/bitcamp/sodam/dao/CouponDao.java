@@ -16,4 +16,5 @@ public interface CouponDao {
 	void add(int cuno, int uno) throws Exception;
 	void addItem(Coupon coupon) throws Exception;
 	void update(Coupon coupon) throws Exception;
+	void deleteCoupon(int cuno) throws Exception;
 }

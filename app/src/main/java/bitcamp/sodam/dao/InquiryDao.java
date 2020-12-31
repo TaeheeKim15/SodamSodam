@@ -30,4 +30,8 @@ public class InquiryDao {
 	public List<Inquiry> findQList(int uno) throws Exception{ 
 	    return inquiryMapper.findQList(uno);
 	}
+	
+	public void add(Inquiry inquiry) throws Exception{
+		  inquiryMapper.addInquiry(inquiry);
+		}
 }

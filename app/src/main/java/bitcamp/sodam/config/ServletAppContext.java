@@ -30,6 +30,7 @@ import bitcamp.sodam.database.OrderMapper;
 import bitcamp.sodam.database.ProductMapper;
 import bitcamp.sodam.database.StoreMapper;
 import bitcamp.sodam.database.UserMapper;
+import bitcamp.sodam.interceptor.CheckAdminLoginInterceptor;
 import bitcamp.sodam.interceptor.CheckLoginInterceptor;
 
 
@@ -97,11 +98,15 @@ public class ServletAppContext implements WebMvcConfigurer {
 		WebMvcConfigurer.super.addInterceptors(registry);
 
 		CheckLoginInterceptor checkLoginInterceptor = new CheckLoginInterceptor();
+		CheckAdminLoginInterceptor checkAdminLoginInterceptor = new CheckAdminLoginInterceptor();
 
 		InterceptorRegistration reg1 = registry.addInterceptor(checkLoginInterceptor);
+		InterceptorRegistration reg2 = registry.addInterceptor(checkAdminLoginInterceptor);
 
 		reg1.addPathPatterns("/user_detail");
-
+		reg2.addPathPatterns("/admin/**");
+		reg2.excludePathPatterns("/admin/login");
+		reg2.excludePathPatterns("/admin/loginPost");
 		// registration에 pathPatterns를 여러개 추가하여 여러 path에 대해 인터셉터를 적용할 수 있다.
 		// reg1.addPathPatterns("/user_detail", "/user_detail2"); 이런식으로 콤마로 붙여서 추가할 수도 있다.
 		// reg1.addPathPatterns("/*"); 이렇게 하면 루트경로 한칸 아래의 모든 주소에 적용된다. ex) /test

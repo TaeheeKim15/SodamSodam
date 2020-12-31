@@ -1,23 +1,20 @@
 package bitcamp.sodam.controller;
 
-import java.util.HashMap;
+import java.io.PrintWriter;
 import java.util.List;
-import java.util.Map;
 
-import javax.servlet.ServletContext;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
 
 import bitcamp.sodam.beans.Category;
 import bitcamp.sodam.beans.Coupon;
@@ -52,6 +49,62 @@ public class AdminController {
 
 	@Autowired
 	private UploadTestService uploadTestService;
+	
+	@GetMapping("/login")
+	public String AdminLogin(HttpServletResponse response, Model model) {
+		System.out.println("어드민 로그인");
+
+		response.setContentType("text/html;charset=UTF-8");
+
+		response.setCharacterEncoding("UTF-8"); // 응답의 encoding을 utf-8로 변경
+
+		return "admin/login";
+	}
+	
+	@PostMapping("/loginPost")
+	public String AdminLoginPost(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+		
+		String email = request.getParameter("email");
+		String pwd = request.getParameter("pwd");
+		
+		PrintWriter out;
+		User user;
+		
+		response.setContentType("text/html; charset=UTF-8");
+		
+		try {
+			out = response.getWriter();
+			user = userService.get(email, pwd);
+			if (user == null) {
+				out.println("<script>alert('존재하지 않는 사용자입니다.');</script>");
+				System.out.println("없음");
+			} else {
+				System.out.println("있음");
+				String[] remember = request.getParameterValues("rememberMe");
+				if(remember != null) {
+					Cookie cookie = new Cookie("rememberAccount", email) ;
+					cookie.setMaxAge(365*24*60*60);                                 // 쿠키의 유효기간을 365일로 설정한다.
+					cookie.setPath("/");
+					response.addCookie(cookie);   
+				} else {
+					Cookie cookie = new Cookie("rememberAccount", null) ;
+					cookie.setMaxAge(0) ;
+					cookie.setPath("/");
+				    response.addCookie(cookie) ;
+				}
+				
+				System.out.println("Login Success");
+				
+				session.setAttribute("loginUser", user);
+				
+				return "redirect:/admin/category";
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "redirect:/admin/login";
+	}
 
 	@GetMapping("/category")
 	public String AdminCategory(HttpServletResponse response, Model model) {

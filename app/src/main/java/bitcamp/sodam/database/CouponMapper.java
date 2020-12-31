@@ -31,6 +31,9 @@ public interface CouponMapper {
 	@Delete("DELETE FROM tmk_my_coupon WHERE mcuno = #{mcuno}")
     void delete(int mcuno);
 	
+	@Delete("DELETE FROM tmk_discount WHERE cuno = #{cuno}")
+    void deleteCoupon(int cuno);
+	
 	@Insert("insert into tmk_my_coupon(cuno, uno, mcu_status) values(#{cuno}, #{uno}, 0)")
     void addMyCoupon(@Param("cuno") int cuno, @Param("uno") int uno);
 	

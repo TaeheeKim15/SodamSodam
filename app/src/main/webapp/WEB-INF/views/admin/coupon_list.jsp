@@ -118,7 +118,7 @@
 															</button>
 															<button type="button"
 																class="btn btn-sm btn-default js-sweetalert"
-																title="Delete" data-type="confirm">
+																title="Delete" data-type="couponItemDelete">
 																<i class="fa fa-trash-o text-danger"></i>
 															</button>
 														</td>

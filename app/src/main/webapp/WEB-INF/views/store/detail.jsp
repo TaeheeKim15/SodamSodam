@@ -63,7 +63,6 @@
 	crossorigin="anonymous"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script type="text/javascript">
-	
 		const addBasket = (no) => {
 			$.post("/basket/insert", {
 				pno : no,
@@ -77,6 +76,5 @@
 					})
 			})
 		}
-		
 	</script>
 </html>
