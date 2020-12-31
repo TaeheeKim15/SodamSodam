@@ -1,40 +1,48 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
-
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
-	integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
-	crossorigin="anonymous">
-<link rel="stylesheet" href="css/main.css">
-<link rel="stylesheet" href="css/user.css">
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/mypage.css">
+	<meta charset="UTF-8">
+	
+	<style type="text/css">
+      @font-face {
+			    font-family: 'SDSamliphopangche_Outline';
+			    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts-20-12@1.0/SDSamliphopangche_Outline.woff') format('woff');
+			    font-weight: normal;
+			    font-style: normal;
+			}
+			
+	@font-face {
+    	font-family: 'InfinitySans-BoldA1';
+    	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/InfinitySans-BoldA1.woff') format('woff');
+    	font-weight: normal;
+    	font-style: normal;
+	}
+			
+    </style>
+	
+	
+<title>쿠폰</title>
 </head>
 <body>
 	<jsp:include page="../include/header.jsp"></jsp:include>
+		<div class="mt-5 coupon_main">
+			<div class="container mb-5 coupon__title" style='font-family:SDSamliphopangche_Outline'>
+				<h5 style="color:gray;">마이페이지 > 개인정보수정</h5>
+			</div>
+				<div class="container mb-4 coupon__title line" style='font-family:SDSamliphopangche_Outline'>
+            <p class="bottommargin">개인정보수정</p>
+        		</div>
 
-	<div class="container mt-5" style="min-height: calc(100vh - 132px);">
-		<div class="justify-content-center">
-			<div class="col ">
-				<div class="row-sm-2">
-					<div class="row">
-						<div class="ml-5 text-secondary">
-							<h2>
-								<b>개인정보수정</b>
-							</h2>
-						</div>
-					</div>
-				</div>
-
+					<div>
 				<form id="user-update" action='/user_detail' method='post'
 					enctype="multipart/form-data" accept-charset="UTF-8">
 					<div class="container mt-5">
@@ -43,13 +51,13 @@
 							<div class="col-sm-12">
 								<div class="d-flex justify-content-center">
 									<img src='{userInfo.uphoto}'>
-									<div class="col-sm-2">
-										<p class="text-left" style="padding: 7px;">프로필사진</p>
-										<p class="text-left" style="padding: 7px;">이름</p>
-										<p class="text-left" style="padding: 7px;">전화번호</p>
-										<p class="text-left" style="padding: 7px;">이메일</p>
-										<p class="text-left"
-											style="padding-bottom: 77px; padding-left: 7px; padding-top: 5px;">주소</p>
+									<div class="col-sm-2 text-right "style='font-family:InfinitySans-BoldA1; padding:7px;'>
+										<p style="padding-bottom: 10px;">프로필사진</p>
+										<p style="padding-bottom: 11px;">이름</p>
+										<p style="padding-bottom: 11px;">전화번호</p>
+										<p style="padding-bottom: 11px;">이메일</p>
+										<p style="padding-bottom: 11px;">우편번호</p>
+										<p style="padding-bottom: 77px; padding-top: 5px;">주소</p>
 									</div>
 									<div class="col-sm-6">
 										<div style="margin-bottom: 20px;">
@@ -78,7 +86,7 @@
 													class="text-center border border-secondary rounded"
 													id="sample6_postcode" style="width: 380px; height: 36px;">
 												<input type="button"
-													class="text-center border border-secondary rounded"
+													class="text-center border border-secondary rounded udetail_btn"
 													onclick="sample6_execDaumPostcode()" value='찾기'
 													style="width: 100px; margin-left: 10px; height: 36px;"><br>
 											</div>
@@ -103,6 +111,7 @@
 								</div>
 							</div>
 						</div>
+						</div>
 						<div class="container_1" style="padding: 0px;"></div>
 						<div class="container mt-5">
 							<div class="row">
@@ -111,20 +120,19 @@
 								</div>
 							</div>
 						</div>
-						<div class="d-flex justify-content-center">
+						<div class="d-flex justify-content-center" style='font-family:InfinitySans-BoldA1'>
 							<button type="submit" class="btn btn-outline-warning btn-lg"
-								style="margin: 10px;" form="user-update">목록으로</button>
-							<button type="button" class="btn btn-warning btn-lg">수정하기</button>
+								style="margin: 10px;" >목록으로</button>
+							<button type="button" style="margin: 10px;" form="user-update" class="btn btn-warning btn-lg udetail_btn">수정하기</button>
 						</div>
 				</form>
 
 			</div>
 		</div>
-	</div>
-
+	
 	<jsp:include page="../include/footer.jsp"></jsp:include>
-
 </body>
+
 
 <script
 	src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>

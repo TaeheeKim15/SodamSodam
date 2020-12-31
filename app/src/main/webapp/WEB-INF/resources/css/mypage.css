@@ -1,55 +1,69 @@
-.mypage__main{
+.mypage__main {
 	width: 100%;
-  	height: calc(100vh - 220px);
+	height: calc(100vh - 220px);
 }
 
-.mypage__title{
-    display: flex;
-    justify-content: space-between;
+.mypage__title {
+	display: flex;
+	justify-content: space-between;
 }
 
-.mypage__title .mypage__text{
-    line-height: 3em;
+.mypage__title .mypage__text {
+	line-height: 3em;
 }
 
-.mypage__title img{
-    height: 100px;
+.mypage__title img {
+	height: 100px;
 }
 
-.coupon__main{
+.coupon__main {
 	width: 100%;
-  	height: calc(100vh - 220px);
-  	color: gray;
+	height: calc(100vh - 220px);
+	color: gray;
 }
 
-.coupon__title{
-    display: flex;
-    justify-content: space-between;
+.coupon__title {
+	display: flex;
+	justify-content: space-between;
 }
 
-.coupon_table{
+.coupon_table {
 	width: 1400px;
 }
 
-.coupon_th{
-	background-color:orange;
+.coupon_th {
+	background-color: orange;
 	color: white;
 }
 
-
-.qlist_main{
-	width:1300px;
+.qlist_main {
+	width: 1300px;
 	min-height: 200px;
 }
 
-.qlist_box1{
+.qlist_box1 {
 	
 }
 
-.qlist_box2{
+.qlist_box2 {
 	
 }
 
-.qlist_box3{
+.qlist_box3 {
 	
+}
+
+.udetail_btn {
+	background-color: orange;
+	color: white;
+}
+
+.line {
+	border-bottom: solid 1px;
+	border-bottom-color: darkorange;
+}
+
+.bottommargin {
+	margin:30px;
+	font-size:40px;
 }

@@ -57,11 +57,13 @@ public class MypageController {
 
     try {
     } catch (Exception e) {
-      // TODO Auto-generated catch block
+      
+      model.addAttribute("list", null);
       e.printStackTrace();
+      e.getMessage();
     }
 
-    return "redirect:/mypage/user_detail";
+    return "redirect:/user/user_detail";
 
   }
 
