@@ -92,29 +92,30 @@ tr {
 
 			<div class="col-7 box3">
 
-          <div class= "coupon_table mb-5 mx-auto">
-          <table class="table table-hover">
-            <thead class="box7">
-              <tr class ="text-center">
-                <th scope="col">쿠폰명</th>
-                <th scope="col">쿠폰설명</th>
-                <th scope="col">할인금액</th>
-                <th scope="col">유효기간</th>
-                <th scope="col"></th>             
-              </tr>
-        </thead>
-            
-             <c:forEach var="item" items="${cList}">
-          <tr class = "text-center">
-            <td>${item.cuname}</td>
-            <td>${item.cuint}</td>
-            <td>${item.cuprice} 원</td>
-            <td>~ ${item.cuexp}</td>
-            <td><button type="button" class="btn btn-primary" onclick="couponAdd(${item.cuprice})">선택</button></td>
-          </tr>
-        </c:forEach>
-          </table>
-          </div>
+				<div class="coupon_table mb-5 mx-auto">
+					<table class="table table-hover">
+						<thead class="box7">
+							<tr class="text-center">
+								<th scope="col">쿠폰명</th>
+								<th scope="col">쿠폰설명</th>
+								<th scope="col">할인금액</th>
+								<th scope="col">유효기간</th>
+								<th scope="col"></th>
+							</tr>
+						</thead>
+
+						<c:forEach var="item" items="${cList}">
+							<tr class="text-center">
+								<td>${item.cuname}</td>
+								<td>${item.cuint}</td>
+								<td>${item.cuprice}원</td>
+								<td>~ ${item.cuexp}</td>
+								<td><button type="button" class="btn btn-primary"
+										onclick="couponAdd(${item.cuprice})">선택</button></td>
+							</tr>
+						</c:forEach>
+					</table>
+				</div>
 
 			</div>
 
@@ -142,7 +143,7 @@ tr {
 
 						<tr class="box13">
 							<td class="box16"><i class="fas fa-minus box16"></i> 쿠폰</td>
-							<td><p id="coupon_price" class="box17">${cuprice} 원</p></td>
+							<td><p id="coupon_price" class="box17">${cuprice}원</p></td>
 						</tr>
 
 						<tr class="box13 box14">
@@ -159,12 +160,12 @@ tr {
 				</div>
 			</div>
 		</div>
-		
+
 
 
 
 	</div>
-	<input id="hidden_sum" type="hidden" value="">
+	<input id="hidden_sum" type="hidden" value="${tsum2}">
 
 
 	<jsp:include page="../include/footer.jsp"></jsp:include>
@@ -180,7 +181,6 @@ tr {
 	src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script type="text/javascript"
 	src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
-
 
 <script type="text/javascript">
 
@@ -218,8 +218,6 @@ var pay = function(){
             msg += '카드 승인번호 : ' + rsp.apply_num;
 
             basketDelete(bno);
-            
-            })
 
         } else {
             var msg = '결제에 실패하였습니다.';
@@ -249,7 +247,4 @@ const couponAdd = (price) => {
 }
 
 </script>
-
-
-
 </html>

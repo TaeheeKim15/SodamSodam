@@ -39,12 +39,6 @@
 				<div class="row clearfix">
 					<div class="col-md-6 col-sm-12">
 						<h1>1:1문의 등록</h1>
-						<nav aria-label="breadcrumb">
-							<ol class="breadcrumb">
-								<li class="breadcrumb-item"><a href="#">소담소담</a></li>
-								<li class="breadcrumb-item active" aria-current="page">공지사항</li>
-							</ol>
-						</nav>
 					</div>
 				</div>
 			</div>

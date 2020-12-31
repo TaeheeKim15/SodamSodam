@@ -1,8 +1,10 @@
 package bitcamp.sodam.dao.mariadb;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
 import bitcamp.sodam.beans.Product;
 import bitcamp.sodam.dao.ProductDao;
 import bitcamp.sodam.database.ProductMapper;
@@ -51,15 +53,17 @@ public class ProductDaoImpl implements ProductDao {
 		productMapper.deleteStoreProduct(sno);
 
 	}
-	
-	@Override
-	public List<Product> findStoreProduct(int sno) throws Exception {
-		return null;
-	}
 
 	@Override
 	public List<Product> findAllStoreProduct(int sno) throws Exception {
 		return productMapper.findAllStoreProduct(sno);
 	}
+
+	@Override
+	public List<Product> findStoreProduct(int sno) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 }

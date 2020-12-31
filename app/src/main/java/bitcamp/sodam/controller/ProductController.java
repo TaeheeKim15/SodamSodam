@@ -1,6 +1,5 @@
 package bitcamp.sodam.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,13 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import bitcamp.sodam.beans.Basket;
-import bitcamp.sodam.beans.Category;
 import bitcamp.sodam.beans.Product;
-<<<<<<< HEAD
-=======
-import bitcamp.sodam.beans.Store;
-import bitcamp.sodam.beans.User;
->>>>>>> b0f1258aedcbec9b917c3f7ab44ce107cea98c95
 import bitcamp.sodam.service.BasketService;
 import bitcamp.sodam.service.ProductService;
 

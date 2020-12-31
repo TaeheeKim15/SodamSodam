@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -72,7 +73,6 @@ public class StoreController {
 
 		return "store/storeList";
 	}
-<<<<<<< HEAD
 	
 	@GetMapping("review")
 	public String StoreReview(HttpServletRequest request, HttpServletResponse response, HttpSession session, Model model)
@@ -100,8 +100,6 @@ public class StoreController {
 
 		return "store/storeList";
 	}
-=======
->>>>>>> b0f1258aedcbec9b917c3f7ab44ce107cea98c95
 
 	@GetMapping("form")
 	public String insertStore(Model model) throws Exception {
@@ -117,7 +115,7 @@ public class StoreController {
 
 		User user = new User();
 		user = (User) session.getAttribute("loginUser");
-<<<<<<< HEAD
+		
 		int unoCount = storeService.storeLimit(user.getUno());
 		
 		if (unoCount == 0) {
@@ -166,26 +164,6 @@ public class StoreController {
 		model.addAttribute("userInfo", userInfo);
 		return "store/delete";
 	}
-=======
-
-		store.setUno(user.getUno());
-		store.setOwner(user);
-
-		uploadStoreService.addStoreInfo(store);
-
-		String insertId = categoryService.getInsertId();
-
-		List<String> category_list = store.getCategoryName();
-
-		for (String category : category_list) {
-			categoryService.addCategoryStore(category, insertId);
-		}
-
-		// storeService.insertStore(store);
-
-		return "redirect:/store/list";
-	}
->>>>>>> b0f1258aedcbec9b917c3f7ab44ce107cea98c95
 
 	@GetMapping("delete")
 	public String deleteStore(HttpServletRequest request, HttpSession session) throws Exception {
@@ -201,7 +179,6 @@ public class StoreController {
 	}
 
 	@GetMapping("detail")
-<<<<<<< HEAD
 	public void StoreDetail(int sno, Model model) throws Exception {
 		Store store = storeService.get(sno);
 
@@ -220,8 +197,6 @@ public class StoreController {
 //		model.addAttribute("store", store);
 //		return "store/detail";
 //	}
-
-=======
 	public String StoreDetail(HttpServletRequest request, HttpServletResponse response, Model model) throws Exception {
 
 		int sno = Integer.parseInt(request.getParameter("sno"));
@@ -244,22 +219,16 @@ public class StoreController {
 		model.addAttribute("store", store);
 		return "store/detail";
 	}
-
-<<<<<<< HEAD
-	@GetMapping("update")
-	public String StoreUpdate(HttpServletRequest request, HttpServletResponse response, Model model) throws Exception {
-=======
->>>>>>> b0f1258aedcbec9b917c3f7ab44ce107cea98c95
+	
 	@PostMapping("update")
-	public String StoreDetail(HttpServletResponse response, Model model, Store store) throws Exception {
->>>>>>> a4bba7c72824d18704cb5b6ca76e36470a49b6ff
+	public String StoreDetail(HttpServletRequest request, HttpServletResponse response, Model model, Store store) throws Exception {
 
 		response.setContentType("text/html;charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		
 		String sno = request.getParameter("sno");
 
-		Store store = storeService.get(Integer.parseInt(sno));
+		store = storeService.get(Integer.parseInt(sno));
 		List<Category> my_clist = categoryService.list(Integer.parseInt(sno));
 		List<Category> clist = categoryService.list();
 

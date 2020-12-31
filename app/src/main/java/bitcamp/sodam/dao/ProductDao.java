@@ -13,11 +13,8 @@ public interface ProductDao {
   int update(Product product) throws Exception;
   int delete(int no) throws Exception;
   void deleteStroeProduct(int sno) throws Exception;
-<<<<<<< HEAD
   List<Product> findStoreProduct(int sno) throws Exception;
-=======
   List<Product> findAllStoreProduct(int sno) throws Exception;
->>>>>>> b0f1258aedcbec9b917c3f7ab44ce107cea98c95
 }
 
 

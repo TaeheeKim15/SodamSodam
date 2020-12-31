@@ -34,16 +34,8 @@
 			<c:otherwise>
 				<div class="navbar-nav ml-auto">
 					<div class="nav-item dropdown">
-<<<<<<< HEAD
 						<a href="#" data-toggle="dropdown" class="nav-item nav-link dropdown-toggle user-action">
 							<img src="/filepath/${sessionScope.loginUser.uphoto }" class="avatar" alt="Avatar"> ${sessionScope.loginUser.name } <b class="caret"></b>
-=======
-						<a href="#" data-toggle="dropdown"
-							class="nav-item nav-link dropdown-toggle user-action"> <img
-							src="${sessionScope.loginUser.uphoto }" class="avatar"
-							alt="Avatar"> ${sessionScope.loginUser.name } <b
-							class="caret"></b>
->>>>>>> a4bba7c72824d18704cb5b6ca76e36470a49b6ff
 						</a>
 						<div class="dropdown-menu">
 							<a href="/mypage" class="dropdown-item"> <i
