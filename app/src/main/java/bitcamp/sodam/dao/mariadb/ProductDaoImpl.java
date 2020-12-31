@@ -51,6 +51,11 @@ public class ProductDaoImpl implements ProductDao {
 		productMapper.deleteStoreProduct(sno);
 
 	}
+	
+	@Override
+	public List<Product> findStoreProduct(int sno) throws Exception {
+		return null;
+	}
 
 	@Override
 	public List<Product> findAllStoreProduct(int sno) throws Exception {

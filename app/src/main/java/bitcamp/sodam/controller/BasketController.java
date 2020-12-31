@@ -1,26 +1,35 @@
 package bitcamp.sodam.controller;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-
 import bitcamp.sodam.beans.Basket;
+import bitcamp.sodam.beans.Coupon;
+import bitcamp.sodam.beans.Order;
 import bitcamp.sodam.beans.User;
 import bitcamp.sodam.service.BasketService;
+import bitcamp.sodam.service.CouponService;
+import bitcamp.sodam.service.OrderService;
 
 @Controller
 public class BasketController {
 
   @Autowired
   BasketService basketService;
+
+  @Autowired
+  CouponService couponService;
+
+  @Autowired
+  OrderService orderService;
 
   @GetMapping("/basketList")
   public String BasketList(HttpServletRequest request, HttpServletResponse response, HttpSession session, Model model) {
@@ -58,6 +67,7 @@ public class BasketController {
       model.addAttribute("tsum", commaTSum);
       model.addAttribute("tsum2", tsum);
 
+
     } catch (Exception e) {
       model.addAttribute("list", null);
       e.printStackTrace();
@@ -66,7 +76,7 @@ public class BasketController {
   }
 
   @GetMapping("/basketPay")
-  public String basketPay(HttpServletRequest request, HttpServletResponse response, HttpSession session, Model model) throws Exception {
+  public String basketPay(HttpServletResponse response, HttpSession session, Model model) throws Exception {
     System.out.println("페이로 넘어가라");
 
     User user = (User) session.getAttribute("loginUser");
@@ -76,8 +86,27 @@ public class BasketController {
     response.setCharacterEncoding("UTF-8"); // 응답의 encoding을 utf-8로 변경
 
     List<Basket> list;
+
+    List<Coupon> cList;
+    List<Coupon> coupon_list = new ArrayList<Coupon>();
+
     try {
-      list = basketService.list(uno);
+
+      cList = couponService.list(uno);
+
+      for(Coupon tenp_coupon : cList) {
+        if(tenp_coupon.getMcu_status() == 0) {
+          tenp_coupon.setStatus("사용가능");
+          coupon_list.add(tenp_coupon);
+        } else if (tenp_coupon.getMcu_status() == 1) {
+          tenp_coupon.setStatus("사용완료");
+          coupon_list.add(tenp_coupon);
+        }
+      }
+
+      model.addAttribute("cList", coupon_list);
+
+      list = basketService.basketPay(uno);
       for (Basket basket : list) {
         basket.setPriceCommas(String.format("%,d", basket.getPrice()));
       }
@@ -98,10 +127,13 @@ public class BasketController {
       int tsum = sum + 2500;
       String commaTSum = String.format("%,d", tsum);
 
+
       model.addAttribute("tsum", commaTSum);
       model.addAttribute("tsum2", tsum);
 
     } catch (Exception e) {
+      model.addAttribute("cList", null);
+
       model.addAttribute("list", null);
       e.printStackTrace();
     }
@@ -137,9 +169,44 @@ public class BasketController {
 
   @PostMapping("/basket/insert")
   public void insert(HttpServletRequest request, HttpServletResponse response, Basket basket, HttpSession session, Model model) throws Exception{
-	User loginUser = (User) session.getAttribute("loginUser");
+    User loginUser = (User) session.getAttribute("loginUser");
     basket.setUno(loginUser.getUno());
-    
     basketService.add(basket);
   }
+
+  @GetMapping("/basket/orderInsert")
+  public void insertBasketOrder(HttpServletRequest request, HttpServletResponse response, Order order, HttpSession session, Date date, Model model) throws Exception{
+    System.out.println("장바구니 주문 리스트 생성!");
+    User loginUser = (User) session.getAttribute("loginUser");
+    order.setUno(loginUser.getUno());
+    order.setOdt(date);
+    order.setRequest("");
+    order.setDcmp("한진택배");
+    order.setTran_no(Integer.toString((int) Math.random()*100));
+    order.setDstatus(1);
+
+    orderService.addOrder(order);
+
+  }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
