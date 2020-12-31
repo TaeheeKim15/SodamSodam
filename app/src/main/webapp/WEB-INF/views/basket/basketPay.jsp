@@ -1,5 +1,6 @@
 <%@page import="java.util.List"%>
 <%@page import="bitcamp.sodam.beans.Basket"%>
+<%@page import="bitcamp.sodam.beans.Order"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -109,7 +110,7 @@ tr {
             <td>${item.cuint}</td>
             <td>${item.cuprice} 원</td>
             <td>~ ${item.cuexp}</td>
-            <td><button type="button" class="btn btn-primary">선택</button></td>
+            <td><button type="button" class="btn btn-primary" onclick="couponAdd(${item.cuprice})">선택</button></td>
           </tr>
         </c:forEach>
           </table>
@@ -141,12 +142,12 @@ tr {
 
 						<tr class="box13">
 							<td class="box16"><i class="fas fa-minus box16"></i> 쿠폰</td>
-							<td><p class="box17">${cuprice} 원</p></td>
+							<td><p id="coupon_price" class="box17">${cuprice} 원</p></td>
 						</tr>
 
 						<tr class="box13 box14">
 							<td><p class="box18 box27">합계</p></td>
-							<td><p class="box2 box27">${tsum}원</p></td>
+							<td><p id="result_sum" class="box2 box27">${tsum}원</p></td>
 						</tr>
 
 					</tbody>
@@ -158,10 +159,12 @@ tr {
 				</div>
 			</div>
 		</div>
+		
+
 
 
 	</div>
-
+	<input id="hidden_sum" type="hidden" value="">
 
 
 	<jsp:include page="../include/footer.jsp"></jsp:include>
@@ -185,9 +188,10 @@ var pay = function(){
 
     var stock = "${list.size()}"
     var name = "${list[0].pname}"
-    var full_name = name + " 외 상품" + stock + "개"
+    var full_name = name + " 외 상품" + stock + " 개"
 
-    var result_price = "${tsum2}"
+    var hideen_sum = $("#hidden_sum").val();
+    var result_price = hideen_sum;
 
     var bno = "${list[0].bno}"
     var user_name = "권구현"
@@ -214,6 +218,8 @@ var pay = function(){
             msg += '카드 승인번호 : ' + rsp.apply_num;
 
             basketDelete(bno);
+            
+            })
 
         } else {
             var msg = '결제에 실패하였습니다.';
@@ -221,6 +227,25 @@ var pay = function(){
         }
         alert(msg);
     });
+}
+
+
+const couponAdd = (price) => {
+	var temp_sum = "${tsum2}";
+	var sum = temp_sum - price;
+	console.log(temp_sum);
+	console.log(sum);
+	if(sum < 0){
+		sum = 0;
+	}
+	
+	var sum2 = String(sum).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	var coupon = String(price).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	$("#result_sum").text(sum2 + "원");
+	$("#coupon_price").text(coupon + " 원");
+	$("#hidden_sum").val(sum);
+	
+	
 }
 
 </script>

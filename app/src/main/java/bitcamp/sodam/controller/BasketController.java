@@ -1,6 +1,7 @@
 package bitcamp.sodam.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,9 +13,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import bitcamp.sodam.beans.Basket;
 import bitcamp.sodam.beans.Coupon;
+import bitcamp.sodam.beans.Order;
 import bitcamp.sodam.beans.User;
 import bitcamp.sodam.service.BasketService;
 import bitcamp.sodam.service.CouponService;
+import bitcamp.sodam.service.OrderService;
 
 @Controller
 public class BasketController {
@@ -24,6 +27,9 @@ public class BasketController {
 
   @Autowired
   CouponService couponService;
+
+  @Autowired
+  OrderService orderService;
 
   @GetMapping("/basketList")
   public String BasketList(HttpServletRequest request, HttpServletResponse response, HttpSession session, Model model) {
@@ -165,11 +171,23 @@ public class BasketController {
   public void insert(HttpServletRequest request, HttpServletResponse response, Basket basket, HttpSession session, Model model) throws Exception{
     User loginUser = (User) session.getAttribute("loginUser");
     basket.setUno(loginUser.getUno());
-
     basketService.add(basket);
   }
 
+  @GetMapping("/basket/orderInsert")
+  public void insertBasketOrder(HttpServletRequest request, HttpServletResponse response, Order order, HttpSession session, Date date, Model model) throws Exception{
+    System.out.println("장바구니 주문 리스트 생성!");
+    User loginUser = (User) session.getAttribute("loginUser");
+    order.setUno(loginUser.getUno());
+    order.setOdt(date);
+    order.setRequest("");
+    order.setDcmp("한진택배");
+    order.setTran_no(Integer.toString((int) Math.random()*100));
+    order.setDstatus(1);
 
+    orderService.addOrder(order);
+
+  }
 }
 
 
