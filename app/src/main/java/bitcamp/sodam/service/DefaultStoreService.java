@@ -71,4 +71,9 @@ public class DefaultStoreService implements StoreService{
 		public List<User> ulist() throws Exception {
 			return storeDao.findAll();
 		}
+
+	@Override
+	public Store getStore(int uno) throws Exception {
+		return storeDao.getStore(uno);
+	}
   }

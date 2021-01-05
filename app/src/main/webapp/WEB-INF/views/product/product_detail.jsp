@@ -17,7 +17,7 @@
 	<div class="container mt-5" style="min-height: calc(100vh - 132px);">
 		<div class="row">
 			<div class="col-sm-6">
-				<img src="${product.photo }" class="img-fluid" alt="...">
+				<img src="/fileproductpath/${product.photo }" class="img-fluid" alt="...">
 			</div>
 			<div class="col-sm-6">
 				<div class="row">
@@ -58,7 +58,7 @@
 						<p class="text-left">${stock}</p>
 						<p class="text-left">${dyesno}</p>
 						<input type="number" class="form-control text-center" id="bcnt"
-							name="bcnt" placeholder="수량" min="1" max="5" style="width: 66px">
+							name="bcnt" placeholder="수량" value="1" min="1" max="5" style="width: 66px">
 					</div>
 				</div>
 			</div>
@@ -105,17 +105,12 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
-	<script>
 	
 	<script type="text/javascript">
-	
-	
 	const addBasket = (no) => {
 		bcnt = $("#bcnt").val();
 		if (bcnt < 1){
-			alert("수량은 1이상이어야합니다")
-			break;
+			alert("수량은 1이상이어야합니다");
 		};
 		$.post("/basket/insert", {
 			pno : no,
@@ -129,7 +124,6 @@
 				})
 		})
 	}
-	
 	</script>
 </body>
 </html>

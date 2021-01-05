@@ -52,23 +52,24 @@
 									class="form-control" value="" required="">
 							</div>
 							<div class="form-group">
-								<label for="exampleFormControlSelect1">Example select</label> <select
-									class="form-control" id="exampleFormControlSelect1">
-									<option>1</option>
-									<option>2</option>
-									<option>3</option>
-									<option>4</option>
-									<option>5</option>
+								<label for="exampleFormControlSelect1">문의유형</label> <select
+									class="form-control" id="qtype_select">
+									<option value="0">배송</option>
+									<option value="1">포인트</option>
+									<option value="2">결제/환불</option>
+									<option value="3">쿠폰</option>
+									<option value="4">상품문의</option>
+									<option value="5">기타</option>
 								</select>
 							</div>
 							<div id="summernote"></div>
 							<div class="d-flex align-items-end justify-content-end pt-3 pb-3">
 								<button type="button" class="btn btn-info mr-2"
-									onclick="location.href='/admin/notice'">
+									onclick="location.href='/center'">
 									<i class="fa fa-trash-o"></i> <span>취소</span>
 								</button>
-								<button type="button" class="btn btn-success" onclick="edit()">
-									<i class="fa fa-save"></i> <span>수정</span>
+								<button type="button" class="btn btn-success" onclick="save()">
+									<i class="fa fa-save"></i> <span>등록</span>
 								</button>
 							</div>
 						</div>
@@ -91,12 +92,14 @@
 	<script>
 		var save = function() {
 			var title = $('#inquiry-title').val();
+			var qtype = $('#qtype_select').val();
 			var markup = $('#summernote').summernote('code');
-
+			
 			console.log(markup);
 			$.post("/inquiry_add", {
 				title : title,
-				content : markup
+				content : markup,
+				qtype: qtype
 			})
 
 			window.location.href = '/center';

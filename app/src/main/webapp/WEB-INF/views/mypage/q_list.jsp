@@ -83,6 +83,11 @@
 					
 				</div>
 			</div>
+			<div class="card mb-5 qlist_box3">
+				<div class="card-body">
+					<p class="card-text">${item.answer}</p>
+				</div>
+			</div>
 		</c:forEach>
 
 	</div>

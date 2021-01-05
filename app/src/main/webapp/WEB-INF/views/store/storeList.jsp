@@ -97,7 +97,6 @@
 							</div>
 						</div>
 					</div>
-					<a href='delete?sno=${item.sno}'>[삭제]</a>
 				</c:forEach>
 			</div>
 		</div>

@@ -7,6 +7,7 @@ import bitcamp.sodam.beans.Product;
 @Repository
 public interface ProductDao {
   List<Product> findAll(String keyword) throws Exception;
+  List<Product> findAll(int sno) throws Exception;
   List<Product> findAll() throws Exception;
   Product findByNo(int no) throws Exception;
   int insert(Product product) throws Exception;

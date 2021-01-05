@@ -22,4 +22,5 @@ public interface StoreDao {
   int checkUnoCount(int uno) throws Exception;
   User findUnoPwd(int uno, String pwd) throws Exception;
   List<User> findAll() throws Exception;
+  Store getStore(int uno) throws Exception;
 } 

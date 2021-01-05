@@ -1,6 +1,7 @@
 package bitcamp.sodam.controller;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import bitcamp.sodam.beans.Notice;
+import bitcamp.sodam.beans.User;
 import bitcamp.sodam.service.FAQService;
 import bitcamp.sodam.service.InquiryService;
 
@@ -36,12 +38,17 @@ public class CenterController {
     
     @PostMapping("/inquiry_add")
 	@Async
-	public String AdminNoticeAdd(HttpServletResponse response, Model model, bitcamp.sodam.beans.Inquiry inquiry) {
+	public String AdminNoticeAdd(HttpServletResponse response, Model model, bitcamp.sodam.beans.Inquiry inquiry, HttpSession session) {
 		System.out.println("어드민 공지사항 등록");
 
 		response.setContentType("text/html;charset=UTF-8");
 
 		response.setCharacterEncoding("UTF-8"); // 응답의 encoding을 utf-8로 변경
+		
+		User user = (User) session.getAttribute("loginUser");
+		
+		inquiry.setUno(user.getUno());
+		inquiry.setQstatus(0);
 		
 		try {
 			InquiryService.add(inquiry);

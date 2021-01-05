@@ -14,8 +14,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import bitcamp.sodam.beans.Basket;
 import bitcamp.sodam.beans.Product;
+import bitcamp.sodam.beans.Store;
+import bitcamp.sodam.beans.User;
 import bitcamp.sodam.service.BasketService;
 import bitcamp.sodam.service.ProductService;
+import bitcamp.sodam.service.StoreService;
 
 @Controller
 public class ProductController {
@@ -25,32 +28,36 @@ public class ProductController {
 
 	@Autowired
 	BasketService basketService;
+	
+	@Autowired
+	StoreService storeService;
 
 	@GetMapping("/product/detail")
-	public String ProductDetail(HttpServletRequest request, HttpServletResponse response, HttpSession session, Basket basket, Model model) {
+	public String ProductDetail(HttpServletRequest request, HttpServletResponse response, HttpSession session,
+			Basket basket, Model model) {
 
 		response.setContentType("text/html;charset=UTF-8");
 
 		response.setCharacterEncoding("UTF-8"); // 응답의 encoding을 utf-8로 변경
-		
+
 		String pno = request.getParameter("pno");
-		
+
 		Product product;
 		try {
 			product = productService.get(Integer.parseInt(pno));
 			model.addAttribute("product", product);
-			
+
 			int sno = product.getSno();
-			
+
 			List<Product> product_list = productService.listStoreProduct(sno);
-			
+
 			model.addAttribute("product_list", product_list);
-			
+
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		return "product/product_detail";
 	}
 
@@ -63,29 +70,24 @@ public class ProductController {
 	}
 
 	@GetMapping("/product_list1")
-	public String ProductList(HttpServletRequest request, HttpServletResponse response, Model model) {
+	public String ProductList(HttpServletRequest request, HttpServletResponse response, Model model, Product product, HttpSession session) {
 
 		response.setContentType("text/html; charset=UTF-8");
+		response.setCharacterEncoding("UTF-8"); // 응답의 encoding을 utf-8로 변경
 
+		String sno = request.getParameter("sno");
 		String keyword = request.getParameter("keyword");
-
-		if (keyword == null) {
+		
+		User user = (User) session.getAttribute("loginUser");
+		
 			try {
-				List<Product> list = productService.list();
+				Store store = storeService.getStore(user.getUno());
+				List<Product> list = productService.list(store.getSno());
 				model.addAttribute("list", list);
 			} catch (Exception e) {
 				model.addAttribute("list", null);
 				e.printStackTrace();
 			}
-		} else {
-			try {
-				List<Product> list = productService.list(keyword);
-				model.addAttribute("list", list);
-			} catch (Exception e) {
-				model.addAttribute("list", null);
-				e.printStackTrace();
-			}
-		}
 
 		return "product/product_list1";
 	}
@@ -100,4 +102,5 @@ public class ProductController {
 		}
 		return "redirect:/product/product_list1";
 	}
+
 }

@@ -77,7 +77,7 @@ tr {
 			<c:forEach var="post" items="${list}">
 				<tbody>
 					<tr>
-						<td class="p-1"><img src="${post.photo}"
+						<td class="p-1"><img src="/fileproductpath/${post.photo}"
 							class="rounded-circle" width="90" height="90"></td>
 						<td><p class="h5">${post.sname}</p></td>
 						<td><p class="h5">${post.pname}</p></td>

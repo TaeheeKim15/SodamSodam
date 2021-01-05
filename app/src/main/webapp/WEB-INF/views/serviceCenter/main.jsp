@@ -49,7 +49,7 @@
                 <div class="card" style="width: 15rem;">
                     <img class="card-img-top" src="img/photo1.svg" alt="Card image cap">
                     <div class="card-body">
-                      <h5 class="card-title">1:1 문의</h5>
+                      <h5 class="card-title"><a href="/inquiry">1:1 문의</a></h5>
                     </div>
                   </div>
               </div>

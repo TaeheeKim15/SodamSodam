@@ -65,5 +65,10 @@ public class ProductDaoImpl implements ProductDao {
 		return null;
 	}
 
+	@Override
+	public List<Product> findAll(int sno) throws Exception {
+		return productMapper.findAllInt(sno);
+	}
+
 
 }

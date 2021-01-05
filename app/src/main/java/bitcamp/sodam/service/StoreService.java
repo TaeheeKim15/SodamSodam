@@ -18,4 +18,5 @@ public interface StoreService {
   int storeLimit(int uno) throws Exception;
   User getUnoPwd(int uno, String pwd) throws Exception;
   List<User> ulist() throws Exception;
+  Store getStore(int uno) throws Exception;
 }

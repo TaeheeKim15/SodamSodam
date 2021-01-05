@@ -22,9 +22,9 @@ public interface InquiryMapper {
     @Update("UPDATE tmk_mtm SET answer = #{answer}, qstatus = #{qstatus} WHERE qno = #{qno}")
     void update(Inquiry inquiry);
     
-    @Select("select u.uno, title, content, col, qtype, qstatus from tmk_mtm m join tmk_user u on u.uno= m.uno where u.uno = #{uno} order by col desc")
+    @Select("select u.uno, title, content, col, qtype, qstatus, answer from tmk_mtm m join tmk_user u on u.uno= m.uno where u.uno = #{uno} order by col desc")
     List<Inquiry> findQList(int uno);
     
-    @Insert("insert into tmk_mtm(uno, title, content, qtype, qstatus) VALUES(#{uno}, #{title}, #{content} #{qtype}, #{qstatus})")
+    @Insert("insert into tmk_mtm(uno, title, content, qtype, qstatus) VALUES(#{uno}, #{title}, #{content}, #{qtype}, #{qstatus})")
     void addInquiry(Inquiry inquiry);
 }

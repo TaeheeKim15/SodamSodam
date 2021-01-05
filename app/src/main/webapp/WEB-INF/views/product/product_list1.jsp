@@ -32,8 +32,6 @@
 										style="max-height: 50px; margin-top: 11px; font-size: 16px;"><a href="/product/detail?pno=${item.pno}">${item.pname}</a></h5>
 									<p class="card-text"
 										style="padding-top: 6px; font-weight: 700; font-size: 16px; line-height: 20px;">${item.price}</p>
-									<button type="button" class="btn btn-outline-primary"
-										onclick="addBasket(${item.pno})">장바구니</button>
 								</div>
 							</div>
 						</div>

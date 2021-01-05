@@ -73,4 +73,8 @@ public class StoreDaoImpl implements StoreDao {
 	public List<User> findAll() throws Exception {
 		return storeMapper.findAll();
 	}
+	@Override
+	public Store getStore(int uno) throws Exception {
+		return storeMapper.findByUnoStore(uno);
+	}
 }

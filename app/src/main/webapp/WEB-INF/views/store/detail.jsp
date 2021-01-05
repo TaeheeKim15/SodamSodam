@@ -17,47 +17,10 @@
 </head>
 <body>
 	<jsp:include page="../include/header.jsp"></jsp:include>
-<<<<<<< HEAD
-	<div class="container_1">
-		<h1 id="title-name">${store.sname }</h1>
-	</div>
-	<div>
-		<img src="/filestorepath/${store.sphoto}" height="150px" width="150px">
-		<div>
-			<img src="/filestorepath/${store.sphoto}" height="75px" width="75px">
-			<img src="/filestorepath/${store.sphoto}" height="75px" width="75px">
-			<img src="/filestorepath/${store.sphoto}" height="75px" width="75px">
-			<img src="/filestorepath/${store.sphoto}" height="75px" width="75px">
-		</div>
-	</div>
-	<hr>
-	   <h1>상품 리스트</h1>
-	<form id="store-update-form" action='/store/update' method='post'
-		enctype="multipart/form-data" accept-charset="UTF-8">
-		<div class="form-group"></div>
-		상호명: <input type='text' name='sname' value='${store.sname }'><br>
-		가게소개:
-		<textarea name='sint' rows='10' cols='60'>${store.sint }</textarea>
-		<br> 전화번호: <input type='tel' name='stel' value='${store.stel }'><br>
-		주소: <input type='text' name='saddr' value='${store.saddr }'><br>
-		상세주소: <input type='text' name='s_det_addr'
-			value='${store.s_det_addr }'><br>
-		<!--  배송여부: <input type='radio' name='dyesno' value='1'>예
-          + <input type='radio' name='dyesno' value='0'>아니오<br>
-           -->
-		영업시간: <input type='time' name='sdt' value="${store.sdt }"> ~ <input
-			type='time' name='edt' value="${store.edt }"><br> 등록일:
-		${store.scdt }<br> <a href='list'>목록</a>
-		<div><input type='text' value="${plist.pname }"></div>
-		
-	</form>
-	<h1>상품 리스트</h1>
-=======
->>>>>>> b0f1258aedcbec9b917c3f7ab44ce107cea98c95
 	<div class="container mt-5"
 		style="height: 260px; overflow: hidden; position: relative;">
 		<h2 id="title-name">${store.sname }</h2>
-		<img src="${store.sphoto}" width="100%">
+		<img src="/filestorepath/${store.sphoto}" width="100%">
 	</div>
 	<div class="container mt-5" style="min-height: calc(100vh - 450px);">
 		<div class="container-fluid">

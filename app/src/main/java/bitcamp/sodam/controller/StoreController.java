@@ -179,24 +179,6 @@ public class StoreController {
 	}
 
 	@GetMapping("detail")
-	public void StoreDetail(int sno, Model model) throws Exception {
-		Store store = storeService.get(sno);
-
-			if (store == null) {
-				throw new Exception("해당 가게가 존재하지 않습니다.");
-			}
-			model.addAttribute("store", store);
-	}
-
-//	@GetMapping("{no}")
-//	public String detail(@PathVariable int no, Model model) throws Exception {
-//		Store store = storeService.get(no);
-//		if (store == null) {
-//			throw new Exception("해당 가게가 존재하지 않습니다.");
-//		}
-//		model.addAttribute("store", store);
-//		return "store/detail";
-//	}
 	public String StoreDetail(HttpServletRequest request, HttpServletResponse response, Model model) throws Exception {
 
 		int sno = Integer.parseInt(request.getParameter("sno"));

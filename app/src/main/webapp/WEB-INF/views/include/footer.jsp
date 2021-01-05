@@ -5,7 +5,7 @@
         <div class="row">
           
           <div class="col-lg-5 col-md-6">
-            <h3>테스트</h3>
+            <h3>메뉴</h3>
             <ul class="list-unstyled three-column">
               <li><a href="/login">로그인 화면</a></li>
               <li><a href="/user_detail">유저정보</a></li>
@@ -14,14 +14,12 @@
               <li><a href="/requests">1대1문의</a></li>
               <li><a href="/auth/logout">로그아웃</a></li>
               <li><a href="/notice">공지사항</a></li>
-              <li><a href="#">미정</a></li>
-              <li><a href="#">미정</a></li>
             </ul>
           </div>
           
           <div class="col-lg-4">
             <h3>팀원소개</h3>
-            <img class="img-thumbnail" style="height:110px" src="https://lh3.googleusercontent.com/proxy/cNYLGnjriXcOjIRsHaJzauTDkH_RQGxMzQnVjk1QxDcO9lOeLnRTOf143Fr_pb5o0QHrZC-2uyCcWBbiBORVzS-mazJnWdby_r55WaDI08zWgkCoKzn1CvT_XLy4vhxExWufft4rqHbNWyV-eI08TTSchKXNmTnxqAolYTjEDXzT6GtHSXeSDtqNG3lyots" alt="" />
+            <img class="img-thumbnail" style="height:110px" src="https://lh3.googleusercontent.com/proxy/4T5iwZdlmPklt05ObS4JCFdUTOjj3MlGW-j_vCd9yvbRyRtIlJ1o4AJvr7kp26-xnbRV9yogDsWkc07xYD_4WYY-KuXDE2p_Ytj6CIcD8m1faP6WvMOfjeaaVmWxCXa4j3aGu7gw7b0" alt="" />
             <img class="img-thumbnail" style="height:110px" src="https://www.greenpostkorea.co.kr/news/photo/201807/93706_89149_812.jpg" alt="" />
             <img class="img-thumbnail" style="height:110px" src="https://cdnimage.ebn.co.kr/news/201701/news_1485390228_873781_main1.gif" alt="" />
             <img class="img-thumbnail" style="height:110px" src="https://spnimage.edaily.co.kr/images/photo/files/NP/S/2020/10/PS20100800026.jpg" alt="" />

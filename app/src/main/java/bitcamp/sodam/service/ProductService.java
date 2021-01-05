@@ -5,6 +5,7 @@ import bitcamp.sodam.beans.Product;
 
 public interface ProductService {
   List<Product> list(String keyword) throws Exception;
+  List<Product> list(int sno) throws Exception;
   List<Product> list() throws Exception;
   Product get(int no) throws Exception;
   int add(Product product) throws Exception;

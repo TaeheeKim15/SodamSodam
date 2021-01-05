@@ -38,4 +38,9 @@ public interface ProductMapper {
 
 	@Delete("delete from tmk_product where sno=#{sno}")
 	int deleteStoreProduct(int sno);
+	
+	@Select("select p.pno, s.sno, s.sname ,pname, price, stock, p.photo, pint, pcdt " + "from tmk_product p "
+	        + "join tmk_store_info s on p.sno = s.sno " + "where p.sno = #{sno} "
+	        + "order by " + "p.pno asc")
+	List<Product> findAllInt(int sno);
 }

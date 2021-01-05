@@ -24,12 +24,12 @@
 	<div class="category__box">
 		
 		<div class="container category__container">
-			<a href="#" class="nav-item nav-link active"><i class="fas fa-fish mr-2"></i><span>수산물</span></a> <a
-				href="#" class="nav-item nav-link"><i class="fas fa-carrot mr-2"></i><span>야채</span></a> <a href="#"
-				class="nav-item nav-link"><i class="fas fa-apple-alt mr-2"></i><span>청과물</span></a> <a href="#"
-				class="nav-item nav-link"><i class="fas fa-bread-slice mr-2"></i><span>빵/간식</span></a> <a href="#"
-				class="nav-item nav-link"><i class="fas fa-heartbeat mr-2"></i><span>건강식</span></a> <a href="#"
-				class="nav-item nav-link"><i class="fas fa-piggy-bank mr-2"></i><span>육류</span></a> <a href="#"
+			<a href="/store/list" class="nav-item nav-link active"><i class="fas fa-fish mr-2"></i><span>수산물</span></a> <a
+				href="/store/list" class="nav-item nav-link"><i class="fas fa-carrot mr-2"></i><span>야채</span></a> <a href="/store/list"
+				class="nav-item nav-link"><i class="fas fa-apple-alt mr-2"></i><span>청과물</span></a> <a href="/store/list"
+				class="nav-item nav-link"><i class="fas fa-bread-slice mr-2"></i><span>빵/간식</span></a> <a href="/store/list"
+				class="nav-item nav-link"><i class="fas fa-heartbeat mr-2"></i><span>건강식</span></a> <a href="/store/list"
+				class="nav-item nav-link"><i class="fas fa-piggy-bank mr-2"></i><span>육류</span></a> <a href="/store/list"
 				class="nav-item nav-link"><i class="fas fa-utensils mr-2"></i><span>반찬</span></a>
 		</div>
 	</div>
